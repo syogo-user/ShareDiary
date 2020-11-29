@@ -206,13 +206,13 @@ class MailAddressChangeViewController: UIViewController {
                     //投稿の数繰り返す
                     for doc in docArray {
                         //投稿した写真の枚数で繰り返す
-                        for i in 0 ..< doc.contentImageMaxNumber{
+                        for i in 1 ... doc.contentImageMaxNumber{
                             //投稿した写真を削除(文字列に変換したファイル名を渡す)
                             //①自分の投稿写真を削除
                             self.deleteImage(imageName:doc.id + i.description)
                             
                             //最後の写真を削除したら
-                            if (i == doc.contentImageMaxNumber - 1){
+                            if (i == doc.contentImageMaxNumber){
                                 //②自分の投稿を削除
                                 self.deleteDoc(documentId:doc.id,path:Const.PostPath)
                             }

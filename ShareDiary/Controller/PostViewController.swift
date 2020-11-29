@@ -438,7 +438,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
                         if error != nil {
                             // 画像のアップロード失敗
                             print("DEBUG:\(error!)")
-                            SVProgressHUD.showError(withStatus: "画像のアップロードが失敗しました")
+                            SVProgressHUD.showError(withStatus: "画像のアップロードが\n失敗しました")
                             // 投稿処理をキャンセルし、先頭画面に戻る
                             UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
                             return
