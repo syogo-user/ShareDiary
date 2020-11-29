@@ -55,6 +55,63 @@
 		911FB07A24FB880000744B34 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB07924FB880000744B34 /* ShadowUIView.swift */; };
 		9123DFCA24DD738000BBAF11 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123DFC924DD738000BBAF11 /* ImageSelectViewController.swift */; };
 		9131F08924C974E80055F925 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9131F08824C974E80055F925 /* GoogleService-Info.plist */; };
+		9154E322257352140061E4F4 /* FollowFollowerListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D49C2872467F0A7008ACC25 /* FollowFollowerListTableViewCell.swift */; };
+		9154E323257352140061E4F4 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D87199B240A754900D4064E /* PostData.swift */; };
+		9154E324257352140061E4F4 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D544A9524057470007793AC /* PostViewController.swift */; };
+		9154E325257352140061E4F4 /* DitailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3ABA424AA0D3A0055E742 /* DitailViewController.swift */; };
+		9154E326257352140061E4F4 /* UserPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D031C3724616B0100A845C1 /* UserPostData.swift */; };
+		9154E327257352140061E4F4 /* UISearchBarExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82A78424BDECBC00494A4A /* UISearchBarExtention.swift */; };
+		9154E328257352140061E4F4 /* UIColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE8129724B9981300E85957 /* UIColorExtention.swift */; };
+		9154E329257352140061E4F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5F5F524038D6E00321D00 /* LoginViewController.swift */; };
+		9154E32A257352140061E4F4 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE8129524B991B700E85957 /* InputTextView.swift */; };
+		9154E32B257352140061E4F4 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C912A62560D56000074A46 /* CheckBox.swift */; };
+		9154E32C257352140061E4F4 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D031C332461198A00A845C1 /* UsersTableViewCell.swift */; };
+		9154E32D257352140061E4F4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5F5F92403906500321D00 /* TabBarController.swift */; };
+		9154E32E257352140061E4F4 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFE9623FEE8DB009893B1 /* CalendarViewController.swift */; };
+		9154E32F257352140061E4F4 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ED0D525298511002344DF /* Validation.swift */; };
+		9154E330257352140061E4F4 /* AccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9110558524E9248600D1B796 /* AccountCreateViewController.swift */; };
+		9154E331257352140061E4F4 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5083424B1C61500FE1148 /* CommentData.swift */; };
+		9154E332257352140061E4F4 /* FriendSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFE9A23FEE95C009893B1 /* FriendSearchViewController.swift */; };
+		9154E333257352140061E4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFE8223FEE75F009893B1 /* AppDelegate.swift */; };
+		9154E334257352140061E4F4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFE9C23FEE976009893B1 /* ProfileViewController.swift */; };
+		9154E335257352140061E4F4 /* MyDiaryFromCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA065D24A0FB2800BFD73E /* MyDiaryFromCalendarViewController.swift */; };
+		9154E336257352140061E4F4 /* LikeUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC3185D24ACBED4000D38F3 /* LikeUserListTableViewCell.swift */; };
+		9154E337257352140061E4F4 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB165DE24BB21BF00E9AC7A /* ProfileEditViewController.swift */; };
+		9154E338257352140061E4F4 /* CustomUIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91071FB524DCFCDF003B2EB2 /* CustomUIDelegate.swift */; };
+		9154E339257352140061E4F4 /* FollowFollowerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D49C2852467EF7C008ACC25 /* FollowFollowerListTableViewController.swift */; };
+		9154E33A257352140061E4F4 /* FollowRequestListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD44DA324664DC10001E7A8 /* FollowRequestListTableViewCell.swift */; };
+		9154E33B257352140061E4F4 /* ColorChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC348A249626D300738A0C /* ColorChoiceViewController.swift */; };
+		9154E33C257352140061E4F4 /* TimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFE9823FEE935009893B1 /* TimeLineViewController.swift */; };
+		9154E33D257352140061E4F4 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA5083624B1D0FA00FE1148 /* CommentTableViewCell.swift */; };
+		9154E33E257352140061E4F4 /* LikeUserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBC98024AB65AD00E78626 /* LikeUserListTableViewController.swift */; };
+		9154E33F257352140061E4F4 /* FullsizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */; };
+		9154E340257352140061E4F4 /* GradationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2974325032C1A00C59DBA /* GradationView.swift */; };
+		9154E341257352140061E4F4 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D46768D2462A52500C60EB1 /* SlideViewController.swift */; };
+		9154E342257352140061E4F4 /* ImageSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9123DFC924DD738000BBAF11 /* ImageSelectViewController.swift */; };
+		9154E343257352140061E4F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9BFE8423FEE75F009893B1 /* SceneDelegate.swift */; };
+		9154E344257352140061E4F4 /* MailAddressChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0FB25288FB100CC8638 /* MailAddressChangeViewController.swift */; };
+		9154E345257352140061E4F4 /* CommonDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917A8A6024FA391900F159E5 /* CommonDate.swift */; };
+		9154E346257352140061E4F4 /* DateSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7549D324A372A70062BEC8 /* DateSelectViewController.swift */; };
+		9154E347257352140061E4F4 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D46768F2462A6A500C60EB1 /* LeftViewController.swift */; };
+		9154E348257352140061E4F4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0F725287F8B00CC8638 /* SettingViewController.swift */; };
+		9154E349257352140061E4F4 /* ShadowUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FB07924FB880000744B34 /* ShadowUIView.swift */; };
+		9154E34A257352140061E4F4 /* FollowRequestListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD44DA12466438F0001E7A8 /* FollowRequestListTableViewController.swift */; };
+		9154E34B257352140061E4F4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D871999240A500700D4064E /* Const.swift */; };
+		9154E34C257352140061E4F4 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0F925288B2900CC8638 /* PasswordChangeViewController.swift */; };
+		9154E34D257352140061E4F4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42D71C240A8F9900133261 /* PostTableViewCell.swift */; };
+		9154E34F257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF3F7F5767B8238D0E6CBF6 /* Pods_ShareDiary.framework */; };
+		9154E350257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26F795D8D5D0D0C07C87642 /* Pods_ShareDiary.framework */; };
+		9154E352257352140061E4F4 /* InputTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE8129324B9906C00E85957 /* InputTextView.xib */; };
+		9154E353257352140061E4F4 /* FollowFollowerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D49C2882467F0A7008ACC25 /* FollowFollowerListTableViewCell.xib */; };
+		9154E354257352140061E4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F46CFB24E2E38000155CF5 /* Assets.xcassets */; };
+		9154E355257352140061E4F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9BFE8D23FEE760009893B1 /* LaunchScreen.storyboard */; };
+		9154E356257352140061E4F4 /* FollowRequestListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD44DA424664DC10001E7A8 /* FollowRequestListTableViewCell.xib */; };
+		9154E357257352140061E4F4 /* LikeUserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DC3185E24ACBED4000D38F3 /* LikeUserListTableViewCell.xib */; };
+		9154E358257352140061E4F4 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D42D71D240A8F9900133261 /* PostTableViewCell.xib */; };
+		9154E359257352140061E4F4 /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D031C342461198A00A845C1 /* UsersTableViewCell.xib */; };
+		9154E35B257352140061E4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9BFE8823FEE75F009893B1 /* Main.storyboard */; };
+		9154E35C257352140061E4F4 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA5083724B1D0FA00FE1148 /* CommentTableViewCell.xib */; };
+		9154E368257395380061E4F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9154E367257395380061E4F4 /* GoogleService-Info.plist */; };
 		917A8A6124FA391900F159E5 /* CommonDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917A8A6024FA391900F159E5 /* CommonDate.swift */; };
 		919A071924DBF2C8004D07AE /* FullsizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */; };
 		919ED0D625298511002344DF /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ED0D525298511002344DF /* Validation.swift */; };
@@ -115,7 +172,9 @@
 		9110558524E9248600D1B796 /* AccountCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreateViewController.swift; sourceTree = "<group>"; };
 		911FB07924FB880000744B34 /* ShadowUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowUIView.swift; sourceTree = "<group>"; };
 		9123DFC924DD738000BBAF11 /* ImageSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewController.swift; sourceTree = "<group>"; };
-		9131F08824C974E80055F925 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9131F08824C974E80055F925 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ShareDiary/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9154E361257352140061E4F4 /* TShareDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TShareDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9154E367257395380061E4F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		917A8A6024FA391900F159E5 /* CommonDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDate.swift; sourceTree = "<group>"; };
 		918CBF83253C5A1F0072B45B /* ShareDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareDiary.entitlements; sourceTree = "<group>"; };
 		919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullsizeImageViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +197,15 @@
 			files = (
 				64479EA1EEDDF1F2C9380C1E /* Pods_ShareDiary.framework in Frameworks */,
 				77BE8041803A71A746E1929D /* Pods_ShareDiary.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9154E34E257352140061E4F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9154E34F257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */,
+				9154E350257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				3D9BFE7F23FEE75F009893B1 /* ShareDiary.app */,
+				9154E361257352140061E4F4 /* TShareDiary.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,7 +261,8 @@
 				3D9BFE8823FEE75F009893B1 /* Main.storyboard */,
 				3D9BFE8D23FEE760009893B1 /* LaunchScreen.storyboard */,
 				3D9BFE9023FEE760009893B1 /* Info.plist */,
-				9131F08824C974E80055F925 /* GoogleService-Info.plist */,
+				9154E36325736EDD0061E4F4 /* GoogleService-Info-ShareDiary */,
+				9154E364257379B30061E4F4 /* GoogleService-Info-TShareDiary */,
 				69DD8ABBEFF1D1B33CC4C45C /* Frameworks */,
 			);
 			path = ShareDiary;
@@ -285,6 +355,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9154E36325736EDD0061E4F4 /* GoogleService-Info-ShareDiary */ = {
+			isa = PBXGroup;
+			children = (
+				9131F08824C974E80055F925 /* GoogleService-Info.plist */,
+			);
+			path = "GoogleService-Info-ShareDiary";
+			sourceTree = "<group>";
+		};
+		9154E364257379B30061E4F4 /* GoogleService-Info-TShareDiary */ = {
+			isa = PBXGroup;
+			children = (
+				9154E367257395380061E4F4 /* GoogleService-Info.plist */,
+			);
+			path = "GoogleService-Info-TShareDiary";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,6 +391,25 @@
 			name = ShareDiary;
 			productName = ShareDiary;
 			productReference = 3D9BFE7F23FEE75F009893B1 /* ShareDiary.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9154E31F257352140061E4F4 /* TShareDiary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9154E35E257352140061E4F4 /* Build configuration list for PBXNativeTarget "TShareDiary" */;
+			buildPhases = (
+				9154E320257352140061E4F4 /* [CP] Check Pods Manifest.lock */,
+				9154E321257352140061E4F4 /* Sources */,
+				9154E34E257352140061E4F4 /* Frameworks */,
+				9154E351257352140061E4F4 /* Resources */,
+				9154E35D257352140061E4F4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TShareDiary;
+			productName = ShareDiary;
+			productReference = 9154E361257352140061E4F4 /* TShareDiary.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -336,6 +441,7 @@
 			projectRoot = "";
 			targets = (
 				3D9BFE7E23FEE75F009893B1 /* ShareDiary */,
+				9154E31F257352140061E4F4 /* TShareDiary */,
 			);
 		};
 /* End PBXProject section */
@@ -359,10 +465,67 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9154E351257352140061E4F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9154E352257352140061E4F4 /* InputTextView.xib in Resources */,
+				9154E353257352140061E4F4 /* FollowFollowerListTableViewCell.xib in Resources */,
+				9154E354257352140061E4F4 /* Assets.xcassets in Resources */,
+				9154E355257352140061E4F4 /* LaunchScreen.storyboard in Resources */,
+				9154E356257352140061E4F4 /* FollowRequestListTableViewCell.xib in Resources */,
+				9154E357257352140061E4F4 /* LikeUserListTableViewCell.xib in Resources */,
+				9154E358257352140061E4F4 /* PostTableViewCell.xib in Resources */,
+				9154E359257352140061E4F4 /* UsersTableViewCell.xib in Resources */,
+				9154E368257395380061E4F4 /* GoogleService-Info.plist in Resources */,
+				9154E35B257352140061E4F4 /* Main.storyboard in Resources */,
+				9154E35C257352140061E4F4 /* CommentTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		05263815A3B517BA22D106F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9154E320257352140061E4F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShareDiary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9154E35D257352140061E4F4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -452,6 +615,57 @@
 				3D87199A240A500800D4064E /* Const.swift in Sources */,
 				91EAE0FA25288B2900CC8638 /* PasswordChangeViewController.swift in Sources */,
 				3D42D71E240A8F9900133261 /* PostTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9154E321257352140061E4F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9154E322257352140061E4F4 /* FollowFollowerListTableViewCell.swift in Sources */,
+				9154E323257352140061E4F4 /* PostData.swift in Sources */,
+				9154E324257352140061E4F4 /* PostViewController.swift in Sources */,
+				9154E325257352140061E4F4 /* DitailViewController.swift in Sources */,
+				9154E326257352140061E4F4 /* UserPostData.swift in Sources */,
+				9154E327257352140061E4F4 /* UISearchBarExtention.swift in Sources */,
+				9154E328257352140061E4F4 /* UIColorExtention.swift in Sources */,
+				9154E329257352140061E4F4 /* LoginViewController.swift in Sources */,
+				9154E32A257352140061E4F4 /* InputTextView.swift in Sources */,
+				9154E32B257352140061E4F4 /* CheckBox.swift in Sources */,
+				9154E32C257352140061E4F4 /* UsersTableViewCell.swift in Sources */,
+				9154E32D257352140061E4F4 /* TabBarController.swift in Sources */,
+				9154E32E257352140061E4F4 /* CalendarViewController.swift in Sources */,
+				9154E32F257352140061E4F4 /* Validation.swift in Sources */,
+				9154E330257352140061E4F4 /* AccountCreateViewController.swift in Sources */,
+				9154E331257352140061E4F4 /* CommentData.swift in Sources */,
+				9154E332257352140061E4F4 /* FriendSearchViewController.swift in Sources */,
+				9154E333257352140061E4F4 /* AppDelegate.swift in Sources */,
+				9154E334257352140061E4F4 /* ProfileViewController.swift in Sources */,
+				9154E335257352140061E4F4 /* MyDiaryFromCalendarViewController.swift in Sources */,
+				9154E336257352140061E4F4 /* LikeUserListTableViewCell.swift in Sources */,
+				9154E337257352140061E4F4 /* ProfileEditViewController.swift in Sources */,
+				9154E338257352140061E4F4 /* CustomUIDelegate.swift in Sources */,
+				9154E339257352140061E4F4 /* FollowFollowerListTableViewController.swift in Sources */,
+				9154E33A257352140061E4F4 /* FollowRequestListTableViewCell.swift in Sources */,
+				9154E33B257352140061E4F4 /* ColorChoiceViewController.swift in Sources */,
+				9154E33C257352140061E4F4 /* TimeLineViewController.swift in Sources */,
+				9154E33D257352140061E4F4 /* CommentTableViewCell.swift in Sources */,
+				9154E33E257352140061E4F4 /* LikeUserListTableViewController.swift in Sources */,
+				9154E33F257352140061E4F4 /* FullsizeImageViewController.swift in Sources */,
+				9154E340257352140061E4F4 /* GradationView.swift in Sources */,
+				9154E341257352140061E4F4 /* SlideViewController.swift in Sources */,
+				9154E342257352140061E4F4 /* ImageSelectViewController.swift in Sources */,
+				9154E343257352140061E4F4 /* SceneDelegate.swift in Sources */,
+				9154E344257352140061E4F4 /* MailAddressChangeViewController.swift in Sources */,
+				9154E345257352140061E4F4 /* CommonDate.swift in Sources */,
+				9154E346257352140061E4F4 /* DateSelectViewController.swift in Sources */,
+				9154E347257352140061E4F4 /* LeftViewController.swift in Sources */,
+				9154E348257352140061E4F4 /* SettingViewController.swift in Sources */,
+				9154E349257352140061E4F4 /* ShadowUIView.swift in Sources */,
+				9154E34A257352140061E4F4 /* FollowRequestListTableViewController.swift in Sources */,
+				9154E34B257352140061E4F4 /* Const.swift in Sources */,
+				9154E34C257352140061E4F4 /* PasswordChangeViewController.swift in Sources */,
+				9154E34D257352140061E4F4 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +815,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
+				DISPLAY_NAME = ShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -625,6 +840,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.3;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
+				DISPLAY_NAME = ShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -633,6 +849,56 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.ShareDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		9154E35F257352140061E4F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F60724E31802F5BBE9FF9228 /* Pods-ShareDiary.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.3;
+				DEVELOPMENT_TEAM = 6522YLS3GH;
+				DISPLAY_NAME = TShareDiary;
+				INFOPLIST_FILE = ShareDiary/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.TShareDiary";
+				PRODUCT_NAME = TShareDiary;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		9154E360257352140061E4F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 283C5F3601AA315FC5B9B827 /* Pods-ShareDiary.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.3;
+				DEVELOPMENT_TEAM = 6522YLS3GH;
+				DISPLAY_NAME = TShareDiary;
+				INFOPLIST_FILE = ShareDiary/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.TShareDiary";
+				PRODUCT_NAME = TShareDiary;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -656,6 +922,15 @@
 			buildConfigurations = (
 				3D9BFE9423FEE760009893B1 /* Debug */,
 				3D9BFE9523FEE760009893B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9154E35E257352140061E4F4 /* Build configuration list for PBXNativeTarget "TShareDiary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9154E35F257352140061E4F4 /* Debug */,
+				9154E360257352140061E4F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
