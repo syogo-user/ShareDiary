@@ -112,6 +112,8 @@
 		9154E35B257352140061E4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9BFE8823FEE75F009893B1 /* Main.storyboard */; };
 		9154E35C257352140061E4F4 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DA5083724B1D0FA00FE1148 /* CommentTableViewCell.xib */; };
 		9154E368257395380061E4F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9154E367257395380061E4F4 /* GoogleService-Info.plist */; };
+		9154E36A2573A89D0061E4F4 /* CommonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9154E3692573A89D0061E4F4 /* CommonUser.swift */; };
+		9154E36B2573A89D0061E4F4 /* CommonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9154E3692573A89D0061E4F4 /* CommonUser.swift */; };
 		917A8A6124FA391900F159E5 /* CommonDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917A8A6024FA391900F159E5 /* CommonDate.swift */; };
 		919A071924DBF2C8004D07AE /* FullsizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */; };
 		919ED0D625298511002344DF /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ED0D525298511002344DF /* Validation.swift */; };
@@ -175,6 +177,7 @@
 		9131F08824C974E80055F925 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "ShareDiary/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9154E361257352140061E4F4 /* TShareDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TShareDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9154E367257395380061E4F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9154E3692573A89D0061E4F4 /* CommonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUser.swift; sourceTree = "<group>"; };
 		917A8A6024FA391900F159E5 /* CommonDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDate.swift; sourceTree = "<group>"; };
 		918CBF83253C5A1F0072B45B /* ShareDiary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareDiary.entitlements; sourceTree = "<group>"; };
 		919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullsizeImageViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 				91F2974325032C1A00C59DBA /* GradationView.swift */,
 				911FB07924FB880000744B34 /* ShadowUIView.swift */,
 				917A8A6024FA391900F159E5 /* CommonDate.swift */,
+				9154E3692573A89D0061E4F4 /* CommonUser.swift */,
 				91F46CFB24E2E38000155CF5 /* Assets.xcassets */,
 				3DE8129724B9981300E85957 /* UIColorExtention.swift */,
 				91C912A62560D56000074A46 /* CheckBox.swift */,
@@ -582,6 +586,7 @@
 				3DE8129624B991B700E85957 /* InputTextView.swift in Sources */,
 				91C912A72560D56000074A46 /* CheckBox.swift in Sources */,
 				3D031C352461198A00A845C1 /* UsersTableViewCell.swift in Sources */,
+				9154E36A2573A89D0061E4F4 /* CommonUser.swift in Sources */,
 				3DA5F5FA2403906500321D00 /* TabBarController.swift in Sources */,
 				3D9BFE9723FEE8DB009893B1 /* CalendarViewController.swift in Sources */,
 				919ED0D625298511002344DF /* Validation.swift in Sources */,
@@ -633,6 +638,7 @@
 				9154E32A257352140061E4F4 /* InputTextView.swift in Sources */,
 				9154E32B257352140061E4F4 /* CheckBox.swift in Sources */,
 				9154E32C257352140061E4F4 /* UsersTableViewCell.swift in Sources */,
+				9154E36B2573A89D0061E4F4 /* CommonUser.swift in Sources */,
 				9154E32D257352140061E4F4 /* TabBarController.swift in Sources */,
 				9154E32E257352140061E4F4 /* CalendarViewController.swift in Sources */,
 				9154E32F257352140061E4F4 /* Validation.swift in Sources */,

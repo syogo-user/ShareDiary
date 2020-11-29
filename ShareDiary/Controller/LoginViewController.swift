@@ -1,6 +1,6 @@
 //
 //  LoginViewController.swift
-//  ShareDiary
+// ShareDiary
 //
 //  Created by 小野寺祥吾 on 2020/02/24.
 //  Copyright © 2020 syogo-user. All rights reserved.
@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var backImage: UIImageView!
-    
+    var message = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginButton.layer.cornerRadius = 15
@@ -42,6 +42,18 @@ class LoginViewController: UIViewController {
         self.createAccountButton.setTitleColor(UIColor.lightGray ,for: .highlighted)
         self.loginButton.addTarget(self, action: #selector(tapLoginButton(_:)), for: .touchUpInside)
         self.createAccountButton.addTarget(self, action: #selector(tapcreateAccountButton(_:)), for: .touchUpInside)
+        print("DEBUG:viewviewDidLoad")
+        print("DEBUG:message\(message)")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("DEBUG:viewWillAppear")
+        print("DEBUG:message\(message)")
+        //強制ログアウトだった場合はメッセージを表示
+        if message == Const.noAccount{
+            SVProgressHUD.showInfo(withStatus: "アカウントは使用できません")
+            print("DEBUG:アカウントは使用できません")
+        }
     }
 
  
@@ -61,6 +73,8 @@ class LoginViewController: UIViewController {
                     SVProgressHUD.showError(withStatus:"サインインに失敗しました。")
                     return
                 }
+                //ログイン日時を記録
+                self.loginProcess()
                 //HUDを消す
                 SVProgressHUD.dismiss()
                 // 画面を閉じてタブ画面に戻る
@@ -81,4 +95,15 @@ class LoginViewController: UIViewController {
     @objc private func dismissKeyboard(){
         self.view.endEditing(true)
     }
+    private func loginProcess(){
+        //最終ログイン日時を記録
+        guard let myUid = Auth.auth().currentUser?.uid else{return}
+        let docData = [
+            "lastLoginDate":FieldValue.serverTimestamp()
+            ] as [String : Any]
+        //メッセージの保存
+        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        userRef.updateData(docData)
+    }
+
 }

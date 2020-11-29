@@ -1,6 +1,6 @@
 //
 //  Const.swift
-//  ShareDiary
+// ShareDiary
 //
 //  Created by 小野寺祥吾 on 2020/02/29.
 //  Copyright © 2020 syogo-user. All rights reserved.
@@ -20,6 +20,8 @@ struct Const {
     
     static let FollowShowButton = "followShowButton"
     static let FollowerShowButton = "followerShowButton"
+    static let unknown = "unknown"//削除されたユーザの名前
+    static let noAccount = "noAccount"
     
     static let darkColor = UIColor(red:0/255,green:0/255,blue:32/255,alpha:1.0)
     static let slideColor = UIColor(red:0/255,green:0/255,blue:40/255,alpha:1.0)

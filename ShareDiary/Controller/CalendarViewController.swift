@@ -1,6 +1,6 @@
 //
 //  CalendarViewController.swift
-//  ShareDiary
+// ShareDiary
 //
 //  Created by 小野寺祥吾 on 2020/02/21.
 //  Copyright © 2020 syogo-user. All rights reserved.
@@ -52,6 +52,9 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         self.calendar.reloadData()
         //投稿の中から自分のものだけを取得する
         guard let myUid = Auth.auth().currentUser?.uid else {return}
+        //削除済みのユーザ出ないかを判断する　自分自身のviewContorllerを渡す
+        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
+        
         let postRef = Firestore.firestore().collection(Const.PostPath).whereField("uid", isEqualTo: myUid)
         postRef.getDocuments(){
             (querySnapshot,error) in

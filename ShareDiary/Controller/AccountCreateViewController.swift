@@ -1,6 +1,6 @@
 //
 //  AcountCreateViewController.swift
-//  ShareDiary
+// ShareDiary
 //
 //  Created by 小野寺祥吾 on 2020/08/16.
 //  Copyright © 2020 syogo-user. All rights reserved.
@@ -106,6 +106,11 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                 SVProgressHUD.showError(withStatus: "ニックネームは10文字以内で\n入力してください")
                 return
             }
+            //名前がunknownの場合
+            if displayName == Const.unknown {
+                SVProgressHUD.showError(withStatus: "unknownは\n使用できません")
+                return
+            }
             //利用規約の同意
             if checkBoxCheck == false{
                 SVProgressHUD.showError(withStatus: "利用規約をお読みの上、\n同意をお願いします")
@@ -147,7 +152,11 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                                 "blockList":[],
                                 "profileMessage":"",
                                 "keyAccountFlg":true,
-                                "administratorFlg":false
+                                "administratorFlg":false,
+                                "accountDeleteState":0,
+                                "accountDeleteDate":"",
+                                "lastLoginDate":FieldValue.serverTimestamp(),
+                                "lastLogoutDate":""
                                 ] as [String :Any]
                             postRef.setData(postDic)
                         }
