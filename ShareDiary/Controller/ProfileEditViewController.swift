@@ -72,7 +72,7 @@ class ProfileEditViewController: UIViewController {
             return
         }else if self.userName.text! == Const.unknown {
             //名前にunkownは使用不可
-            let dialog = UIAlertController(title: "unknownは\n使用できません", message: nil, preferredStyle: .actionSheet)
+            let dialog = UIAlertController(title: Const.Message8, message: nil, preferredStyle: .actionSheet)
             //OKボタン
             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
             self.present(dialog, animated: true, completion: nil)

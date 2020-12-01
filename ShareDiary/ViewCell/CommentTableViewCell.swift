@@ -182,7 +182,7 @@ class CommentTableViewCell: UITableViewCell {
                 self.userImageView.image = UIImage(named: Const.unknown)
             }else{
                 //ユーザ名がunknown以外の場合
-                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + ".jpg")
+                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + Const.Jpg)
                 //取得した画像の表示
                 self.userImageView.sd_imageIndicator =
                     SDWebImageActivityIndicator.gray

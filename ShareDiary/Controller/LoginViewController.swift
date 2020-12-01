@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
         print("DEBUG:message\(message)")
         //強制ログアウトだった場合はメッセージを表示
         if message == Const.noAccount{
-            SVProgressHUD.showInfo(withStatus: "アカウントは使用できません")
+            SVProgressHUD.showInfo(withStatus: Const.Message1)
             print("DEBUG:アカウントは使用できません")
         }
     }
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController {
             
             // アドレスとパスワード名のいずれかでも入力されていない時は何もしない
             if address.isEmpty || password.isEmpty {
-                SVProgressHUD.showError(withStatus: "必要項目を入力してください")
+                SVProgressHUD.showError(withStatus: Const.Message2)
                 return
             }
             //HUDで処理中を表示
@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: address, password: password) { authResult, error in
                 if let error = error {
                     print("DEBUG: " + error.localizedDescription)
-                    SVProgressHUD.showError(withStatus:"サインインに失敗しました。")
+                    SVProgressHUD.showError(withStatus:Const.Message3)
                     return
                 }
                 //ログイン日時を記録

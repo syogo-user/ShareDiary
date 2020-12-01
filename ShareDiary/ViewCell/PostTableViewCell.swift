@@ -82,7 +82,7 @@ class PostTableViewCell: UITableViewCell {
         //投稿された写真の表示
         if imageMaxNumber > 0{
             for i in 1...imageMaxNumber{
-                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i).jpg")
+                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i)\(Const.Jpg)")
                 imageSet(imageRef:imageRef ,index: i, maxCount: imageMaxNumber)
             }
         }
@@ -475,11 +475,11 @@ class PostTableViewCell: UITableViewCell {
     
     private func setMyImage(imageName:String){
         //画像の取得
-         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + ".jpg")
+         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + Const.Jpg)
          
          //画像がなければデフォルトの画像表示
          if imageName == "" {
-             self.postUserImageView.image = UIImage(named: "unknown")
+             self.postUserImageView.image = UIImage(named: Const.unknown)
          }else{
              //取得した画像の表示
              self.postUserImageView.sd_imageIndicator =

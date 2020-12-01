@@ -81,10 +81,25 @@ struct Const {
         ["startColor":UIColor(red:179/255,green:255/255,blue:171/255,alpha:1.0).cgColor,
          "endColor":UIColor(red:209/255,green:253/255,blue:255/255,alpha:1.0).cgColor,
         ]
-
-
-
     ]
-    
-    
+    //jpg
+    static let Jpg = ".jpg"
+    static let Message1  = "アカウントは使用できません"
+    static let Message2  = "必要項目を入力してください"
+    static let Message3  = "サインインに失敗しました。"
+    static let Message4  = "メールアドレスの書式で\n入力してください"
+    static let Message5  = "パスワードは6桁以上で\n入力してください"
+    static let Message6  = "パスワードは同じものを\n入力してください"
+    static let Message7  = "ニックネームは10文字以内で\n入力してください"
+    static let Message8  =  "\(Const.unknown)は\n使用できません"
+    static let Message9  = "利用規約をお読みの上、\n同意をお願いします"
+    static let Message10 = "ユーザ作成に失敗しました。"
+    static let Message11 = "表示名の設定に失敗しました。"
+    static let Message12 = "検索に失敗しました"
+    static let Message13 = "フォローの申請ができません"
+    static let Message14 = "画像のアップロードが\n失敗しました"
+    static let Message15 = "アカウントを削除しました"
+
+
+
 }

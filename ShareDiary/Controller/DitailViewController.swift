@@ -633,10 +633,10 @@ class DitailViewController: UIViewController {
                 if let document = querySnapshot!.data(){
                     let imageName = document["myImageName"] as? String ?? ""
                     //画像の取得
-                    let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + ".jpg")
+                    let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + Const.Jpg)
                     //画像がなければデフォルトの画像表示
                     if imageName == "" {
-                        self.imageView.image = UIImage(named: "unknown")
+                        self.imageView.image = UIImage(named: Const.unknown)
                     }else{
                         //取得した画像の表示
                         self.imageView.sd_imageIndicator =

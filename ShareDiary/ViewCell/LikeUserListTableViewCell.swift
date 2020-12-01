@@ -26,7 +26,7 @@ class LikeUserListTableViewCell: UITableViewCell {
     }
     private func setImage(userImageName:String?){
         if let userImageName = userImageName {
-            let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + ".jpg")
+            let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + Const.Jpg)
             //取得した画像の表示
             self.userImageView.sd_imageIndicator =
                 SDWebImageActivityIndicator.gray
@@ -34,7 +34,7 @@ class LikeUserListTableViewCell: UITableViewCell {
         } else {
             //画像が設定されていない場合
             //デフォルトの写真を表示
-            self.userImageView.image = UIImage(named: "unknown")
+            self.userImageView.image = UIImage(named: Const.unknown)
         }
     }
 

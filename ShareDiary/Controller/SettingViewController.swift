@@ -105,7 +105,7 @@ class SettingViewController: UIViewController {
         //メッセージの保存
         let userRef = Firestore.firestore().collection(Const.users).document(myUid)
         userRef.updateData(docData)
-        SVProgressHUD.showInfo(withStatus: "アカウントを削除しました")
+        SVProgressHUD.showInfo(withStatus: Const.Message15)
     }
     
 }

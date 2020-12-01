@@ -36,7 +36,7 @@ class PasswordChangeViewController: UIViewController {
         if let currentPassword = self.currentPassword.text ,let newPassword = self.newPassword.text, let newPasswordCheck = self.newPasswordCheck.text{
             //パスワードチェック
             if currentPassword.isEmpty || newPassword.isEmpty || newPasswordCheck.isEmpty {
-                let dialog  =  UIAlertController(title: "必要項目を入力してください", message: nil, preferredStyle: .actionSheet)
+                let dialog  =  UIAlertController(title: Const.Message2, message: nil, preferredStyle: .actionSheet)
                 //OKボタン
                 dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)

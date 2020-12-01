@@ -126,7 +126,7 @@ class FollowRequestListTableViewCell: UITableViewCell {
     
     private func setImage(userImageName:String?){
         if let userImageName = userImageName {
-            let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + ".jpg")
+            let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + Const.Jpg)
             //取得した画像の表示
             self.userImage.sd_imageIndicator =
                 SDWebImageActivityIndicator.gray
@@ -134,7 +134,7 @@ class FollowRequestListTableViewCell: UITableViewCell {
         } else {
             //画像が設定されていない場合
             //デフォルトの写真を表示
-            self.userImage.image = UIImage(named: "unknown")
+            self.userImage.image = UIImage(named: Const.unknown)
         }
     }
     

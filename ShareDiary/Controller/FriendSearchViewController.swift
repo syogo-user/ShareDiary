@@ -117,7 +117,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
         ref.getDocuments() {
             (querySnapshot,error) in
             if let error = error {
-                SVProgressHUD.showError(withStatus: "検索に失敗しました")
+                SVProgressHUD.showError(withStatus: Const.Message12)
                 print("DEBUG: snapshotの取得が失敗しました。\(error)")
                 return
             } else {
@@ -195,6 +195,8 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
         //配列からタップされたインデックスのデータを取り出す
         let userPostData = userPostArray[indexPath!.row]
         
+
+        
         //ログインしている自分のuidを取得する
         if  let myUid = Auth.auth().currentUser?.uid {
             //相手（Aさん）のuidのドキュメントを取得する
@@ -229,12 +231,26 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
                         let userPostData = UserPostData(document:document)
                         return userPostData
                     }
-                    self.tableView.reloadData()
+                    self.accountDeleteStateGet(myUid: myUid, searchBar: self.searchbar)
                 }
             }
             
+            
+            
         }        
     }
+    //データ更新
+    private func followSend(myUid:String,blockList:[String],usersRef:DocumentReference,sender:UIButton){
+        //ブロックリストに自分のUidがあった場合は処理を終了する
+        if blockList.firstIndex(of: myUid) != nil{
+            SVProgressHUD.showError(withStatus: Const.Message13)
+            return
+        }
+        
+
+
+    }
+    
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
     }

@@ -269,7 +269,7 @@ class MailAddressChangeViewController: UIViewController {
     }
     //写真を削除
     private func deleteImage(imageName:String){
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + Const.Jpg)
         imageRef.delete{
             error in
             if let  error = error {
@@ -424,7 +424,7 @@ class MailAddressChangeViewController: UIViewController {
         let userRef = Firestore.firestore().collection(Const.users).document(myUid)
         userRef.updateData(docData)
         
-        sleep(1)
+        sleep(2)
         // ログアウトする
         try! Auth.auth().signOut()
         // ログイン画面を表示する
@@ -432,7 +432,6 @@ class MailAddressChangeViewController: UIViewController {
         loginViewController?.modalPresentationStyle = .fullScreen
         self.present(loginViewController!, animated: true, completion: nil)
         
-        //TODO
         //タブバーを取得する
         let slideViewController = parent as! SlideViewController
         let navigationController = slideViewController.mainViewController as! UINavigationController

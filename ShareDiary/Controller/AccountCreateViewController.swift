@@ -83,37 +83,37 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
             // アドレスとパスワードと表示名のいずれかでも入力されていない時は何もしない
             if address.isEmpty || password.isEmpty || passwordCheck.isEmpty || displayName.isEmpty {
                 print("DEBUG: 何かが空文字です。")
-                SVProgressHUD.showError(withStatus: "必要項目を入力してください")
+                SVProgressHUD.showError(withStatus: Const.Message2)
                 return
             }
             if !Validation.isValidEmail(address){
-                SVProgressHUD.showError(withStatus: "メールアドレスの書式で\n入力してください")
+                SVProgressHUD.showError(withStatus: Const.Message4)
                 return
             }
 
             //パスワード桁数
             if password.count < 6 {
-                SVProgressHUD.showError(withStatus: "パスワードは6桁以上で\n入力してください")
+                SVProgressHUD.showError(withStatus: Const.Message5)
                 return
             }
             //パスワードが２つとも同じか判定
             if password != passwordCheck {
-                SVProgressHUD.showError(withStatus: "パスワードは同じものを\n入力してください")
+                SVProgressHUD.showError(withStatus: Const.Message6)
                 return
             }
             //名前の文字数制限
             if displayName.count > 10 {
-                SVProgressHUD.showError(withStatus: "ニックネームは10文字以内で\n入力してください")
+                SVProgressHUD.showError(withStatus: Const.Message7)
                 return
             }
             //名前がunknownの場合
             if displayName == Const.unknown {
-                SVProgressHUD.showError(withStatus: "unknownは\n使用できません")
+                SVProgressHUD.showError(withStatus: Const.Message8)
                 return
             }
             //利用規約の同意
             if checkBoxCheck == false{
-                SVProgressHUD.showError(withStatus: "利用規約をお読みの上、\n同意をお願いします")
+                SVProgressHUD.showError(withStatus: Const.Message9)
                 return
             }
             //HUDで処理中を表示
@@ -122,7 +122,7 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
             Auth.auth().createUser(withEmail: address, password: password) { authResult, error in
                 if let error = error {
                     print("DEBUG: " + error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "ユーザ作成に失敗しました。")
+                    SVProgressHUD.showError(withStatus: Const.Message10)
                     return
                 }
                 
@@ -137,7 +137,7 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                         if let error = error {
                             // プロフィールの更新でエラーが発生
                             print("DEBUG: " + error.localizedDescription)
-                            SVProgressHUD.showError(withStatus: "表示名の設定に失敗しました。")
+                            SVProgressHUD.showError(withStatus: Const.Message11)
                             return
                         }
                         //usersにuidとuserNameを設定する

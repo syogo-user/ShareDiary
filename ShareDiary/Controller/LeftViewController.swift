@@ -58,7 +58,7 @@ class LeftViewController: UIViewController {
                 myFollow = self.deleteArray(array: myFollow, accountDeleteArray: accountDeleteArray)
                 myFollower  = self.deleteArray(array: myFollower, accountDeleteArray: accountDeleteArray)
                 //画像の取得
-                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + ".jpg")
+                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + Const.Jpg)
                 //名前の表示
                 self.userName.text = document["userName"] as? String ?? ""
                 //フォロー・フォロワー数の表示
@@ -66,7 +66,7 @@ class LeftViewController: UIViewController {
                 self.followerLabel.text = "フォロワー：\(myFollower.count)"
                 //画像がなければデフォルトの画像表示
                 if myImageName == "" {
-                    self.imageView.image = UIImage(named: "unknown")
+                    self.imageView.image = UIImage(named: Const.unknown)
                 }else{
                     //取得した画像の表示
                     self.imageView.sd_imageIndicator =
@@ -169,7 +169,7 @@ class LeftViewController: UIViewController {
         let userRef = Firestore.firestore().collection(Const.users).document(myUid)
         userRef.updateData(docData)
         
-        sleep(1)
+        sleep(2)
         // ログアウトする
         try! Auth.auth().signOut()
         // ログイン画面を表示する

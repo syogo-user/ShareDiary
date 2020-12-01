@@ -218,10 +218,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
                     self.profileMessage.text = document["profileMessage"] as? String ?? ""
                 }
                 //画像の取得
-                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + ".jpg")
+                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + Const.Jpg)
                 //画像がなければデフォルトの画像表示
                 if myImageName == "" {
-                    self.myImage.image = UIImage(named: "unknown")
+                    self.myImage.image = UIImage(named: Const.unknown)
                 }else{
                     //取得した画像の表示
                     self.myImage.sd_imageIndicator =
@@ -313,7 +313,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
     
     //写真をfireStorageに保存し表示する
     private func saveImageFirebase (myImageNumber:Int,myImageName:String,image:UIImage,myUid:String,oldImageName:String){
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + Const.Jpg)
         guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
         let metadata = StorageMetadata()
         metadata.contentType = "image/jpeg"
@@ -321,7 +321,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         SVProgressHUD.show()
         imageRef.putData(imageData,metadata: metadata){ (metadata,error) in
             if error != nil {
-                SVProgressHUD.showError(withStatus: "画像のアップロードが\n失敗しました")
+                SVProgressHUD.showError(withStatus: Const.Message14)
             }
             //写真のファイル名をusersに保存する
             let data = [
@@ -343,7 +343,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
     
     //写真の削除
     private func imageDelete(oldImageName:String) {
-        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(oldImageName + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.ImagePath).child(oldImageName + Const.Jpg)
         imageRef.delete{
             error in
             if let  error = error {

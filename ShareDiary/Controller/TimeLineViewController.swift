@@ -130,6 +130,14 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                     self.followAndMyUidArray = docFollow as! [String]
                     //自分のuidも追加
                     self.followAndMyUidArray.append(myUid)
+                    
+                    //削除ステータスが0より大きいユーザは除外する
+                    for (index,uid) in self.followAndMyUidArray.enumerated(){
+                        if accountDeleteArray.firstIndex(of:uid) != nil{
+                            self.followAndMyUidArray.remove(at:index)
+                        }
+                    }
+                    
                     //初期化
                     self.postArray = []
                     // TableViewの表示を更新する
@@ -171,11 +179,11 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                                 }
                                 
                                 //削除ステータスが0より大きいユーザは除外する
-                                for (index,post) in self.postArray.enumerated(){
-                                    if accountDeleteArray.firstIndex(of: post.uid) != nil{
-                                        self.postArray.remove(at:index)
-                                    }
-                                }                                
+//                                for (index,post) in self.postArray.enumerated(){
+//                                    if accountDeleteArray.firstIndex(of: post.uid) != nil{
+//                                        self.postArray.remove(at:index)
+//                                    }
+//                                }
                                 // TableViewの表示を更新する
                                 self.tableView.reloadData()
                             }
@@ -391,7 +399,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                 }
                 
                 //ドキュメント表示
-                    self.documentShow(myUid: myUid,accountDeleteArray:accountDeleteArray)
+                self.documentShow(myUid: myUid,accountDeleteArray:accountDeleteArray)
             }
         }
         
@@ -401,6 +409,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
 extension TimeLineViewController:PostTableViewCellDelegate{
     //PostTablViewCellの投稿写真をタップしたときに呼ばれる
     func imageTransition(_ sender:UITapGestureRecognizer) {
+        print("DEBUG:投稿写真がタップされました")
         //タップしたUIImageViewを取得
         let tappedUIImageView = sender.view! as? UIImageView
         //  UIImage を取得
