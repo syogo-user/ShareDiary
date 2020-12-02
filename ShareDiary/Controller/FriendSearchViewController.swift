@@ -22,6 +22,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("DEBUG:viewDidLoad")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = Const.darkColor
@@ -50,7 +51,9 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("DEBUG:viewWillAppear")
         self.searchbar.text = ""
+        self.searchbar.barTintColor = .white
         self.userPostArray = []
         self.tableView.reloadData()
         //検索欄にフォーカスをあてる

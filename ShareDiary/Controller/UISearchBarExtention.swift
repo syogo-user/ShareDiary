@@ -18,6 +18,7 @@ extension UISearchBar {
     
     func disableBlur() {
         backgroundImage = UIImage()
+        //半透明
         isTranslucent = true
     }    
 }

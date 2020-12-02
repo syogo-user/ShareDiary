@@ -57,6 +57,7 @@ class PostTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("DEBUG:awakeFromNib")
         self.postUserImageView.layer.cornerRadius = 20
         self.contentsView.layer.cornerRadius = 25
         self.contentsView.layer.masksToBounds = true
@@ -75,6 +76,7 @@ class PostTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         //描画されるときに呼び出される
         super.layoutSubviews()
+        print("DEBUG:layoutSubviews")
         contentsView.frame = self.bounds
         //写真を削除
         self.removeUIImageSubviews(parentView: self)
@@ -334,6 +336,7 @@ class PostTableViewCell: UITableViewCell {
     
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
+        print("DEBUG:setPostData")
         guard let myUid = Auth.auth().currentUser?.uid else { return}
         //UIDを変数に設定（プロフィール写真を取得するため）
         self.postDataUid = postData.uid
@@ -442,7 +445,7 @@ class PostTableViewCell: UITableViewCell {
             
 
 
-        //        self.setPostImage(uid:self.postDataUid)//この処理をlayoutSubviewsに変更
+//                self.setPostImage(uid:self.postDataUid)//この処理をlayoutSubviewsに変更
         //背景色を設定
         contentsView.setBackgroundColor(colorIndex:postData.backgroundColorIndex)
     }
@@ -458,6 +461,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func setPostImage(uid:String){
+        print("DEBUG:setPostImage")
         let userRef = Firestore.firestore().collection(Const.users).document(uid)
         userRef.getDocument() {
             (querySnapshot,error) in
