@@ -103,7 +103,10 @@ class PostTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         //タップイベント追加
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
+//        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
+        let transparentButton :UIButton = UIButton()
+        transparentButton.setImage(imageView.image, for: .normal)
+        transparentButton.addTarget(self, action:#selector(self.transparentButton(_:)), for: .touchUpInside)
         //画像のアスペクト比　sacaleAspectFil：写真の比率は変わらない。imageViewの枠を超える。cliptToBounds をtrueにしているため枠は超えずに、比率も変わらない。
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -136,6 +139,11 @@ class PostTableViewCell: UITableViewCell {
         }
         
     }
+    
+    @objc private func transparentButton(_ sender:UITapGestureRecognizer){
+        print("DEBUG:transparentButton")
+        postTableViewCellDelegate?.imageTransition(sender)
+    }
     //写真を削除
     private func removeUIImageSubviews(parentView: UIView){
         let subviews = parentView.subviews
@@ -147,9 +155,9 @@ class PostTableViewCell: UITableViewCell {
         }
     }
     //フルサイズの写真をモーダルで表示
-    @objc func imageTransition(_ sender:UITapGestureRecognizer){
-        postTableViewCellDelegate?.imageTransition(sender)
-    }
+//    @objc func imageTransition(_ sender:UITapGestureRecognizer){
+//        postTableViewCellDelegate?.imageTransition(sender)
+//    }
     
     private func imageCount1(imageRef:StorageReference,imageView:UIImageView,screenWidth :CGFloat,screenHeight :CGFloat,imageWidth :CGFloat,imageHeight :CGFloat){
         //画像サイズをスクリーンサイズ幅に合わせる

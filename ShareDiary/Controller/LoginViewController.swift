@@ -44,16 +44,17 @@ class LoginViewController: UIViewController {
         self.createAccountButton.addTarget(self, action: #selector(tapcreateAccountButton(_:)), for: .touchUpInside)
         print("DEBUG:viewviewDidLoad")
         print("DEBUG:message\(message)")
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("DEBUG:viewWillAppear")
-        print("DEBUG:message\(message)")
         //強制ログアウトだった場合はメッセージを表示
         if message == Const.noAccount{
             SVProgressHUD.showInfo(withStatus: Const.Message1)
             print("DEBUG:アカウントは使用できません")
         }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("DEBUG:viewWillAppear")
+        print("DEBUG:message\(message)")
+
     }
 
  
