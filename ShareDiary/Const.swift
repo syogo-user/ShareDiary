@@ -99,6 +99,7 @@ struct Const {
     static let Message13 = "フォローの申請ができません"
     static let Message14 = "画像のアップロードが\n失敗しました"
     static let Message15 = "アカウントを削除しました"
+    static let Message16 = "アカウントを削除します。よろしいですか？\n（削除後に新規アカウントを作成する場合、\n同じアドレスは30日間使用できません。）"
 
 
 

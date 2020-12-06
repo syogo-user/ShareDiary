@@ -103,8 +103,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         
 
         guard let myUid = Auth.auth().currentUser?.uid else{return}
-        //削除済みのユーザ出ないかを判断する　自分自身のviewContorllerを渡す
-//        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
         //削除ステータスのユーザを除外して画面表示
         accountDeleteStateGet(myUid: myUid)
 
@@ -234,11 +232,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
     private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
         var arrayUid = array
         //削除ステータスが0より大きいユーザは除外する
-        for (index,uid) in arrayUid.enumerated(){
-            if accountDeleteArray.firstIndex(of: uid ) != nil{
-                arrayUid.remove(at:index)
-            }
-        }
+//        for (index,uid) in arrayUid.enumerated(){
+//            if accountDeleteArray.firstIndex(of: uid ) != nil{
+//                arrayUid.remove(at:index)
+//            }
+//        }
+        arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
         return arrayUid
     }
 

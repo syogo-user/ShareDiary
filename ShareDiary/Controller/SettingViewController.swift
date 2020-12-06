@@ -85,7 +85,7 @@ class SettingViewController: UIViewController {
 //        self.navigationController?.pushViewController(mailAddressChangeViewController, animated: true)
         
         //ダイアログ表示
-        let dialog = UIAlertController(title: "アカウントを削除します。よろしいですか？\n（削除後に新規アカウントを作成する場合、\n同じアドレスは30日間使用できません。）", message: nil, preferredStyle: .actionSheet)
+        let dialog = UIAlertController(title: Const.Message16, message: nil, preferredStyle: .actionSheet)
         //OKボタン
         dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             //削除フラグの設定
@@ -105,7 +105,18 @@ class SettingViewController: UIViewController {
         //メッセージの保存
         let userRef = Firestore.firestore().collection(Const.users).document(myUid)
         userRef.updateData(docData)
-        SVProgressHUD.showInfo(withStatus: Const.Message15)
+        let alert = UIAlertController.init(title: "", message: Const.Message15, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler:{ action in
+            //一つ前の画面に戻る
+            self.navigationController?.popViewController(animated: true)
+            //スライドメニューを閉じる
+            self.closeLeft()
+            //ログアウト
+            CommonUser.logout(viewController: self)
+        }))
+        self.present(alert, animated: true, completion: nil)
+
+        
     }
     
 }

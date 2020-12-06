@@ -603,11 +603,12 @@ class DitailViewController: UIViewController {
     private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
         var arrayUid = array
         //削除ステータスが0より大きいユーザは除外する
-        for (index,uid) in arrayUid.enumerated(){
-            if accountDeleteArray.firstIndex(of: uid ) != nil{
-                arrayUid.remove(at:index)
-            }
-        }
+//        for (index,uid) in arrayUid.enumerated(){
+//            if accountDeleteArray.firstIndex(of: uid ) != nil{
+//                arrayUid.remove(at:index)
+//            }
+//        }
+        arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
         return arrayUid
     }
     private func setPostImage(uid:String){

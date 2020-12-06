@@ -91,11 +91,12 @@ extension LikeUserListTableViewController:UITableViewDataSource,UITableViewDeleg
     //描画
     private func reload(accountDeleteArray :[String]){
         //削除ステータスが0より大きいユーザは除外する
-        for (index,userPost) in self.userPostArray.enumerated(){
-            if accountDeleteArray.firstIndex(of: userPost.uid ?? "") != nil{
-                self.userPostArray.remove(at:index)
-            }
-        }
+//        for (index,userPost) in self.userPostArray.enumerated(){
+//            if accountDeleteArray.firstIndex(of: userPost.uid ?? "") != nil{
+//                self.userPostArray.remove(at:index)
+//            }
+//        }
+        self.userPostArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.userPostArray)
         self.tableView.reloadData()
     }
     

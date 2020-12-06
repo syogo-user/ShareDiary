@@ -119,12 +119,17 @@ class LoginViewController: UIViewController {
                 
                 //自分のuidが削除済みかを判定
                 if accountDeleteArray.firstIndex(of: myUid) != nil{
+                    SVProgressHUD.dismiss()
                     // ログアウトする
                     try! Auth.auth().signOut()
-                    SVProgressHUD.dismiss()
-                    self.dismiss(animated: true, completion: nil)
-                    //メッセージを表示
-                    SVProgressHUD.showInfo(withStatus: Const.Message1)
+                    //アカウントは使用できませんのメセージを表示
+                    let alert = UIAlertController.init(title: "", message: Const.Message1, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler:{ action in
+                        //ログイン画面を閉じる
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+
                 }else {
                     //ログイン日時を記録
                     self.loginProcess()

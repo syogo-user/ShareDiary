@@ -21,6 +21,7 @@ class LeftViewController: UIViewController {
     @IBOutlet weak var followRequestShowButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var exclamationMark: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -52,11 +53,22 @@ class LeftViewController: UIViewController {
                 let myImageName = document["myImageName"] as? String ?? ""
                 var myFollow = document["follow"] as? [String] ?? []
                 var myFollower = document["follower"] as? [String] ?? []
+                var myFollowRequest = document["followRequest"] as? [String] ?? []
                 
                 
                 //削除ステータスが立っているものは除外する
                 myFollow = self.deleteArray(array: myFollow, accountDeleteArray: accountDeleteArray)
                 myFollower  = self.deleteArray(array: myFollower, accountDeleteArray: accountDeleteArray)
+                myFollowRequest = self.deleteArray(array: myFollowRequest, accountDeleteArray: accountDeleteArray)
+                
+                if myFollowRequest.count > 0{
+                    //表示
+                    self.exclamationMark.isHidden = false
+                }else{
+                    //非表示
+                    self.exclamationMark.isHidden = true
+                }
+                
                 //画像の取得
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + Const.Jpg)
                 //名前の表示
@@ -78,12 +90,13 @@ class LeftViewController: UIViewController {
     }
     private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
         var arrayUid = array
-        //削除ステータスが0より大きいユーザは除外する
-        for (index,uid) in arrayUid.enumerated(){
-            if accountDeleteArray.firstIndex(of: uid ) != nil{
-                arrayUid.remove(at:index)
-            }
-        }
+//        //削除ステータスが0より大きいユーザは除外する
+//        for (index,uid) in arrayUid.enumerated(){
+//            if accountDeleteArray.firstIndex(of: uid ) != nil{
+//                arrayUid.remove(at:index)
+//            }
+//        }
+        arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
         return arrayUid
     }
     //削除フラグのあるアカウントを取得

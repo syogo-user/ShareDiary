@@ -445,30 +445,31 @@ class PostTableViewCell: UITableViewCell {
         //投稿写真の枚数分ループする (1,2,3,4)
         //投稿された写真の表示
         if imageMaxNumber > 0{
-            //外枠のStackViewの生成
-            let stackView = UIStackView()
-            //y軸方向並び
-            stackView.axis = .vertical
-            //Intrinsic Content Sizeに従って配置
-//            stackView.distribution = .fillProportionally
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            //外枠のスタックビューをビューに設定
-            self.contentsView.addSubview(stackView)
-            //制約
-            stackView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-            stackView.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-            stackView.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-            stackView.heightAnchor.constraint(equalToConstant: 400 ).isActive = true
+//            //外枠のStackViewの生成
+//            let stackView = UIStackView()
+//            //y軸方向並び
+//            stackView.axis = .vertical
+//            //Intrinsic Content Sizeに従って配置
+////            stackView.distribution = .fillProportionally
+//            stackView.translatesAutoresizingMaskIntoConstraints = false
+//            //外枠のスタックビューをビューに設定
+//            self.contentsView.addSubview(stackView)
+//            //制約
+//            stackView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
+//            stackView.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
+//            stackView.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
+//            stackView.heightAnchor.constraint(equalToConstant: 400 ).isActive = true
             
             //内側のスタックビュー1を生成
             let stackViewHorizon1 = UIStackView()
             //内側のスタックビューを外枠のスタックビューに設定
-            stackView.addArrangedSubview(stackViewHorizon1)
-//            self.contentsView.addSubview(stackViewHorizon1)
+//            stackView.addArrangedSubview(stackViewHorizon1)
+            self.contentsView.addSubview(stackViewHorizon1)
             //内側のスタックビュー2を生成
             let stackViewHorizon2 = UIStackView()
             //内側のスタックビューを外枠のスタックビューに設定
-            stackView.addArrangedSubview(stackViewHorizon2)
+//            stackView.addArrangedSubview(stackViewHorizon2)
+            self.contentsView.addSubview(stackViewHorizon2)
             
             for i in 1...imageMaxNumber{
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i)\(Const.Jpg)")
@@ -594,11 +595,12 @@ class PostTableViewCell: UITableViewCell {
     private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
         var arrayUid = array
         //削除ステータスが0より大きいユーザは除外する
-        for (index,uid) in arrayUid.enumerated(){
-            if accountDeleteArray.firstIndex(of: uid ) != nil{
-                arrayUid.remove(at:index)
-            }
-        }
+//        for (index,uid) in arrayUid.enumerated(){
+//            if accountDeleteArray.firstIndex(of: uid ) != nil{
+//                arrayUid.remove(at:index)
+//            }
+//        }
+        arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
         return arrayUid
     }
     

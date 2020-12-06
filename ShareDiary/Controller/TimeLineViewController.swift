@@ -44,8 +44,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         super.viewWillAppear(animated)                                
         
         guard let myUid = Auth.auth().currentUser?.uid else {return}
-        //削除済みのユーザ出ないかを判断する　自分自身のviewContorllerを渡す
-//        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
+
         //削除フラグが設定されている人を取得し、その後タイムラインを表示する
         self.accountDeleteStateGet(myUid: myUid)    
     }
@@ -129,12 +128,12 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                     self.followAndMyUidArray.append(myUid)
                     
                     //削除ステータスが0より大きいユーザは除外する
-                    for (index,uid) in self.followAndMyUidArray.enumerated(){
-                        if accountDeleteArray.firstIndex(of:uid) != nil{
-                            self.followAndMyUidArray.remove(at:index)
-                        }
-                    }
-                    
+//                    for (index,uid) in self.followAndMyUidArray.enumerated(){
+//                        if accountDeleteArray.firstIndex(of:uid) != nil{
+//                            self.followAndMyUidArray.remove(at:index)
+//                        }
+//                    }
+                    self.followAndMyUidArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.followAndMyUidArray)
                     //初期化
                     self.postArray = []
                     // TableViewの表示を更新する
@@ -181,6 +180,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
 //                                        self.postArray.remove(at:index)
 //                                    }
 //                                }
+                                self.postArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.postArray)
                                 // TableViewの表示を更新する
                                 self.tableView.reloadData()
                             }

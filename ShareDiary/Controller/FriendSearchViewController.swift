@@ -58,8 +58,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
         self.searchbar.becomeFirstResponder()
         //画面下部の境界線を消す
         self.tableView.tableFooterView = UIView()
-        //削除済みのユーザでないかを判断する　自分自身のviewContorllerを渡す
-//        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
+
     }
             
     //検索バーで文字編集中（文字をクリアしたときも実行される）
@@ -128,13 +127,8 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
                 }
                 searchBar.endEditing(true)
                 
-                //削除ステータスが0より大きいユーザは除外する
-                for (index,post) in self.userPostArray.enumerated(){
-                    if accountDeleteArray.firstIndex(of: post.uid ?? "") != nil{
-                        self.userPostArray.remove(at:index)
-                    }
-                }
-                
+                ////削除ステータスが0より大きいユーザは除外する
+                self.userPostArray = CommonUser.uidExclusion(accountDeleteArray:accountDeleteArray,dataArray:self.userPostArray)
                 //HUDを消す
                 SVProgressHUD.dismiss()
                 self.tableView.reloadData()
