@@ -108,9 +108,7 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
 
     }
     //いいねボタンがタップされた時に呼ばれるメソッド
-    @objc func tapLikeButton(_ sender: UIButton, forEvent event: UIEvent) {
-        print("DEBUG: likeボタンがタップされました。")
-        
+    @objc func tapLikeButton(_ sender: UIButton, forEvent event: UIEvent) {        
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.userTableView)

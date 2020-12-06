@@ -41,7 +41,6 @@ class DateSelectViewController: UIViewController,FSCalendarDelegate,FSCalendarDa
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition){
         //選択した日付を取得
         let selectDay = date
-        print("DEBUG:\(CommonDate.getDay(selectDay))")
         //ページを閉じる
         let preVC = self.presentingViewController as! PostViewController
         preVC.selectDate = selectDay

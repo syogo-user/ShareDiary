@@ -67,9 +67,8 @@ class PasswordChangeViewController: UIViewController {
             credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
             // Prompt the user to re-provide their sign-in credentials
             user.reauthenticate(with: credential) { result ,error in
-                if let error = error {
+                if error != nil {
                     // An error happened.
-                    print("DEBUG:認証に失敗しました\(error)")
                     let dialog  =  UIAlertController(title: "認証に失敗しました", message: nil, preferredStyle: .alert)
                     //OKボタン
                     dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -78,7 +77,6 @@ class PasswordChangeViewController: UIViewController {
                     return
                 } else {
                     // User re-authenticated.
-                    print("DEBUG:再認証成功")
                     //パスワード更新
                     self.updatePassword(user:user)
                 }
@@ -89,8 +87,7 @@ class PasswordChangeViewController: UIViewController {
     //パスワード更新
     private func updatePassword(user:User){
         user.updatePassword(to: self.newPassword.text!){error in
-            if let error  = error {
-                print("DEBUG:認証に失敗しました \(error)")
+            if error != nil {
                 let dialog  =  UIAlertController(title: "パスワードの更新に失敗しました", message:nil, preferredStyle: .alert)
                 //OKボタン
                 dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -98,7 +95,6 @@ class PasswordChangeViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 return
             }else{
-                print("DEBUG:パスワード更新完了")
                 //HUDを消す
                 SVProgressHUD.dismiss()
                 //前の画面に戻る

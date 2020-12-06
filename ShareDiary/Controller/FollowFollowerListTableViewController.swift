@@ -145,10 +145,10 @@ class FollowFollowerListTableViewController: UIViewController ,UITableViewDelega
                 //トランザクション終了
                 //コミット
                 batch.commit() { err in
-                    if let err = err {
-                        print("DEBUG:Error writing batch \(err)")
+                    if err != nil {
+
                     } else {
-                        print("DEBUG:Batch write succeeded.")
+
                     }
                 }
                 //画面再描画のための検索

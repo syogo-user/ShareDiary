@@ -104,7 +104,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
 
         guard let myUid = Auth.auth().currentUser?.uid else{return}
         //削除済みのユーザ出ないかを判断する　自分自身のviewContorllerを渡す
-        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
+//        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
         //削除ステータスのユーザを除外して画面表示
         accountDeleteStateGet(myUid: myUid)
 
@@ -346,10 +346,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(oldImageName + Const.Jpg)
         imageRef.delete{
             error in
-            if let  error = error {
-                print("DEBUG:\(error)")
+            if error != nil {
+
             }else {
-                print("DEBUG:\(oldImageName)を削除しました")
+
             }
         }
     }

@@ -25,7 +25,6 @@ struct CommonUser {
         sleep(1)
         // ログアウトする
         try! Auth.auth().signOut()
-        print("DEBUG:ログアウトしました！")
         
         // ログイン画面を表示する
         let loginViewController = viewController.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
@@ -46,7 +45,7 @@ struct CommonUser {
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
-                print("DEBUG★: snapshotの取得が失敗しました。\(error)")
+                print("DEBUG: snapshotの取得が失敗しました。\(error)")
                 return
             } else {
                 var accountDeleteArray  :[String] = []
@@ -59,7 +58,8 @@ struct CommonUser {
                 //自分のuidが削除済みかを判定
                 if accountDeleteArray.firstIndex(of: myUid) != nil{
                     //強制ログアウト
-                    self.logout(viewController:viewController)
+//                    self.logout(viewController:viewController)
+                    viewController.dismiss(animated: true, completion: nil)
                 }
             }
         }

@@ -45,7 +45,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         
         guard let myUid = Auth.auth().currentUser?.uid else {return}
         //削除済みのユーザ出ないかを判断する　自分自身のviewContorllerを渡す
-        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
+//        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
         //削除フラグが設定されている人を取得し、その後タイムラインを表示する
         self.accountDeleteStateGet(myUid: myUid)    
     }
@@ -118,9 +118,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             (querySnapshot2,error) in
             if let error = error {
                 print("DEBUG: snapshotの取得が失敗しました。\(error)")
-                //                    if self.initialDisplayFlg {
-                //                        SVProgressHUD.showError(withStatus: "データの取得に失敗しました")
-                //                    }
                 return
             } else {
                 let document = querySnapshot2?.data()
@@ -199,8 +196,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     
     //いいねボタンがタップされた時に呼ばれるメソッド
     @objc func tapLikeButton(_ sender: UIButton, forEvent event: UIEvent) {
-        print("DEBUG: likeボタンがタップされました。")
-        
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)
@@ -273,7 +268,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             self.userReportQuestion(postData:postData)
         }))
         dialog.addAction(UIAlertAction(title: "キャンセル", style: .default, handler: { action in
-            print("DEBUG:キャンセル")
         }))
         self.present(dialog,animated: true,completion: nil)
         
@@ -281,7 +275,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     
     //タブボタンがタップされた場合
     func didSelectTab(tabBarController: TabBarController) {
-        print("DEBUG:タイムラインタブがタップされました。")
         //最上部にスクロール
         let contentOffset = CGPoint(x: 0.0, y: 0.0)
         self.tableView.setContentOffset(contentOffset, animated: true)
@@ -293,8 +286,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         let dialog = UIAlertController(title: "\(userName)をブロックしてもよろしいですか？", message: nil, preferredStyle: .alert)
         dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             guard let myUid = Auth.auth().currentUser?.uid else{return}
-            print("DEBUG: myUid\(myUid)")
-            print("DEBUG: postData.uid\(postData.uid)")
             let db = Firestore.firestore()
             //トランザクション開始
             let batch = db.batch()
@@ -317,10 +308,10 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             //トランザクション終了
             //コミット
             batch.commit(){ error in
-                if let err = error {
-                    print("DEBUG:Error writing batch \(err)")
+                if error != nil {
+
                 }else{
-                    print("DEBUG:Batch write succeeded.")
+
                 }
             }
         }))
@@ -364,7 +355,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                 ] as [String : Any]
             //データを登録
             reportRef.setData(reportDic)
-            print("DEBUG:通報データを登録")
             //ご連絡ありがとうございます
             let dialog2 = UIAlertController(title: "ご連絡ありがとうございます。確認が取れ次第対応を行います。", message: nil, preferredStyle: .alert)
             dialog2.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -409,7 +399,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
 extension TimeLineViewController:PostTableViewCellDelegate{
     //PostTablViewCellの投稿写真をタップしたときに呼ばれる
     func imageTransition(_ sender:UITapGestureRecognizer) {
-        print("DEBUG:投稿写真がタップされました")
         //タップしたUIImageViewを取得
         let tappedUIImageView = sender.view! as? UIImageView
         //  UIImage を取得

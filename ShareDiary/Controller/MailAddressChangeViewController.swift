@@ -122,7 +122,6 @@ class MailAddressChangeViewController: UIViewController {
                     return
                 } else {
                     // User re-authenticated.
-                    print("DEBUG:再認証成功")
                     //メールアドレス更新
                     self.updateMailAddress(user:user)
                 }
@@ -133,8 +132,7 @@ class MailAddressChangeViewController: UIViewController {
     //メールアドレス更新
     private func updateMailAddress(user:User){
         user.updateEmail(to: self.mailAddress.text!){ error in
-            if let error = error {
-                print("DEBUG:認証に失敗しました \(error)")
+            if error != nil {
                 let dialog  =  UIAlertController(title: "メールアドレスの更新に失敗しました", message:nil, preferredStyle: .alert)
                 //OKボタン
                 dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -143,7 +141,6 @@ class MailAddressChangeViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 return
             }else{
-                print("DEBUG:メールアドレス更新完了")
                 //HUDを消す
                 SVProgressHUD.dismiss()
                 //前の画面に戻る
@@ -211,10 +208,10 @@ class MailAddressChangeViewController: UIViewController {
                 // 10.0秒後に実行したい処理
                 //コミット
                 batch.commit() { err in
-                    if let err = err {
-                        print("DEBUG:Error writing batch \(err)")
+                    if err != nil {
+
                     } else {
-                        print("DEBUG:Batch write succeeded.")
+
                         //⑦自分のuid、メールアドレス、パスワード情報などを削除
                         self.deleteAccountInfo()
                     }
@@ -284,7 +281,6 @@ class MailAddressChangeViewController: UIViewController {
     private func deleteDoc(documentId:String,path:String,db:Firestore,batch:WriteBatch){
         let postsRef = db.collection(path).document(documentId)
         batch.deleteDocument(postsRef)
-        print("DEBUG:\(documentId)のドキュメントを削除しました")
     }
     
     //いいねしたドキュメントを検索
@@ -316,7 +312,6 @@ class MailAddressChangeViewController: UIViewController {
             deleteLikeValue = FieldValue.arrayRemove([myUid])
             //いいねを削除
             batch.updateData(["likes":deleteLikeValue], forDocument: likeRef)
-            print("DEBUG:\(doc.id)の「いいね」から\(myUid)を削除しました")
         }
     }
     //自分のプロフィール写真を検索
@@ -378,7 +373,6 @@ class MailAddressChangeViewController: UIViewController {
                 // An error happened.
             } else {
                 // Account deleted.
-                print("DEBUG:アカウント削除完了")
                 let dialog = UIAlertController(title: "アカウントの削除が正常に行われました。", message: nil, preferredStyle: .alert)
                 dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                     //ログアウト
@@ -395,9 +389,8 @@ class MailAddressChangeViewController: UIViewController {
         credential = EmailAuthProvider.credential(withEmail: email, password:password)
         // Prompt the user to re-provide their sign-in credentials
         user.reauthenticate(with: credential) { result ,error in
-            if let error = error {
+            if error != nil {
                 // An error happened.
-                print("DEBUG:\(error)")
                 let dialog  =  UIAlertController(title: "認証に失敗しました", message:nil, preferredStyle: .alert)
                 //OKボタン
                 dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -407,7 +400,6 @@ class MailAddressChangeViewController: UIViewController {
                 return
             } else {
                 // User re-authenticated.
-                print("DEBUG:再認証成功")
                 //アカウント削除
                 self.myDocImageDelete()
             }

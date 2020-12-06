@@ -84,7 +84,6 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
         if inputTextView.text == ""{
             postButton.isEnabled = false
         }
-        print("DEBUG:",backgroundColorArrayIndex)
         //選択された日付をラベルに表示(初期表示は本日)
         self.dateLabel.text = CommonDate.dateFormat(date:selectDate)
         let gradientLayer = CAGradientLayer()
@@ -383,14 +382,12 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
     
     
     @objc func tapColorButton(_ sender:UIButton){
-        print("DEBUG:背景色選択ボタンがタップされました")
         let colorChoiceViewController = self.storyboard?.instantiateViewController(withIdentifier: "ColorChoiceViewController")
         colorChoiceViewController?.modalPresentationStyle = .fullScreen
         self.present(colorChoiceViewController!, animated: true, completion: nil)
     }
     
     @objc func tapDateButton(_ sender:UIButton){
-        print("DEBUG:日付選択ボタンがタップされました")
         let dateSelectViewController = self.storyboard?.instantiateViewController(withIdentifier:"DateSelectViewController")
         dateSelectViewController?.modalPresentationStyle = .fullScreen
         self.present(dateSelectViewController!,animated: true,completion:nil)
@@ -437,7 +434,6 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
                     imageRef.putData(imageData, metadata: metadata) { (metadata, error) in
                         if error != nil {
                             // 画像のアップロード失敗
-                            print("DEBUG:\(error!)")
                             SVProgressHUD.showError(withStatus: "画像のアップロードが\n失敗しました")
                             // 投稿処理をキャンセルし、先頭画面に戻る
                             UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)

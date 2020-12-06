@@ -82,7 +82,6 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
         if let address = mailAddressTextField.text, let password = passwordTextField.text, let passwordCheck = passwordCheckTextField.text,let displayName = nickNameTextField.text {
             // アドレスとパスワードと表示名のいずれかでも入力されていない時は何もしない
             if address.isEmpty || password.isEmpty || passwordCheck.isEmpty || displayName.isEmpty {
-                print("DEBUG: 何かが空文字です。")
                 SVProgressHUD.showError(withStatus: Const.Message2)
                 return
             }
@@ -120,8 +119,7 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
             SVProgressHUD.show()
             // アドレスとパスワードでユーザー作成。ユーザー作成に成功すると、自動的にログインする
             Auth.auth().createUser(withEmail: address, password: password) { authResult, error in
-                if let error = error {
-                    print("DEBUG: " + error.localizedDescription)
+                if error != nil {
                     SVProgressHUD.showError(withStatus: Const.Message10)
                     return
                 }
@@ -134,9 +132,8 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                     let trimDisplayName = displayName.trimmingCharacters(in: .whitespaces)
                     changeRequest.displayName = trimDisplayName
                     changeRequest.commitChanges { error in
-                        if let error = error {
+                        if error != nil {
                             // プロフィールの更新でエラーが発生
-                            print("DEBUG: " + error.localizedDescription)
                             SVProgressHUD.showError(withStatus: Const.Message11)
                             return
                         }
@@ -160,7 +157,6 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                                 ] as [String :Any]
                             postRef.setData(postDic)
                         }
-                        print("DEBUG: [displayName = \(user.displayName!)]の設定に成功しました。")
                         SVProgressHUD.dismiss()
                         // 画面を閉じてタブ画面に戻る
                         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -181,7 +177,6 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
     @objc private func changeChackBox(_ sender:CheckBox){
         //チェックのありかなしを設定
         self.checkBoxCheck = sender.isChecked
-        print("DEBUG:\(checkBoxCheck)")
     }
     //利用規約ボタン押下時
     @objc private func tapTermsOfServiceButton(_ sender :UIButton){

@@ -102,7 +102,6 @@ class ProfileEditViewController: UIViewController {
                     print("DEBUG: " + error.localizedDescription)
                     return
                 }
-                print("DEBUG: [displayName = \(user.displayName!)]の設定に成功しました。")
                 //投稿データの名前も変更
                 self.getDocumentUserName(oldName:self.oldName ,newName:userName)
             }

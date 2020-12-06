@@ -42,18 +42,14 @@ class LoginViewController: UIViewController {
         self.createAccountButton.setTitleColor(UIColor.lightGray ,for: .highlighted)
         self.loginButton.addTarget(self, action: #selector(tapLoginButton(_:)), for: .touchUpInside)
         self.createAccountButton.addTarget(self, action: #selector(tapcreateAccountButton(_:)), for: .touchUpInside)
-        print("DEBUG:viewviewDidLoad")
-        print("DEBUG:message\(message)")
-        //強制ログアウトだった場合はメッセージを表示
-        if message == Const.noAccount{
-            SVProgressHUD.showInfo(withStatus: Const.Message1)
-            print("DEBUG:アカウントは使用できません")
-        }
+
+//        //強制ログアウトだった場合はメッセージを表示
+//        if message == Const.noAccount{
+//            SVProgressHUD.showInfo(withStatus: Const.Message1)
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("DEBUG:viewWillAppear")
-        print("DEBUG:message\(message)")
 
     }
 
@@ -69,17 +65,15 @@ class LoginViewController: UIViewController {
             //HUDで処理中を表示
             SVProgressHUD.show()
             Auth.auth().signIn(withEmail: address, password: password) { authResult, error in
-                if let error = error {
-                    print("DEBUG: " + error.localizedDescription)
+                if error != nil {
                     SVProgressHUD.showError(withStatus:Const.Message3)
                     return
                 }
-                //ログイン日時を記録
-                self.loginProcess()
-                //HUDを消す
-                SVProgressHUD.dismiss()
-                // 画面を閉じてタブ画面に戻る
-                self.dismiss(animated: true, completion: nil)
+                guard let myUid = Auth.auth().currentUser?.uid else{return}
+                //アカウントが削除済み出ないかを判定
+                self.JudgDeleteUid(myUid: myUid)
+                
+
             }
         }
     }
@@ -106,5 +100,40 @@ class LoginViewController: UIViewController {
         let userRef = Firestore.firestore().collection(Const.users).document(myUid)
         userRef.updateData(docData)
     }
-
+    //アカウントが削除済みか判定
+    private func JudgDeleteUid (myUid:String){
+        //削除ステータスが0よりも大きいもの
+        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        userRef.getDocuments(){
+            (querySnapshot,error) in
+            if let error = error {
+                print("DEBUG: snapshotの取得が失敗しました。\(error)")
+                return
+            } else {
+                var accountDeleteArray  :[String] = []
+                accountDeleteArray = querySnapshot!.documents.map {
+                    document -> String in
+                    let userUid = UserPostData(document:document).uid ?? ""
+                    return userUid
+                }
+                
+                //自分のuidが削除済みかを判定
+                if accountDeleteArray.firstIndex(of: myUid) != nil{
+                    // ログアウトする
+                    try! Auth.auth().signOut()
+                    SVProgressHUD.dismiss()
+                    self.dismiss(animated: true, completion: nil)
+                    //メッセージを表示
+                    SVProgressHUD.showInfo(withStatus: Const.Message1)
+                }else {
+                    //ログイン日時を記録
+                    self.loginProcess()
+                    //HUDを消す
+                    SVProgressHUD.dismiss()
+                    // 画面を閉じてタブ画面に戻る
+                    self.dismiss(animated: true, completion: nil)                    
+                }
+            }
+        }
+    }
 }

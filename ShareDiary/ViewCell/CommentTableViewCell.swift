@@ -39,9 +39,7 @@ class CommentTableViewCell: UITableViewCell {
     }
     override func layoutSubviews() {
         //描画されるときに呼び出される
-        print("DEBUG layoutSub:\(myComment.text!) :height:\(myComment.frame.height), width:\(myComment.frame.width)")
         super.layoutSubviews()
-        print("DEBUG layoutSub:\(myComment.text!) :height:\(myComment.frame.height), width:\(myComment.frame.width)")
         //写真の影
         self.userImageShadowView.bounds = self.userImageView.bounds
         self.userImageShadowView.layer.cornerRadius = 25
@@ -103,7 +101,6 @@ class CommentTableViewCell: UITableViewCell {
                 width = frameWidthTextView(text: commentData.userName).width
             }
             self.myCommentWidthConstraint.constant = width
-            print("DEBUG setComment:\(myComment.text!) :height:\(myComment.frame.height), width:\(myComment.frame.width)")
             
             //影
             self.myCommentShadowView.bounds = self.myComment.bounds

@@ -22,7 +22,6 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("DEBUG:viewDidLoad")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.backgroundColor = Const.darkColor
@@ -51,7 +50,6 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("DEBUG:viewWillAppear")
         self.searchbar.text = ""
         self.searchbar.barTintColor = .white
         self.userPostArray = []
@@ -60,9 +58,8 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
         self.searchbar.becomeFirstResponder()
         //画面下部の境界線を消す
         self.tableView.tableFooterView = UIView()
-        guard let myUid = Auth.auth().currentUser?.uid else{return}
-        //削除済みのユーザ出ないかを判断する　自分自身のviewContorllerを渡す
-        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
+        //削除済みのユーザでないかを判断する　自分自身のviewContorllerを渡す
+//        CommonUser.JudgDeleteUid(myUid: myUid,viewController:self)
     }
             
     //検索バーで文字編集中（文字をクリアしたときも実行される）

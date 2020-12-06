@@ -133,7 +133,6 @@ class DitailViewController: UIViewController {
         self.navigationController!.navigationBar.topItem!.title = ""
         self.imageView.layer.cornerRadius = 30
         guard let post = postData else {return}
-        print("DEBUG contentSize",tableView.contentSize)
         //削除ステータスのユーザを除外した後に画面項目を設定
         self.accountDeleteStateGet(post: post)
         
@@ -431,10 +430,8 @@ class DitailViewController: UIViewController {
         
     }
     @objc func keyboardWillShow(notification:NSNotification){
-        print("DEBUG:keyboardWillShow")
         guard let userInfo =  notification.userInfo else {return}
         if let keyboadFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue{
-            print("DEBUG:keyboadFrame:",keyboadFrame)
             let bottom = keyboadFrame.height
             //スクロールビューをキーボードの分高さを上にあげる
             let contentInset = UIEdgeInsets(top:0,left:0,bottom:bottom,right: 0)
@@ -443,7 +440,6 @@ class DitailViewController: UIViewController {
         }
     }
     @objc func keyboardWillHide(){
-        print("DEBUG:keyboardWillHide")
         tableView.contentInset = contentInset
         tableView.scrollIndicatorInsets = indicateInset
     }
@@ -453,8 +449,7 @@ class DitailViewController: UIViewController {
         guard let postDataId = postData?.id else { return }
         Firestore.firestore().collection(Const.PostPath).document(postDataId).collection("messages").addSnapshotListener { (snapshots, err) in
             
-            if let err = err {
-                print("DEBUG:メッセージ情報の取得に失敗しました。\(err)")
+            if err != nil {
                 return
             }
             snapshots?.documentChanges.forEach({ (documentChange) in
@@ -496,21 +491,15 @@ class DitailViewController: UIViewController {
                             //画面更新
                             self.tableView.reloadData()
 
-                            print("DEBUG contentSize:\(self.tableView.contentSize):\(self.tableView.frame.height)")
                             if self.scrollFlg {//scrollFlg がtrue（コメントボタン押下時の遷移）
                                 //コメントボタンを押下し、遷移した場合
                                 self.tableView.scrollToRow(at: IndexPath(row:self.commentData.count - 1 , section: 0), at:.bottom, animated: true)
-                                print("DEBUG contentSize:\(self.tableView.contentSize)")
                             }
-
-
-
-
                         }
                     }
                     
                 case .modified, .removed:
-                    print("DEBUG:nothing to do")
+                    print(".modified, .removed:")
                 }
             })
 
@@ -666,7 +655,6 @@ class DitailViewController: UIViewController {
         }
     }
     @objc func postDelete(_ sender:UIButton){
-        print("DEBUG:削除ボタンを押下")
         guard let post = postData else {return}
         //確認メッセージ出力
         let alert : UIAlertController = UIAlertController(title: "この投稿を削除してもよろしいですか？", message :nil, preferredStyle: UIAlertController.Style.alert)
@@ -691,7 +679,6 @@ class DitailViewController: UIViewController {
                         if let error = error {
                             print("DEBUG: \(error)")
                         } else {
-                            print("DEBUG: 画像の削除が成功しました。")
                             //for文のiだとdeleteの中では1から順にならないことがあるためcount変数を用意
                             count = count + 1
                             if count == imageMaxNumber {
@@ -715,7 +702,6 @@ class DitailViewController: UIViewController {
     }
     // いいねボタンがタップされた時に呼ばれるメソッド
     @objc func likeButton(_ sender: UIButton, forEvent event: UIEvent) {
-        print("DEBUG: likeボタンがタップされました。")
         guard let postData = postData else{ return }
         
         // likesを更新する
@@ -838,7 +824,6 @@ extension DitailViewController :InputTextViewDelegate{
                 print("DEBUG: メッセージ情報の保存に失敗しました。\(err)")
                 return
             }
-            print("DEBUG: コメントメッセージの保存に成功しました")
                                     
             //postDataにもコメントデータを追加
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postDataId)
