@@ -79,20 +79,15 @@ class SettingViewController: UIViewController {
     }
     //アカウント削除ボタン押下時
     @objc private func tapAccountDeleteButton(_ sender:UIButton){
-        //TODO　後で以下の3行のコメントを別のボタンに設定する
-//        let mailAddressChangeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MailAddressChangeViewController") as! MailAddressChangeViewController
-//        mailAddressChangeViewController.accountDeleteFlg = true //アカウント削除からの場合はtrue
-//        self.navigationController?.pushViewController(mailAddressChangeViewController, animated: true)
-        
         //ダイアログ表示
         let dialog = UIAlertController(title: Const.Message16, message: nil, preferredStyle: .actionSheet)
         //OKボタン
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             //削除フラグの設定
             self.accountDeleteFlgSet()
         }))
         //キャンセルボタン
-        dialog.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: { action in}))
+        dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: { action in}))
         self.present(dialog,animated: true,completion: nil)
     }
     //削除フラグ設定
@@ -106,7 +101,7 @@ class SettingViewController: UIViewController {
         let userRef = Firestore.firestore().collection(Const.users).document(myUid)
         userRef.updateData(docData)
         let alert = UIAlertController.init(title: "", message: Const.Message15, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler:{ action in
+        alert.addAction(UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.cancel, handler:{ action in
             //一つ前の画面に戻る
             self.navigationController?.popViewController(animated: true)
             //スライドメニューを閉じる
@@ -118,5 +113,11 @@ class SettingViewController: UIViewController {
 
         
     }
+    
+//    @objc func tapAccountDeleteAdministrator(_ sender:UIButton){
+//        let mailAddressChangeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MailAddressChangeViewController") as! MailAddressChangeViewController
+//        mailAddressChangeViewController.accountDeleteFlg = true //アカウント削除からの場合はtrue
+//        self.navigationController?.pushViewController(mailAddressChangeViewController, animated: true)
+//    }
     
 }

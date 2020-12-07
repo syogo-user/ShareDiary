@@ -59,22 +59,22 @@ class ProfileEditViewController: UIViewController {
         
         //名前が空の場合
         if self.userName.text ?? "" == "" {
-            let dialog = UIAlertController(title: "名前が空です", message: nil, preferredStyle: .actionSheet)
+            let dialog = UIAlertController(title: Const.Message28, message: nil, preferredStyle: .actionSheet)
             //OKボタン
-            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler:nil))
             self.present(dialog, animated: true, completion: nil)
             return
         } else if self.userName.text!.count > 10 {
-            let dialog = UIAlertController(title: "ニックネームは10文字以内で入力してください", message: nil, preferredStyle: .actionSheet)
+            let dialog = UIAlertController(title: Const.Message29, message: nil, preferredStyle: .actionSheet)
             //OKボタン
-            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler:nil))
             self.present(dialog, animated: true, completion: nil)
             return
         }else if self.userName.text! == Const.unknown {
             //名前にunkownは使用不可
             let dialog = UIAlertController(title: Const.Message8, message: nil, preferredStyle: .actionSheet)
             //OKボタン
-            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler:nil))
             self.present(dialog, animated: true, completion: nil)
             return
         }

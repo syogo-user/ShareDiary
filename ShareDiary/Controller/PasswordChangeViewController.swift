@@ -38,16 +38,16 @@ class PasswordChangeViewController: UIViewController {
             if currentPassword.isEmpty || newPassword.isEmpty || newPasswordCheck.isEmpty {
                 let dialog  =  UIAlertController(title: Const.Message2, message: nil, preferredStyle: .actionSheet)
                 //OKボタン
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
                 return
             }
             //パスワード桁数
             if currentPassword.count < 6 || newPassword.count < 6 || newPasswordCheck.count < 6{
                 //アラート
-                let dialog  =  UIAlertController(title: "パスワードは6桁以上で入力してください", message: nil, preferredStyle: .actionSheet)
+                let dialog  =  UIAlertController(title: Const.Message5, message: nil, preferredStyle: .actionSheet)
                 //OKボタン
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
                 return
             }
@@ -55,9 +55,9 @@ class PasswordChangeViewController: UIViewController {
             if newPassword != newPasswordCheck {
                 //新しいパスワード２つが一致しない場合
                 //アラート
-                let dialog  =  UIAlertController(title: "新しいパスワードが一致しません", message: nil, preferredStyle: .actionSheet)
+                let dialog  =  UIAlertController(title: Const.Message32, message: nil, preferredStyle: .actionSheet)
                 //OKボタン
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
                 return
             }
@@ -69,9 +69,9 @@ class PasswordChangeViewController: UIViewController {
             user.reauthenticate(with: credential) { result ,error in
                 if error != nil {
                     // An error happened.
-                    let dialog  =  UIAlertController(title: "認証に失敗しました", message: nil, preferredStyle: .alert)
+                    let dialog  =  UIAlertController(title: Const.Message33, message: nil, preferredStyle: .alert)
                     //OKボタン
-                    dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                     self.present(dialog,animated: true,completion: nil)
                     SVProgressHUD.dismiss()
                     return
@@ -88,9 +88,9 @@ class PasswordChangeViewController: UIViewController {
     private func updatePassword(user:User){
         user.updatePassword(to: self.newPassword.text!){error in
             if error != nil {
-                let dialog  =  UIAlertController(title: "パスワードの更新に失敗しました", message:nil, preferredStyle: .alert)
+                let dialog  =  UIAlertController(title: Const.Message34, message:nil, preferredStyle: .alert)
                 //OKボタン
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
                 SVProgressHUD.dismiss()
                 return

@@ -124,7 +124,7 @@ class LoginViewController: UIViewController {
                     try! Auth.auth().signOut()
                     //アカウントは使用できませんのメセージを表示
                     let alert = UIAlertController.init(title: "", message: Const.Message1, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler:{ action in
+                    alert.addAction(UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.cancel, handler:{ action in
                         //ログイン画面を閉じる
                         self.dismiss(animated: true, completion: nil)
                     }))

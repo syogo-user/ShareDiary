@@ -102,7 +102,7 @@ class FollowFollowerListTableViewController: UIViewController ,UITableViewDelega
         //ダイアログ表示
         let dialog = UIAlertController(title: "\(userPostData.userName!)さんのフォローを解除しますか？", message: nil, preferredStyle: .actionSheet)
         //OKボタン
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             //ログインしている自分（Aさん）のuidを取得する
             if let myUid = Auth.auth().currentUser?.uid {
                 let db = Firestore.firestore()
@@ -157,7 +157,7 @@ class FollowFollowerListTableViewController: UIViewController ,UITableViewDelega
         }))
         
         //キャンセルボタン
-        dialog.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: { action in
             
         }))
         self.present(dialog,animated: true,completion: nil)

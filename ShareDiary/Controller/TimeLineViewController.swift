@@ -251,7 +251,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         guard let myUid = Auth.auth().currentUser?.uid else{return}
 
         let dialog = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
-        dialog.addAction(UIAlertAction(title: "このユーザをブロックします", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Message18, style: .default, handler: { action in
             if myUid == postData.uid{
                 self.myAlert()
                 return
@@ -259,7 +259,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             //ブロック
             self.userBlock(postData:postData)
         }))
-        dialog.addAction(UIAlertAction(title: "このユーザを通報します", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Message19, style: .default, handler: { action in
             if myUid == postData.uid{
                 self.myAlert()
                 return
@@ -283,8 +283,8 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     //ブロック処理
     private func userBlock(postData:PostData){
         let userName = postData.documentUserName ?? ""
-        let dialog = UIAlertController(title: "\(userName)をブロックしてもよろしいですか？", message: nil, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        let dialog = UIAlertController(title: userName + Const.Message20, message: nil, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             guard let myUid = Auth.auth().currentUser?.uid else{return}
             let db = Firestore.firestore()
             //トランザクション開始
@@ -315,19 +315,19 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                 }
             }
         }))
-        dialog.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+        dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: nil))
         self.present(dialog,animated: true,completion: nil)
     }
     //通報処理
     private func userReportQuestion(postData:PostData){
-        let dialog = UIAlertController(title: "通報の詳細をお知らせ願います。", message: nil, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: "不審な内容またはスパムです", style: .default, handler:{ action in
+        let dialog = UIAlertController(title: Const.Message21, message: nil, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: Const.Message22, style: .default, handler:{ action in
             self.userReport(postData: postData, reportKind: 1)
         }))
-        dialog.addAction(UIAlertAction(title: "不適切な内容を含んでいる", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Message23, style: .default, handler: { action in
             self.userReport(postData: postData, reportKind: 2)
         }))
-        dialog.addAction(UIAlertAction(title: "攻撃的な内容を含んでいる", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Message24, style: .default, handler: { action in
             self.userReport(postData: postData, reportKind: 3)
         }))
         self.present(dialog,animated: true,completion:nil)
@@ -335,8 +335,8 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     //通報処理
     private func userReport(postData :PostData,reportKind:Int){
         let userName = postData.documentUserName ?? ""
-        let dialog = UIAlertController(title: "\(userName)を通報してもよろしいですか？", message: nil, preferredStyle: .alert)
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        let dialog = UIAlertController(title: userName + Const.Message25, message: nil, preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             guard let myUid = Auth.auth().currentUser?.uid else{return}
             //データをまとめる
             /*reportUid 通報された人のuid
@@ -356,19 +356,19 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             //データを登録
             reportRef.setData(reportDic)
             //ご連絡ありがとうございます
-            let dialog2 = UIAlertController(title: "ご連絡ありがとうございます。確認が取れ次第対応を行います。", message: nil, preferredStyle: .alert)
-            dialog2.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let dialog2 = UIAlertController(title: Const.Message26, message: nil, preferredStyle: .alert)
+            dialog2.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
             self.present(dialog2,animated:true,completion: nil)
         }))
-        dialog.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+        dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: nil))
         self.present(dialog,animated: true,completion: nil)
     }
     
     
     //自分だった場合
     private func myAlert(){
-        let dialog = UIAlertController(title: "自分の投稿です", message: nil, preferredStyle: .actionSheet)
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let dialog = UIAlertController(title: Const.Message27, message: nil, preferredStyle: .actionSheet)
+        dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
         self.present(dialog,animated: true,completion: nil)
     }
     //削除フラグのあるアカウントを取得

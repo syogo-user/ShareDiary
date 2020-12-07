@@ -20,8 +20,8 @@ class CustomUIDelegate: DKImagePickerControllerBaseUIDelegate {
 
     //写真選択超過時のアラートのカスタマイズ
     override func imagePickerControllerDidReachMaxLimit(_ imagePickerController: DKImagePickerController) {
-        let alert = UIAlertController.init(title: "注意", message: "複数選択は４枚までです！", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        let alert = UIAlertController.init(title: "注意", message: Const.Message17, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.cancel, handler: nil)
         alert.addAction(okAction)
         imagePickerController.present(alert, animated: true, completion: nil)
     }

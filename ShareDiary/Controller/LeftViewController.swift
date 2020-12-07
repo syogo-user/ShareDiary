@@ -158,13 +158,13 @@ class LeftViewController: UIViewController {
     //ログアウトボタンが押された時
     @objc private func tapLogoutButton(_ sender :UIButton){
         //ダイアログ表示
-        let dialog = UIAlertController(title: "ログアウトしますか？", message: nil, preferredStyle: .alert)
+        let dialog = UIAlertController(title: Const.Message30, message: nil, preferredStyle: .alert)
         //OKボタン
-        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             self.logout()
         }))
         //キャンセルボタン
-        dialog.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: { action in
+        dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: { action in
         }))
         self.present(dialog,animated: true,completion: nil)
 

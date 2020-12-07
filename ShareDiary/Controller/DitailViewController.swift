@@ -658,10 +658,10 @@ class DitailViewController: UIViewController {
     @objc func postDelete(_ sender:UIButton){
         guard let post = postData else {return}
         //確認メッセージ出力
-        let alert : UIAlertController = UIAlertController(title: "この投稿を削除してもよろしいですか？", message :nil, preferredStyle: UIAlertController.Style.alert)
+        let alert : UIAlertController = UIAlertController(title: Const.Message31, message :nil, preferredStyle: UIAlertController.Style.alert)
         var count = 0
         //OKボタン押下時
-        let defaultAction :UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {
+        let defaultAction :UIAlertAction = UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.default, handler: {
             (action :UIAlertAction! ) -> Void in
             //以下OKボタンが押された時の動作
             //・firestoreからドキュメントを削除
@@ -822,7 +822,7 @@ extension DitailViewController :InputTextViewDelegate{
         
         Firestore.firestore().collection(Const.PostPath).document(postDataId).collection("messages").document(messageId).setData(docData) {(err) in
             if let err = err {
-                print("DEBUG: メッセージ情報の保存に失敗しました。\(err)")
+                print("DEBUG:\(err)")
                 return
             }
                                     

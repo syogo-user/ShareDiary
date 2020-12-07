@@ -22,6 +22,8 @@ struct Const {
     static let FollowerShowButton = "followerShowButton"
     static let unknown = "unknown"//削除されたユーザの名前
     static let noAccount = "noAccount"
+    static let Ok = "OK"
+    static let Cancel = "CANCEL"
     
     static let darkColor = UIColor(red:0/255,green:0/255,blue:32/255,alpha:1.0)
     static let slideColor = UIColor(red:0/255,green:0/255,blue:40/255,alpha:1.0)
@@ -100,7 +102,34 @@ struct Const {
     static let Message14 = "画像のアップロードが\n失敗しました"
     static let Message15 = "アカウントを削除しました"
     static let Message16 = "アカウントを削除します。よろしいですか？\n（削除後に新規アカウントを作成する場合、\n同じアドレスは30日間使用できません。）"
+    static let Message17 = "複数選択は４枚までです！"
+    static let Message18 = "このユーザをブロックします"
+    static let Message19 = "このユーザを通報します"
+    static let Message20 = "をブロックしてもよろしいですか？"
+    static let Message21 = "通報の詳細をお知らせ願います。"
+    static let Message22 = "不審な内容またはスパムです"
+    static let Message23 = "不適切な内容を含んでいる"
+    static let Message24 = "攻撃的な内容を含んでいる"
+    static let Message25 = "を通報してもよろしいですか？"
+    static let Message26 =  "ご連絡ありがとうございます。確認が取れ次第対応を行います。"
+    static let Message27 = "自分の投稿です"
+    static let Message28 = "名前が空です"
+    static let Message29 = "ニックネームは10文字以内で入力してください"
+    static let Message30 = "ログアウトしますか？"
+    static let Message31 = "この投稿を削除してもよろしいですか？"
+    static let Message32 = "新しいパスワードが一致しません"
+    static let Message33 = "認証に失敗しました"
+    static let Message34 = "パスワードの更新に失敗しました"
+    static let Message35 = "メールアドレスを入力してください"
+    static let Message36 = "認証を行うためパスワードを入力してください"
+    static let Message37 = "メールアドレスの更新に失敗しました"
+    static let Message38 = "アカウントを削除します。削除後データはもとに戻せませんがよろしいですか？"
+    static let Message39 = "アカウントの削除が正常に行われました。"
+    
 
 
+
+
+    
 
 }

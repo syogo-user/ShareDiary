@@ -58,31 +58,31 @@ class MailAddressChangeViewController: UIViewController {
     private func check(mailAddress:String,password:String) -> Bool{
         if mailAddress.isEmpty {
              //メールアドレスが空の場合
-             let dialog = UIAlertController(title: "メールアドレスを入力してください", message: nil, preferredStyle: .actionSheet)
-             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let dialog = UIAlertController(title: Const.Message35, message: nil, preferredStyle: .actionSheet)
+             dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
              self.present(dialog,animated: true,completion: nil)
              return false
          }
          //メールアドレスかをチェック
          if !Validation.isValidEmail(mailAddress){
-             let dialog = UIAlertController(title: "メールアドレスの書式で入力してください", message: nil, preferredStyle: .actionSheet)
-             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let dialog = UIAlertController(title: Const.Message4, message: nil, preferredStyle: .actionSheet)
+             dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
              self.present(dialog,animated: true,completion: nil)
              return false
          }
          if password.isEmpty{
              //パスワードが空の場合
-             let dialog = UIAlertController(title: "認証を行うためパスワードを入力してください", message: nil, preferredStyle: .actionSheet)
-             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let dialog = UIAlertController(title: Const.Message36, message: nil, preferredStyle: .actionSheet)
+             dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
              self.present(dialog,animated: true,completion: nil)
              return false
          }
          //パスワード桁数
          if password.count < 6{
              //アラート
-             let dialog  =  UIAlertController(title: "パスワードは6桁以上で入力してください", message: nil, preferredStyle: .actionSheet)
+            let dialog  =  UIAlertController(title: Const.Message5, message: nil, preferredStyle: .actionSheet)
              //OKボタン
-             dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+             dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
              self.present(dialog,animated: true,completion: nil)
              return false
          }
@@ -113,9 +113,9 @@ class MailAddressChangeViewController: UIViewController {
                 if let error = error {
                     // An error happened.
                     print("DEBUG:\(error)")
-                    let dialog  =  UIAlertController(title: "認証に失敗しました", message:nil, preferredStyle: .alert)
+                    let dialog  =  UIAlertController(title: Const.Message33, message:nil, preferredStyle: .alert)
                     //OKボタン
-                    dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                     self.present(dialog,animated: true,completion: nil)
                     //HUDを消す
                     SVProgressHUD.dismiss()
@@ -133,9 +133,9 @@ class MailAddressChangeViewController: UIViewController {
     private func updateMailAddress(user:User){
         user.updateEmail(to: self.mailAddress.text!){ error in
             if error != nil {
-                let dialog  =  UIAlertController(title: "メールアドレスの更新に失敗しました", message:nil, preferredStyle: .alert)
+                let dialog  =  UIAlertController(title: Const.Message37, message:nil, preferredStyle: .alert)
                 //OKボタン
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
                 //HUDを消す
                 SVProgressHUD.dismiss()
@@ -161,15 +161,15 @@ class MailAddressChangeViewController: UIViewController {
             //入力チェックでfalseの場合はreturn
             guard checkResult else {return}
             //ダイアログ表示
-            let dialog = UIAlertController(title: "アカウントを削除します。削除後データはもとに戻せませんがよろしいですか？", message: nil, preferredStyle: .actionSheet)
+            let dialog = UIAlertController(title: Const.Message38, message: nil, preferredStyle: .actionSheet)
             //OKボタン
-            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
                 //アカウントの再認証を行う
                 //アカウント削除時にしばらく認証していないと失敗することがあるため
                 self.reAuthenticate(email:mailAddress,password:password)
             }))
             //キャンセルボタン
-            dialog.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: { action in}))
+            dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: { action in}))
             self.present(dialog,animated: true,completion: nil)
         }
     }
@@ -373,8 +373,8 @@ class MailAddressChangeViewController: UIViewController {
                 // An error happened.
             } else {
                 // Account deleted.
-                let dialog = UIAlertController(title: "アカウントの削除が正常に行われました。", message: nil, preferredStyle: .alert)
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                let dialog = UIAlertController(title: Const.Message39, message: nil, preferredStyle: .alert)
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
                     //ログアウト
                     self.logout()
                 }))
@@ -391,9 +391,9 @@ class MailAddressChangeViewController: UIViewController {
         user.reauthenticate(with: credential) { result ,error in
             if error != nil {
                 // An error happened.
-                let dialog  =  UIAlertController(title: "認証に失敗しました", message:nil, preferredStyle: .alert)
+                let dialog  =  UIAlertController(title: Const.Message33, message:nil, preferredStyle: .alert)
                 //OKボタン
-                dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
                 //HUDを消す
                 //                SVProgressHUD.dismiss()
