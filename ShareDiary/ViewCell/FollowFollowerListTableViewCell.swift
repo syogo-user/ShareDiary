@@ -34,7 +34,7 @@ class FollowFollowerListTableViewCell: UITableViewCell {
         // 角丸
         rejectedButton.layer.cornerRadius = rejectedButton.bounds.midY
         //影
-        rejectedButton.layer.shadowColor = Const.buttonStartColor.cgColor
+        rejectedButton.layer.shadowColor = Const.ButtonStartColor.cgColor
         rejectedButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         rejectedButton.layer.shadowOpacity = 0.2
         rejectedButton.layer.shadowRadius = 10
@@ -42,7 +42,7 @@ class FollowFollowerListTableViewCell: UITableViewCell {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = rejectedButton.bounds
         gradientLayer.cornerRadius = rejectedButton.bounds.midY
-        gradientLayer.colors = [Const.buttonStartColor.cgColor, Const.buttonEndColor.cgColor]
+        gradientLayer.colors = [Const.ButtonStartColor.cgColor, Const.ButtonEndColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         rejectedButton.layer.insertSublayer(gradientLayer, at: 0)
@@ -75,7 +75,7 @@ class FollowFollowerListTableViewCell: UITableViewCell {
             //相手のuidの場合
             
             //自分のフォローしている人を取得
-            let postMyUserRef = Firestore.firestore().collection(Const.users).document(myid)
+            let postMyUserRef = Firestore.firestore().collection(Const.Users).document(myid)
             postMyUserRef.getDocument() {
                 (querySnapshot,error) in
                 if let error = error {
@@ -117,7 +117,7 @@ class FollowFollowerListTableViewCell: UITableViewCell {
         } else {
             //画像が設定されていない場合
             //デフォルトの写真を表示
-            self.userImage.image = UIImage(named: Const.unknown)
+            self.userImage.image = UIImage(named: Const.Unknown)
         }
     }
 }

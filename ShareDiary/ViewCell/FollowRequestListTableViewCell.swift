@@ -41,11 +41,11 @@ class FollowRequestListTableViewCell: UITableViewCell {
         followRequestPermissionButton.layer.cornerRadius = followRequestPermissionButton.bounds.midY
         followRequestRejectionButton.layer.cornerRadius = followRequestPermissionButton.bounds.midY
         //影
-        followRequestPermissionButton.layer.shadowColor = Const.buttonStartColor.cgColor
+        followRequestPermissionButton.layer.shadowColor = Const.ButtonStartColor.cgColor
         followRequestPermissionButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         followRequestPermissionButton.layer.shadowOpacity = 0.2
         followRequestPermissionButton.layer.shadowRadius = 10
-        followRequestRejectionButton.layer.shadowColor = Const.buttonStartColor.cgColor
+        followRequestRejectionButton.layer.shadowColor = Const.ButtonStartColor.cgColor
         followRequestRejectionButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         followRequestRejectionButton.layer.shadowOpacity = 0.2
         followRequestRejectionButton.layer.shadowRadius = 10
@@ -53,7 +53,7 @@ class FollowRequestListTableViewCell: UITableViewCell {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = followRequestPermissionButton.bounds
         gradientLayer.cornerRadius = followRequestPermissionButton.bounds.midY
-        gradientLayer.colors = [Const.buttonStartColor.cgColor, Const.buttonEndColor.cgColor]
+        gradientLayer.colors = [Const.ButtonStartColor.cgColor, Const.ButtonEndColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         followRequestPermissionButton.layer.insertSublayer(gradientLayer, at: 0)
@@ -61,7 +61,7 @@ class FollowRequestListTableViewCell: UITableViewCell {
         let gradientLayer2 = CAGradientLayer()
         gradientLayer2.frame = followRequestRejectionButton.bounds
         gradientLayer2.cornerRadius = followRequestRejectionButton.bounds.midY
-        gradientLayer2.colors = [Const.buttonStartColor.cgColor, Const.buttonEndColor.cgColor]
+        gradientLayer2.colors = [Const.ButtonStartColor.cgColor, Const.ButtonEndColor.cgColor]
         gradientLayer2.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer2.endPoint = CGPoint(x: 1, y: 1)
         followRequestRejectionButton.layer.insertSublayer(gradientLayer2, at: 0)
@@ -95,7 +95,7 @@ class FollowRequestListTableViewCell: UITableViewCell {
             //相手のuidの場合
             
             //自分のフォローしている人を取得
-            let postMyUserRef = Firestore.firestore().collection(Const.users).document(myid)
+            let postMyUserRef = Firestore.firestore().collection(Const.Users).document(myid)
             postMyUserRef.getDocument() {
                 (querySnapshot,error) in
                 if let error = error {
@@ -134,7 +134,7 @@ class FollowRequestListTableViewCell: UITableViewCell {
         } else {
             //画像が設定されていない場合
             //デフォルトの写真を表示
-            self.userImage.image = UIImage(named: Const.unknown)
+            self.userImage.image = UIImage(named: Const.Unknown)
         }
     }
     

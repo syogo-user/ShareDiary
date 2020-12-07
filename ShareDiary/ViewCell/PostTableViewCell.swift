@@ -512,7 +512,7 @@ class PostTableViewCell: UITableViewCell {
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String,postData:PostData){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -606,7 +606,7 @@ class PostTableViewCell: UITableViewCell {
     
     private func setPostImage(uid:String){
         print("DEBUG:setPostImage")
-        let userRef = Firestore.firestore().collection(Const.users).document(uid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(uid)
         userRef.getDocument() {
             (querySnapshot,error) in
             if let error = error {
@@ -627,7 +627,7 @@ class PostTableViewCell: UITableViewCell {
          
          //画像がなければデフォルトの画像表示
          if imageName == "" {
-             self.postUserImageView.image = UIImage(named: Const.unknown)
+             self.postUserImageView.image = UIImage(named: Const.Unknown)
          }else{
              //取得した画像の表示
              self.postUserImageView.sd_imageIndicator =

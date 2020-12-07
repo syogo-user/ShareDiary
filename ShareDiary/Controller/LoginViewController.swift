@@ -42,11 +42,6 @@ class LoginViewController: UIViewController {
         self.createAccountButton.setTitleColor(UIColor.lightGray ,for: .highlighted)
         self.loginButton.addTarget(self, action: #selector(tapLoginButton(_:)), for: .touchUpInside)
         self.createAccountButton.addTarget(self, action: #selector(tapcreateAccountButton(_:)), for: .touchUpInside)
-
-//        //強制ログアウトだった場合はメッセージを表示
-//        if message == Const.noAccount{
-//            SVProgressHUD.showInfo(withStatus: Const.Message1)
-//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -97,13 +92,13 @@ class LoginViewController: UIViewController {
             "lastLoginDate":FieldValue.serverTimestamp()
             ] as [String : Any]
         //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
     }
     //アカウントが削除済みか判定
     private func JudgDeleteUid (myUid:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {

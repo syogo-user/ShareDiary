@@ -25,7 +25,7 @@ class MailAddressChangeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewDidLoad()
-        self.view.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
         //戻るボタンの戻るの文字を削除
         self.navigationController!.navigationBar.topItem!.title = ""
         let rightFooBarButtonItem:UIBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonTap))
@@ -316,7 +316,7 @@ class MailAddressChangeViewController: UIViewController {
     }
     //自分のプロフィール写真を検索
     private func searchMyImage(myUid:String,db:Firestore,batch:WriteBatch){
-        let myUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let myUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
         myUserRef.getDocument{(querySnapshot,error) in
             if let error = error {
                 print("DEBUG:imageNumberの取得に失敗しました。\(error)")
@@ -327,14 +327,14 @@ class MailAddressChangeViewController: UIViewController {
                 self.deleteImage(imageName: myImageName)
             }
             //⑥自分のユーザ情報を削除
-            self.deleteDoc(documentId: myUid, path: Const.users,db:db,batch:batch)
+            self.deleteDoc(documentId: myUid, path: Const.Users,db:db,batch:batch)
         }
         
     }
     
     //フォロー・フォロワー・フォローリクエストを検索
     private func searchFollowFollowerRequest(myUid:String,key:String,db:Firestore,batch:WriteBatch){
-        let userRef = Firestore.firestore().collection(Const.users).whereField(key, arrayContains:myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField(key, arrayContains:myUid)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -355,7 +355,7 @@ class MailAddressChangeViewController: UIViewController {
     //フォロー・フォロワー・フォローリクエストを削除
     private func deleteFFR(fArray:[UserPostData],myUid:String,key:String,db:Firestore,batch:WriteBatch){
         for f in fArray{
-            let userRef = db.collection(Const.users).document(f.id)
+            let userRef = db.collection(Const.Users).document(f.id)
             var deleteLikeValue :FieldValue
             deleteLikeValue = FieldValue.arrayRemove([myUid])
             //いいねを削除
@@ -413,7 +413,7 @@ class MailAddressChangeViewController: UIViewController {
             "lastLogoutDate":FieldValue.serverTimestamp()
             ] as [String : Any]
         //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
         
         sleep(2)

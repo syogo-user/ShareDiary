@@ -29,9 +29,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.darkColor
-        self.profileMessage.backgroundColor = Const.darkColor
-        self.line.backgroundColor = Const.navigationButtonColor        
+        self.view.backgroundColor = Const.DarkColor
+        self.profileMessage.backgroundColor = Const.DarkColor
+        self.line.backgroundColor = Const.NavigationButtonColor        
         self.myImage.layer.cornerRadius = 100
         self.profileMessage.layer.cornerRadius = 15
         self.changeProfileButton.layer.cornerRadius = 15
@@ -56,11 +56,11 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         self.imageChoiceButton.layer.cornerRadius = changeProfileButton.bounds.midY
         self.changeProfileButton.layer.cornerRadius = changeProfileButton.bounds.midY
         //影
-        self.imageChoiceButton.layer.shadowColor = Const.buttonStartColor.cgColor
+        self.imageChoiceButton.layer.shadowColor = Const.ButtonStartColor.cgColor
         self.imageChoiceButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         self.imageChoiceButton.layer.shadowOpacity = 0.2
         self.imageChoiceButton.layer.shadowRadius = 10
-        self.changeProfileButton.layer.shadowColor = Const.buttonStartColor.cgColor
+        self.changeProfileButton.layer.shadowColor = Const.ButtonStartColor.cgColor
         self.changeProfileButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         self.changeProfileButton.layer.shadowOpacity = 0.2
         self.changeProfileButton.layer.shadowRadius = 10
@@ -68,7 +68,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = imageChoiceButton.bounds
         gradientLayer.cornerRadius = imageChoiceButton.bounds.midY
-        gradientLayer.colors = [Const.buttonStartColor.cgColor, Const.buttonEndColor.cgColor]
+        gradientLayer.colors = [Const.ButtonStartColor.cgColor, Const.ButtonEndColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         self.imageChoiceButton.layer.insertSublayer(gradientLayer, at: 0)
@@ -76,7 +76,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         let gradientLayer2 = CAGradientLayer()
         gradientLayer2.frame = changeProfileButton.bounds
         gradientLayer2.cornerRadius = changeProfileButton.bounds.midY
-        gradientLayer2.colors = [Const.buttonStartColor.cgColor, Const.buttonEndColor.cgColor]
+        gradientLayer2.colors = [Const.ButtonStartColor.cgColor, Const.ButtonEndColor.cgColor]
         gradientLayer2.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer2.endPoint = CGPoint(x: 1, y: 1)
         self.changeProfileButton.layer.insertSublayer(gradientLayer2, at: 0)
@@ -112,7 +112,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -151,7 +151,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
             uid = otherUid
         }
         //自分もしくは自分以外の人のユーザ情報を取得
-        let postUserRef = Firestore.firestore().collection(Const.users).document(uid)
+        let postUserRef = Firestore.firestore().collection(Const.Users).document(uid)
         postUserRef.getDocument() {
             (querySnapshot,error) in
             if let error = error {
@@ -186,7 +186,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
                         //プロフィールメッセージを変数に保持
                         let profileMessage = document["profileMessage"] as? String ?? ""
                         //ログインしている自分のフォローしている人を取得
-                        let postMyUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+                        let postMyUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
                         postMyUserRef.getDocument() {
                             (querySnapshot,error) in
                             if let error = error {
@@ -219,7 +219,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(myImageName + Const.Jpg)
                 //画像がなければデフォルトの画像表示
                 if myImageName == "" {
-                    self.myImage.image = UIImage(named: Const.unknown)
+                    self.myImage.image = UIImage(named: Const.Unknown)
                 }else{
                     //取得した画像の表示
                     self.myImage.sd_imageIndicator =
@@ -274,7 +274,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
         var myImageNumber = 0
         var myImageName = ""
         //imageNumber取得
-        let postUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let postUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
 
         postUserRef.getDocument{(querySnapshot,error) in
             if let error = error {
@@ -326,7 +326,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,U
             let data = [
                 "myImageName":myImageName
             ]
-            let postUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+            let postUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
             postUserRef.updateData(data)
             //保存した写真の表示
             self.myImage.sd_imageIndicator =

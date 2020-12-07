@@ -89,7 +89,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
         //遷移前の画面から受け取ったIndexで色を決定する
-        let color = Const.color[backgroundColorArrayIndex]
+        let color = Const.BackGroundColor[backgroundColorArrayIndex]
         let color1 = color["startColor"] ?? UIColor().cgColor
         let color2 = color["endColor"] ?? UIColor().cgColor
         //CAGradientLayerにグラデーションさせるカラーをセット

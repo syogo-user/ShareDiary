@@ -18,7 +18,7 @@ class PasswordChangeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
         //戻るボタンの戻るの文字を削除
         self.navigationController!.navigationBar.topItem!.title = ""
         let rightFooBarButtonItem:UIBarButtonItem = UIBarButtonItem(title: "保存", style: UIBarButtonItem.Style.plain, target: self, action: #selector(saveButtonTap))

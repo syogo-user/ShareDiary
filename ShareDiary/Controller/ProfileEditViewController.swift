@@ -17,7 +17,7 @@ class ProfileEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
         self.userName.layer.cornerRadius = 15
         self.profileMessage.layer.cornerRadius = 15
         //戻るボタンの戻るの文字を削除
@@ -36,7 +36,7 @@ class ProfileEditViewController: UIViewController {
         self.userName.text = ""
         self.profileMessage.text = ""
         //firebaseから自分のユーザ情報の取得
-        let postUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let postUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
         postUserRef.getDocument() {
             (querySnapshot,error) in
             if let error = error {
@@ -70,7 +70,7 @@ class ProfileEditViewController: UIViewController {
             dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler:nil))
             self.present(dialog, animated: true, completion: nil)
             return
-        }else if self.userName.text! == Const.unknown {
+        }else if self.userName.text! == Const.Unknown {
             //名前にunkownは使用不可
             let dialog = UIAlertController(title: Const.Message8, message: nil, preferredStyle: .actionSheet)
             //OKボタン
@@ -89,7 +89,7 @@ class ProfileEditViewController: UIViewController {
             "keyAccountFlg":keyFlg
             ] as [String : Any]
         //メッセージの保存        
-        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
         //表示名設定
         let user = Auth.auth().currentUser

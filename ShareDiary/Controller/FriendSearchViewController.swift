@@ -24,14 +24,14 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.backgroundColor = Const.darkColor
+        self.tableView.backgroundColor = Const.DarkColor
         
         //検索バーのインスタンスを取得する
         let searchBar: UISearchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 45)
         searchBar.placeholder = "ニックネームで検索"
-        searchBar.backgroundColor = Const.darkColor
+        searchBar.backgroundColor = Const.DarkColor
         searchBar.searchBarStyle = .prominent
         searchBar.barTintColor = .white
         searchBar.disableBlur()
@@ -88,7 +88,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String,searchBar:UISearchBar){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -111,7 +111,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     //ユーザからデータを取得
     private func getUserData(accountDeleteArray:[String],searchBar:UISearchBar){
         //前方一致検索
-        let userRef = Firestore.firestore().collection(Const.users)
+        let userRef = Firestore.firestore().collection(Const.Users)
         let ref = userRef.order(by: "userName").start(at: [inputText]).end(at: [inputText + "\u{f8ff}"])
         ref.getDocuments() {
             (querySnapshot,error) in
@@ -145,7 +145,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     //高さ調整
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Const.cellHeight
+        return Const.CellHeight
     }
     //各セルの内容を返すメソッド
     func tableView(_ tableView : UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -194,7 +194,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
         //ログインしている自分のuidを取得する
         if  let myUid = Auth.auth().currentUser?.uid {
             //相手（Aさん）のuidのドキュメントを取得する
-            let usersRef = Firestore.firestore().collection(Const.users).document(userPostData.uid!)//userPostData.uidはAさんのuid
+            let usersRef = Firestore.firestore().collection(Const.Users).document(userPostData.uid!)//userPostData.uidはAさんのuid
             // 更新データを作成する
             var updateValue: FieldValue
             if sender.titleLabel?.text == "フォロー申請" {
@@ -213,7 +213,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
             usersRef.updateData(["followRequest":updateValue])
             
             //再描画のためにデータを取得
-            let postRef = Firestore.firestore().collection(Const.users).whereField("userName", isEqualTo:inputText)
+            let postRef = Firestore.firestore().collection(Const.Users).whereField("userName", isEqualTo:inputText)
             postRef.getDocuments() {
                 (querySnapshot,error) in
                 if let error = error {

@@ -20,15 +20,15 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate  {
         // タブアイコンの色
         self.tabBar.isTranslucent = false
         self.tabBar.tintColor =  .white
-        self.tabBar.barTintColor = Const.darkColor
+        self.tabBar.barTintColor = Const.DarkColor
         // UITabBarControllerDelegateプロトコルのメソッドをこのクラスで処理する。
         self.delegate = self
         //NavigationBarが半透明かどうか
         self.navigationController?.navigationBar.isTranslucent = false
         //ヘッダーの文字（バッテリーマークなども）白くなる
         self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.barTintColor = Const.darkColor
-        self.navigationController?.navigationBar.tintColor = Const.navigationButtonColor
+        self.navigationController?.navigationBar.barTintColor = Const.DarkColor
+        self.navigationController?.navigationBar.tintColor = Const.NavigationButtonColor
     }
     // CAGradienstLayerから画像を作成
     func  getImageFromGradientLayer(gradientLayer: CAGradientLayer) -> UIImage? {
@@ -59,7 +59,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate  {
             self.present(loginViewController!, animated: true, completion: nil)
         } else {
             guard let myUid = Auth.auth().currentUser?.uid else {return}
-            let postUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+            let postUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
             postUserRef.getDocument() {
                 (querySnapshot,error) in
                 if let error = error {

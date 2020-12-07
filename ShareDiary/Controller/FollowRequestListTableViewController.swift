@@ -18,8 +18,8 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.darkColor
-        self.tableView.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
+        self.tableView.backgroundColor = Const.DarkColor
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
@@ -42,7 +42,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
     }
     //高さ調整
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Const.cellHeight
+        return Const.CellHeight
     }
     //各セルの内容を返すメソッド
     func tableView(_ tableView : UITableView,cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -104,7 +104,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
             //トランザクション開始
             let batch = db.batch()
             //(Aさん)のフォロワーの配列に（Bさん）のuidとuserNameを設定する
-            let followerPostRef = db.collection(Const.users).document(myUid)
+            let followerPostRef = db.collection(Const.Users).document(myUid)
             // 更新データを作成する
             var followerUpdateValue: FieldValue
             followerUpdateValue = FieldValue.arrayUnion([otherUserUid])
@@ -112,7 +112,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
             //followerPostRef.updateData(["follower": followerUpdateValue])
             //★★★★★★★★★★★★★★★★★★★★★
             //(Bさん)のフォローの配列に（Aさん)のuidとuserNameを設定する
-            let followPostRef = db.collection(Const.users).document(otherUserUid)
+            let followPostRef = db.collection(Const.Users).document(otherUserUid)
             // 更新データを作成する
             var followUpdateValue: FieldValue
             followUpdateValue = FieldValue.arrayUnion([myUid])
@@ -120,7 +120,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
             //followPostRef.updateData(["follow":followUpdateValue])
             //★★★★★★★★★★★★★★★★★★★★★
             //(Aさん)のフォローリクエスト配列の(Bさん)を削除する。
-            let followRequestPostRef = db.collection(Const.users).document(myUid)
+            let followRequestPostRef = db.collection(Const.Users).document(myUid)
             // 更新データを作成する
             var followRequestUpdateValue: FieldValue
             followRequestUpdateValue = FieldValue.arrayRemove([otherUserUid])
@@ -161,7 +161,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
             let otherUserUid = userPostData.uid!
             let db = Firestore.firestore()
             //(Aさん)のフォローリクエスト配列の(Bさん)を削除する。
-            let followRequestPostRef = db.collection(Const.users).document(myUid)
+            let followRequestPostRef = db.collection(Const.Users).document(myUid)
             // 更新データを作成する
             var followRequestUpdateValue: FieldValue
             followRequestUpdateValue = FieldValue.arrayRemove([otherUserUid])
@@ -174,7 +174,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
     //再描画
     private func reloadView(accountDeleteArray:[String]){
         guard let myUid = Auth.auth().currentUser?.uid else {return }
-        let postRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let postRef = Firestore.firestore().collection(Const.Users).document(myUid)
         postRef.getDocument{
             (document,error) in
             if let error = error {
@@ -202,7 +202,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -226,7 +226,7 @@ class FollowRequestListTableViewController:UIViewController,UITableViewDelegate,
     private func arrayAppend(followRequestArray:[String],accountDeleteArray:[String]){
         //followRequestのuid配列からfollowRequestを申請してきているユーザ情報を取得する
         for followRequest in followRequestArray {
-            let postRef2 = Firestore.firestore().collection(Const.users).whereField("uid", isEqualTo:followRequest)
+            let postRef2 = Firestore.firestore().collection(Const.Users).whereField("uid", isEqualTo:followRequest)
             postRef2.getDocuments() {
                 (querySnapshot,error) in
                 if let error = error {

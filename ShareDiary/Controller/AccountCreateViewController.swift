@@ -106,7 +106,7 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                 return
             }
             //名前がunknownの場合
-            if displayName == Const.unknown {
+            if displayName == Const.Unknown {
                 SVProgressHUD.showError(withStatus: Const.Message8)
                 return
             }
@@ -139,7 +139,7 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
                         }
                         //usersにuidとuserNameを設定する
                         if let myid = Auth.auth().currentUser?.uid {
-                            let postRef = Firestore.firestore().collection(Const.users).document(myid)
+                            let postRef = Firestore.firestore().collection(Const.Users).document(myid)
                             let postDic = [
                                 "uid":myid,
                                 "userName":trimDisplayName,
@@ -181,7 +181,7 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
     //利用規約ボタン押下時
     @objc private func tapTermsOfServiceButton(_ sender :UIButton){
         //Safariで利用規約を表示
-        let webPage = Const.termsOfServiceURL
+        let webPage = Const.TermsOfServiceURL
         let safariVC = SFSafariViewController(url: NSURL(string: webPage)! as URL)
         safariVC.delegate = self
         present(safariVC, animated: true, completion: nil)

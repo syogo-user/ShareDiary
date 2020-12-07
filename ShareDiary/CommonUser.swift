@@ -19,7 +19,7 @@ struct CommonUser {
             "lastLogoutDate":FieldValue.serverTimestamp()
             ] as [String : Any]
         //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
         
         sleep(1)

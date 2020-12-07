@@ -112,7 +112,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     //ドキュメント表示
     func documentShow(myUid:String,accountDeleteArray:[String]){
         //◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆
-        let postUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let postUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userListener = postUserRef.addSnapshotListener() {
             (querySnapshot2,error) in
             if let error = error {
@@ -290,7 +290,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             //トランザクション開始
             let batch = db.batch()
             
-            let userRef = db.collection(Const.users).document(myUid)
+            let userRef = db.collection(Const.Users).document(myUid)
             var updateValue: FieldValue
             updateValue = FieldValue.arrayUnion([postData.uid])
             //自分のblockListにブロックしたいユーザのuidを書き込む
@@ -302,7 +302,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
             batch.updateData(["follow":updateValue], forDocument: userRef)
             
             //相手のフォロワーのリストからmyUidを削除
-            let userRef2 = db.collection(Const.users).document(postData.uid)
+            let userRef2 = db.collection(Const.Users).document(postData.uid)
             updateValue = FieldValue.arrayRemove([myUid])
             batch.updateData(["follower":updateValue], forDocument: userRef2)
             //トランザクション終了
@@ -345,7 +345,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
               senderUid 通報した人のuid
               date 通報の日時
             */
-            let reportRef = Firestore.firestore().collection(Const.report).document()
+            let reportRef = Firestore.firestore().collection(Const.Report).document()
             let reportDic = [
                 "reportUid":postData.uid,
                 "reportDocumentId":postData.id,
@@ -374,7 +374,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {

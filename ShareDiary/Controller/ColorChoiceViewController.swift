@@ -27,7 +27,7 @@ class ColorChoiceViewController: UIViewController ,UICollectionViewDataSource, U
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Const.color.count //表示するセルの数
+        return Const.BackGroundColor.count //表示するセルの数
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -35,7 +35,7 @@ class ColorChoiceViewController: UIViewController ,UICollectionViewDataSource, U
         //グラデーション
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = cell.bounds
-        let color = Const.color[indexPath.item]
+        let color = Const.BackGroundColor[indexPath.item]
         let color1 = color["startColor"] ?? UIColor().cgColor
         let color2 = color["endColor"] ?? UIColor().cgColor
         gradientLayer.colors = [color1,color2]

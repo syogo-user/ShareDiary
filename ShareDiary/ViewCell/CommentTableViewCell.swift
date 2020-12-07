@@ -35,7 +35,7 @@ class CommentTableViewCell: UITableViewCell {
         self.partnerComment.layer.cornerRadius = 20
         self.userImageView.layer.cornerRadius = 25
         self.myComment.layer.cornerRadius = 20
-        self.backgroundColor = Const.lightOrangeColor
+        self.backgroundColor = Const.LightOrangeColor
     }
     override func layoutSubviews() {
         //描画されるときに呼び出される
@@ -153,7 +153,7 @@ class CommentTableViewCell: UITableViewCell {
     }
     
     private func setImageShow(commentData:CommentData){
-        let postRef = Firestore.firestore().collection(Const.users).document(commentData.uid)
+        let postRef = Firestore.firestore().collection(Const.Users).document(commentData.uid)
         postRef.getDocument{
             (document ,error) in
             if error != nil {
@@ -173,10 +173,10 @@ class CommentTableViewCell: UITableViewCell {
     private func setImage(userImageName:String?,commentData:CommentData){
         if let userImageName = userImageName {
             //画像が設定されている場合
-            if commentData.userName == Const.unknown {
+            if commentData.userName == Const.Unknown {
                 //ユーザ名がunknownの場合
                 //デフォルトの写真を表示
-                self.userImageView.image = UIImage(named: Const.unknown)
+                self.userImageView.image = UIImage(named: Const.Unknown)
             }else{
                 //ユーザ名がunknown以外の場合
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(userImageName + Const.Jpg)
@@ -188,7 +188,7 @@ class CommentTableViewCell: UITableViewCell {
         } else {
             //画像が設定されていない場合
             //デフォルトの写真を表示
-            self.userImageView.image = UIImage(named: Const.unknown)
+            self.userImageView.image = UIImage(named: Const.Unknown)
         }
     }
 }

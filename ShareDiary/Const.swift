@@ -11,33 +11,32 @@ import UIKit
 struct Const {
     static let ImagePath = "images"
     static let PostPath = "posts"
-    static let users = "users"//ユーザ
-    static let report = "report"//レポート（通報リスト）
-    static let termsOfServiceURL = "https://sharediary.sakura.ne.jp/ShareDiary/terms_of_service.html"//利用規約URL
+    static let Users = "users"//ユーザ
+    static let Report = "report"//レポート（通報リスト）
+    static let TermsOfServiceURL = "https://sharediary.sakura.ne.jp/ShareDiary/terms_of_service.html"//利用規約URL
     static let Follow = "follow" //フォロー
     static let Follower = "follower"//フォロワー
     static let FollowRequest = "followRequest"//フォローリクエスト
     
     static let FollowShowButton = "followShowButton"
     static let FollowerShowButton = "followerShowButton"
-    static let unknown = "unknown"//削除されたユーザの名前
-    static let noAccount = "noAccount"
+    static let Unknown = "unknown"//削除されたユーザの名前
     static let Ok = "OK"
     static let Cancel = "CANCEL"
     
-    static let darkColor = UIColor(red:0/255,green:0/255,blue:32/255,alpha:1.0)
-    static let slideColor = UIColor(red:0/255,green:0/255,blue:40/255,alpha:1.0)
-    static let lightOrangeColor = UIColor(red:255/255,green:245/255,blue:229/255,alpha:1.0)
+    static let DarkColor = UIColor(red:0/255,green:0/255,blue:32/255,alpha:1.0)
+    static let SlideColor = UIColor(red:0/255,green:0/255,blue:40/255,alpha:1.0)
+    static let LightOrangeColor = UIColor(red:255/255,green:245/255,blue:229/255,alpha:1.0)
     //各ボタンのグラデーション
-    static let buttonStartColor = UIColor(red:254/255,green:225/255,blue:64/255,alpha:1.0)
-    static let buttonEndColor = UIColor(red:250/255,green:112/255,blue:154/255,alpha:1.0)
+    static let ButtonStartColor = UIColor(red:254/255,green:225/255,blue:64/255,alpha:1.0)
+    static let ButtonEndColor = UIColor(red:250/255,green:112/255,blue:154/255,alpha:1.0)
     //ナビゲーションのボタンの色
-    static let navigationButtonColor = UIColor(red:255/255,green:175/255,blue:38/255,alpha:1.0)
+    static let NavigationButtonColor = UIColor(red:255/255,green:175/255,blue:38/255,alpha:1.0)
 
     //ユーザセルの高さ
-    static let  cellHeight :CGFloat = 110
+    static let  CellHeight :CGFloat = 110
     //辞書型[String:CGColor]の配列
-    static let color  = [
+    static let BackGroundColor  = [
         ["startColor":UIColor(red:255/255,green:255/255,blue:153/255,alpha:1.0).cgColor,
          "endColor":UIColor(red:173/255,green:255/255,blue:255/255,alpha:1.0).cgColor,
         ],
@@ -93,7 +92,7 @@ struct Const {
     static let Message5  = "パスワードは6桁以上で\n入力してください"
     static let Message6  = "パスワードは同じものを\n入力してください"
     static let Message7  = "ニックネームは10文字以内で\n入力してください"
-    static let Message8  =  "\(Const.unknown)は\n使用できません"
+    static let Message8  =  "\(Const.Unknown)は\n使用できません"
     static let Message9  = "利用規約をお読みの上、\n同意をお願いします"
     static let Message10 = "ユーザ作成に失敗しました。"
     static let Message11 = "表示名の設定に失敗しました。"

@@ -123,7 +123,7 @@ class DitailViewController: UIViewController {
         //カスタムセルを登録する(Cellで登録)xib
         let nib = UINib(nibName: "CommentTableViewCell", bundle:nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CommentTableViewCell")
-        self.tableView.backgroundColor = Const.lightOrangeColor
+        self.tableView.backgroundColor = Const.LightOrangeColor
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorStyle = .none
@@ -458,9 +458,9 @@ class DitailViewController: UIViewController {
                     let dic = documentChange.document.data()
                     let comment = CommentData(document:dic)
                     //ユーザが削除されていた場合の対応としてユーザ名が取得できないものはunknowと表示する
-                    comment.userName = Const.unknown
+                    comment.userName = Const.Unknown
                     //ユーザ名を取得
-                    let commentUserRef = Firestore.firestore().collection(Const.users).document(comment.uid)
+                    let commentUserRef = Firestore.firestore().collection(Const.Users).document(comment.uid)
                     commentUserRef.getDocument{
                         (querySnapshot,error) in
                         if let error  = error {
@@ -485,7 +485,7 @@ class DitailViewController: UIViewController {
                             for (index,comment) in self.commentData.enumerated(){
                                 if accountDeleteArray.firstIndex(of: comment.uid) != nil{
                                     self.commentData[index].message = "NoMessage"
-                                    self.commentData[index].userName = Const.unknown
+                                    self.commentData[index].userName = Const.Unknown
                                 }
                             }
                             //画面更新
@@ -612,7 +612,7 @@ class DitailViewController: UIViewController {
         return arrayUid
     }
     private func setPostImage(uid:String){
-        let userRef = Firestore.firestore().collection(Const.users).document(uid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(uid)
         
         userRef.getDocument() {
             (querySnapshot,error) in
@@ -626,7 +626,7 @@ class DitailViewController: UIViewController {
                     let imageRef = Storage.storage().reference().child(Const.ImagePath).child(imageName + Const.Jpg)
                     //画像がなければデフォルトの画像表示
                     if imageName == "" {
-                        self.imageView.image = UIImage(named: Const.unknown)
+                        self.imageView.image = UIImage(named: Const.Unknown)
                     }else{
                         //取得した画像の表示
                         self.imageView.sd_imageIndicator =
@@ -640,7 +640,7 @@ class DitailViewController: UIViewController {
     //背景色設定
     private func setBackgroundColor(colorIndex:Int){
         //背景色を変更する
-        let color = Const.color[colorIndex]
+        let color = Const.BackGroundColor[colorIndex]
         let color1 = color["startColor"] ?? UIColor.white.cgColor
         let color2 = color["endColor"] ?? UIColor.white.cgColor
         //CAGradientLayerにグラデーションさせるカラーをセット
@@ -733,7 +733,7 @@ class DitailViewController: UIViewController {
         var index = 0
         //likeUserArrayからuserPostArrayを作成
         for likeUserUid in likeUserArray{
-            let postRef = Firestore.firestore().collection(Const.users).document(likeUserUid)
+            let postRef = Firestore.firestore().collection(Const.Users).document(likeUserUid)
             postRef.getDocument{
                 (document ,error) in
                 if error != nil {
@@ -758,7 +758,7 @@ class DitailViewController: UIViewController {
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(postId:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -782,7 +782,7 @@ class DitailViewController: UIViewController {
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(post:PostData){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {

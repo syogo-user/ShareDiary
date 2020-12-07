@@ -25,7 +25,7 @@ class LeftViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()        
-        self.view.backgroundColor = Const.slideColor
+        self.view.backgroundColor = Const.SlideColor
         self.imageView.layer.cornerRadius  = 25
         self.logoutButton.addTarget(self, action: #selector(tapLogoutButton(_:)), for: .touchUpInside)
         self.followShowButton.addTarget(self, action: #selector(tapFollowShowButton(_:)), for: .touchUpInside)
@@ -42,7 +42,7 @@ class LeftViewController: UIViewController {
     //画像の表示
     private func userDataShow(accountDeleteArray:[String]){
         guard let myUid = Auth.auth().currentUser?.uid else{return}
-        let postUserRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let postUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
         postUserRef.getDocument() {
             (querySnapshot,error) in
             if let error = error {
@@ -78,7 +78,7 @@ class LeftViewController: UIViewController {
                 self.followerLabel.text = "フォロワー：\(myFollower.count)"
                 //画像がなければデフォルトの画像表示
                 if myImageName == "" {
-                    self.imageView.image = UIImage(named: Const.unknown)
+                    self.imageView.image = UIImage(named: Const.Unknown)
                 }else{
                     //取得した画像の表示
                     self.imageView.sd_imageIndicator =
@@ -102,7 +102,7 @@ class LeftViewController: UIViewController {
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
@@ -179,7 +179,7 @@ class LeftViewController: UIViewController {
             "lastLogoutDate":FieldValue.serverTimestamp()
             ] as [String : Any]
         //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
         
         sleep(2)

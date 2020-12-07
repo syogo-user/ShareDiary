@@ -16,7 +16,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var accountDeleteButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
         //戻るボタンの戻るの文字を削除
         self.navigationController!.navigationBar.topItem!.title = ""
         self.mailAddressButton.addTarget(self, action: #selector(tapMailAddressButton(_:)), for: .touchUpInside)
@@ -98,7 +98,7 @@ class SettingViewController: UIViewController {
             "accountDeleteDate":FieldValue.serverTimestamp()
             ] as [String : Any]
         //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
+        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
         let alert = UIAlertController.init(title: "", message: Const.Message15, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.cancel, handler:{ action in

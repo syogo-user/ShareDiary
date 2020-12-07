@@ -18,7 +18,7 @@ class GradationView:UIView{
     func setBackgroundColor(colorIndex:Int){
         guard let gradientLayer = self.layer as? CAGradientLayer else{return}
         //背景色を変更する
-        let color = Const.color[colorIndex]
+        let color = Const.BackGroundColor[colorIndex]
         let color1 = color["startColor"] ?? UIColor.white.cgColor
         let color2 = color["endColor"] ?? UIColor.white.cgColor
         //CAGradientLayerにグラデーションさせるカラーをセット

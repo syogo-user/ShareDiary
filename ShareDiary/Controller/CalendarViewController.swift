@@ -22,7 +22,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         self.calendar.dataSource = self
         self.calendar.delegate = self
         self.calendar.backgroundColor = .clear
-        self.view.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
 
         self.diaryAddButton.addTarget(self, action: #selector(tapDiaryAddButton), for:.touchUpInside)
         //カレンダー設定
@@ -77,7 +77,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         // 角丸
         diaryAddButton.layer.cornerRadius = diaryAddButton.bounds.midY
         //影
-        diaryAddButton.layer.shadowColor = Const.buttonStartColor.cgColor
+        diaryAddButton.layer.shadowColor = Const.ButtonStartColor.cgColor
         diaryAddButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         diaryAddButton.layer.shadowOpacity = 0.4//追加ボタンのみ影多めに設定
         diaryAddButton.layer.shadowRadius = 10
@@ -85,7 +85,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = diaryAddButton.bounds
         gradientLayer.cornerRadius = diaryAddButton.bounds.midY
-        gradientLayer.colors = [Const.buttonStartColor.cgColor, Const.buttonEndColor.cgColor]
+        gradientLayer.colors = [Const.ButtonStartColor.cgColor, Const.ButtonEndColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
         gradientLayer.contents = UIImage(named:"add")?.cgImage

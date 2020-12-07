@@ -18,7 +18,7 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userTableView.backgroundColor = Const.lightOrangeColor        
+        self.userTableView.backgroundColor = Const.LightOrangeColor        
         self.userTableView.delegate = self
         self.userTableView.dataSource = self
         //戻るボタンの戻るの文字を削除

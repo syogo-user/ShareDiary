@@ -17,8 +17,8 @@ class LikeUserListTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let myUid = Auth.auth().currentUser?.uid else{return}
-        self.view.backgroundColor = Const.darkColor
-        self.tableView.backgroundColor = Const.darkColor
+        self.view.backgroundColor = Const.DarkColor
+        self.tableView.backgroundColor = Const.DarkColor
         self.tableView.dataSource = self
         self.tableView.delegate  = self
         // カスタムセルを登録する
@@ -68,7 +68,7 @@ extension LikeUserListTableViewController:UITableViewDataSource,UITableViewDeleg
     //削除フラグのあるアカウントを取得
     private func accountDeleteStateGet(myUid:String){
         //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
+        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
         userRef.getDocuments(){
             (querySnapshot,error) in
             if let error = error {
