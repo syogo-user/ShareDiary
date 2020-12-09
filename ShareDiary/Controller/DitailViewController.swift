@@ -67,9 +67,7 @@ class DitailViewController: UIViewController {
         return true
     }
     override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        print("★DEBUG:\(self.tableView.contentSize):\(self.tableView.frame.height)")
+        super.viewWillLayoutSubviews()        
         //グラーデションのフレームの大きさを設定
         gradientLayer.frame = self.containerView1.layer.bounds
     }

@@ -32,10 +32,11 @@ struct CommonUser {
         viewController.present(loginViewController!, animated: true, completion: nil)
 
         //タブバーを取得する
-        let tabBarController = viewController.tabBarController
-            
+        let tabBarController = viewController.tabBarController as! TabBarController
+        tabBarController.selectedIndex = 2
+        tabBarController.selectedIndex = 1
         // ログイン画面から戻ってきた時のためにカレンダー画面（index = 0）を選択している状態にしておく
-        tabBarController?.selectedIndex = 0
+        tabBarController.selectedIndex = 0
     }
     //削除スタータスが0より大きいものを削除する([String]型)
     static func uidExclusion(accountDeleteArray:[String],dataArray:[String]) -> [String]{
@@ -78,38 +79,6 @@ struct CommonUser {
         return userPostArray
 
     }
-    
-    
-    
-    //    //自分のuidが削除されたユーザされたユーザかどうかを判定　削除済みの場合は強制ログアウト
-    //    static func JudgDeleteUid (myUid:String,viewController:UIViewController){
-    //        //削除ステータスが0よりも大きいもの
-    //        let userRef = Firestore.firestore().collection(Const.users).whereField("accountDeleteState",isGreaterThan:0)
-    //        userRef.getDocuments(){
-    //            (querySnapshot,error) in
-    //            if let error = error {
-    //                print("DEBUG: snapshotの取得が失敗しました。\(error)")
-    //                return
-    //            } else {
-    //                var accountDeleteArray  :[String] = []
-    //                accountDeleteArray = querySnapshot!.documents.map {
-    //                    document -> String in
-    //                    let userUid = UserPostData(document:document).uid ?? ""
-    //                    return userUid
-    //                }
-    //
-    //                //自分のuidが削除済みかを判定
-    //                if accountDeleteArray.firstIndex(of: myUid) != nil{
-    //                    //強制ログアウト
-    ////                    self.logout(viewController:viewController)
-    //                    viewController.dismiss(animated: true, completion: nil)
-    //                }
-    //            }
-    //        }
-//}
-
-
-
 
 }
 

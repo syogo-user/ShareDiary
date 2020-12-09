@@ -376,7 +376,8 @@ class MailAddressChangeViewController: UIViewController {
                 let dialog = UIAlertController(title: Const.Message39, message: nil, preferredStyle: .alert)
                 dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
                     //ログアウト
-                    self.logout()
+//                    self.logout()
+                    CommonUser.logout(viewController:self)
                 }))
                 self.present(dialog,animated: true,completion: nil)
             }

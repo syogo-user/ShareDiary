@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
                     return
                 }
                 guard let myUid = Auth.auth().currentUser?.uid else{return}
-                //アカウントが削除済み出ないかを判定
+                //アカウントが削除済みでないかを判定
                 self.JudgDeleteUid(myUid: myUid)
                 
 

@@ -162,6 +162,13 @@ class LeftViewController: UIViewController {
         //OKボタン
         dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             self.logout()
+//            self.closeLeft()
+//            //タブバーを取得する
+//            let slideViewController = self.parent as! SlideViewController
+//            let nvController = slideViewController.mainViewController as! UINavigationController
+//            let vC = nvController.topViewController as! TimeLineViewController
+//            let tabBarController = navigationController.topViewController!
+//            CommonUser.logout(viewController: vC)
         }))
         //キャンセルボタン
         dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: { action in

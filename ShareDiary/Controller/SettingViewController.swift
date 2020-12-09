@@ -47,7 +47,6 @@ class SettingViewController: UIViewController {
 //        userRef.getDocument() {
 //            (querySnapshot,error) in
 //            if let error = error {
-//                print("DEBUG: snapshotの取得が失敗しました。\(error)")
 //                return
 //            } else {
 //                if let document = querySnapshot!.data(){
