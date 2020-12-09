@@ -112,11 +112,9 @@ class PostTableViewCell: UITableViewCell {
             //画像２枚の場合
             imageCount2(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1)
         case 3:
-//            print("DEBUG:case3")
             //画像３枚の場合
             imageCount3(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1: stackViewHorizon1,stackViewHorizon2: stackViewHorizon2)
         case 4:
-//            print("DEBUG:case4")
             //画像４枚の場合
             imageCount4(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
 
@@ -152,6 +150,7 @@ class PostTableViewCell: UITableViewCell {
         stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
         //すべて同じ幅
         stackViewHorizon1.distribution = .fillEqually
+        
         stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
         stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
         stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
@@ -445,31 +444,36 @@ class PostTableViewCell: UITableViewCell {
         //投稿写真の枚数分ループする (1,2,3,4)
         //投稿された写真の表示
         if imageMaxNumber > 0{
-//            //外枠のStackViewの生成
-//            let stackView = UIStackView()
-//            //y軸方向並び
-//            stackView.axis = .vertical
-//            //Intrinsic Content Sizeに従って配置
-////            stackView.distribution = .fillProportionally
-//            stackView.translatesAutoresizingMaskIntoConstraints = false
-//            //外枠のスタックビューをビューに設定
-//            self.contentsView.addSubview(stackView)
-//            //制約
-//            stackView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-//            stackView.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackView.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            stackView.heightAnchor.constraint(equalToConstant: 400 ).isActive = true
-            
+            //外枠のStackViewの生成
+            let stackView = UIStackView()
+            //y軸方向並び
+            stackView.axis = .vertical
+            //Intrinsic Content Sizeに従って配置
+//            stackView.distribution = .fillProportionally
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            //外枠のスタックビューをビューに設定
+            self.contentsView.addSubview(stackView)
+            //制約
+            stackView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
+            stackView.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
+            stackView.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
+            if imageMaxNumber <= 3{
+                //1〜3枚の場合
+                stackView.heightAnchor.constraint(equalToConstant: 300 ).isActive = true
+            } else {
+                //4枚の場合
+                stackView.heightAnchor.constraint(equalToConstant: 260 ).isActive = true
+            }
             //内側のスタックビュー1を生成
             let stackViewHorizon1 = UIStackView()
             //内側のスタックビューを外枠のスタックビューに設定
-//            stackView.addArrangedSubview(stackViewHorizon1)
-            self.contentsView.addSubview(stackViewHorizon1)
+            stackView.addArrangedSubview(stackViewHorizon1)
+//            self.contentsView.addSubview(stackViewHorizon1)
             //内側のスタックビュー2を生成
             let stackViewHorizon2 = UIStackView()
             //内側のスタックビューを外枠のスタックビューに設定
-//            stackView.addArrangedSubview(stackViewHorizon2)
-            self.contentsView.addSubview(stackViewHorizon2)
+            stackView.addArrangedSubview(stackViewHorizon2)
+//            self.contentsView.addSubview(stackViewHorizon2)
             
             for i in 1...imageMaxNumber{
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i)\(Const.Jpg)")
