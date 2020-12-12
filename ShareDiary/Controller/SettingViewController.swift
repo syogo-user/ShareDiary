@@ -99,19 +99,74 @@ class SettingViewController: UIViewController {
         //メッセージの保存
         let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
+        //いいねをしたユーザを検索して、抽出したユーザへのいいねを削除する
+        self.deleteLikeSearch()
+        
         let alert = UIAlertController.init(title: "", message: Const.Message15, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.cancel, handler:{ action in
             //一つ前の画面に戻る
             self.navigationController?.popViewController(animated: true)
             //スライドメニューを閉じる
             self.closeLeft()
+            // ログアウトする
+            try! Auth.auth().signOut()
+            
+            let tabBarController  = self.navigationController?.topViewController as! TabBarController
+            tabBarController.selectedIndex = 0
+            //前の画面に戻ります
+            self.navigationController?.popViewController(animated:true)
             //ログアウト
-            CommonUser.logout(viewController: self)
+//            CommonUser.logout(viewController: self)
+            
         }))
         self.present(alert, animated: true, completion: nil)
 
         
     }
+    //いいねしているユーザを検索
+    private func deleteLikeSearch(){
+        guard let myUid = Auth.auth().currentUser?.uid else{return}
+        let postRef = Firestore.firestore().collection(Const.PostPath).whereField("likes",arrayContains: myUid)
+        postRef.getDocuments(){
+            (querySnapshot,error) in
+            if let error = error {
+                print("DEBUG: snapshotの取得が失敗しました。\(error)")
+                return
+            } else {
+                var postDataId  :[String] = []
+                postDataId = querySnapshot!.documents.map {
+                    document -> String in
+                    let postId = PostData(document:document).id
+                    return postId
+                }
+                //投稿のIDを渡してその中のいいねをしている自分のuidを削除する
+                self.deleteLikeUid(deletePostId:postDataId ,myUid:myUid)
+            }
+        }
+    }
+    //いいね削除
+    private func deleteLikeUid(deletePostId:[String],myUid:String){
+        let db = Firestore.firestore()
+        let batch = db.batch()
+        
+        for uid in deletePostId {
+            print("DEBUG:"+uid)
+            let postRef = db.collection(Const.PostPath).document(uid)
+            var myUidValue: FieldValue
+            //自分のuidを削除する
+            myUidValue = FieldValue.arrayRemove([myUid])
+            batch.updateData(["likes":myUidValue],forDocument: postRef)
+        }
+        //コミット
+        batch.commit() { err in
+            if err != nil {
+                print("DEBUG:削除失敗")
+            } else {
+                print("DEBUG:削除成功")
+            }
+        }
+    }
+    
     
 //    @objc func tapAccountDeleteAdministrator(_ sender:UIButton){
 //        let mailAddressChangeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MailAddressChangeViewController") as! MailAddressChangeViewController

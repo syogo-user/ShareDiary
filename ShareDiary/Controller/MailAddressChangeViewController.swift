@@ -211,7 +211,6 @@ class MailAddressChangeViewController: UIViewController {
                     if err != nil {
 
                     } else {
-
                         //⑦自分のuid、メールアドレス、パスワード情報などを削除
                         self.deleteAccountInfo()
                     }

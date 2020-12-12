@@ -16,7 +16,6 @@ class LikeUserListTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let myUid = Auth.auth().currentUser?.uid else{return}
         self.view.backgroundColor = Const.DarkColor
         self.tableView.backgroundColor = Const.DarkColor
         self.tableView.dataSource = self
@@ -28,8 +27,8 @@ class LikeUserListTableViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.backButton.addTarget(self, action: #selector(tabBackButton(_:)), for: .touchUpInside)
         //削除ステートのユーザを除外し表示する
-        self.accountDeleteStateGet(myUid:myUid)
-        
+//        self.accountDeleteStateGet(myUid:myUid)
+        self.tableView.reloadData()
         
     }
 }
@@ -66,38 +65,38 @@ extension LikeUserListTableViewController:UITableViewDataSource,UITableViewDeleg
         self.dismiss(animated: true, completion: nil)
     }
     //削除フラグのあるアカウントを取得
-    private func accountDeleteStateGet(myUid:String){
-        //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
-        userRef.getDocuments(){
-            (querySnapshot,error) in
-            if let error = error {
-                print("DEBUG: snapshotの取得が失敗しました。\(error)")
-                return
-            } else {
-                var accountDeleteArray  :[String] = []
-                accountDeleteArray = querySnapshot!.documents.map {
-                    document -> String in
-                    let userUid = UserPostData(document:document).uid ?? ""
-                    return userUid
-                }
-                            
-                //描画
-                self.reload(accountDeleteArray: accountDeleteArray)
-            }
-        }
-        
-    }
-    //描画
-    private func reload(accountDeleteArray :[String]){
-        //削除ステータスが0より大きいユーザは除外する
-//        for (index,userPost) in self.userPostArray.enumerated(){
-//            if accountDeleteArray.firstIndex(of: userPost.uid ?? "") != nil{
-//                self.userPostArray.remove(at:index)
+//    private func accountDeleteStateGet(myUid:String){
+//        //削除ステータスが0よりも大きいもの
+//        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
+//        userRef.getDocuments(){
+//            (querySnapshot,error) in
+//            if let error = error {
+//                print("DEBUG: snapshotの取得が失敗しました。\(error)")
+//                return
+//            } else {
+//                var accountDeleteArray  :[String] = []
+//                accountDeleteArray = querySnapshot!.documents.map {
+//                    document -> String in
+//                    let userUid = UserPostData(document:document).uid ?? ""
+//                    return userUid
+//                }
+//
+//                //描画
+//                self.reload(accountDeleteArray: accountDeleteArray)
 //            }
 //        }
-        self.userPostArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.userPostArray)
-        self.tableView.reloadData()
-    }
+//
+//    }
+//    //描画
+//    private func reload(){
+//        //削除ステータスが0より大きいユーザは除外する
+////        for (index,userPost) in self.userPostArray.enumerated(){
+////            if accountDeleteArray.firstIndex(of: userPost.uid ?? "") != nil{
+////                self.userPostArray.remove(at:index)
+////            }
+////        }
+//        self.userPostArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.userPostArray)
+//        self.tableView.reloadData()
+//    }
     
 }

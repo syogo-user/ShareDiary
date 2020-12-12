@@ -432,7 +432,6 @@ class PostTableViewCell: UITableViewCell {
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
         print("DEBUG:setPostData")
-        guard let myUid = Auth.auth().currentUser?.uid else { return}
         //UIDを変数に設定（プロフィール写真を取得するため）
         self.postDataUid = postData.uid
         
@@ -448,8 +447,7 @@ class PostTableViewCell: UITableViewCell {
             let stackView = UIStackView()
             //y軸方向並び
             stackView.axis = .vertical
-            //Intrinsic Content Sizeに従って配置
-//            stackView.distribution = .fillProportionally
+
             stackView.translatesAutoresizingMaskIntoConstraints = false
             //外枠のスタックビューをビューに設定
             self.contentsView.addSubview(stackView)
@@ -510,33 +508,33 @@ class PostTableViewCell: UITableViewCell {
         
 
         //削除ステータスのユーザを除外して画面表示
-        self.accountDeleteStateGet(myUid:myUid,postData:postData)
-        
+//        self.accountDeleteStateGet(myUid:myUid,postData:postData)
+        self.displaySet(postData: postData)
     }
-    //削除フラグのあるアカウントを取得
-    private func accountDeleteStateGet(myUid:String,postData:PostData){
-        //削除ステータスが0よりも大きいもの
-        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
-        userRef.getDocuments(){
-            (querySnapshot,error) in
-            if let error = error {
-                print("DEBUG: snapshotの取得が失敗しました。\(error)")
-                return
-            } else {
-                var accountDeleteArray  :[String] = []
-                accountDeleteArray = querySnapshot!.documents.map {
-                    document -> String in
-                    let userUid = UserPostData(document:document).uid ?? ""
-                    return userUid
-                }
-                
-                //画面描画
-                self.displaySet(accountDeleteArray:accountDeleteArray,postData:postData)
-            }
-        }
-    }
+//    //削除フラグのあるアカウントを取得
+//    private func accountDeleteStateGet(myUid:String,postData:PostData){
+//        //削除ステータスが0よりも大きいもの
+//        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
+//        userRef.getDocuments(){
+//            (querySnapshot,error) in
+//            if let error = error {
+//                print("DEBUG: snapshotの取得が失敗しました。\(error)")
+//                return
+//            } else {
+//                var accountDeleteArray  :[String] = []
+//                accountDeleteArray = querySnapshot!.documents.map {
+//                    document -> String in
+//                    let userUid = UserPostData(document:document).uid ?? ""
+//                    return userUid
+//                }
+//
+//                //画面描画
+//                self.displaySet(accountDeleteArray:accountDeleteArray,postData:postData)
+//            }
+//        }
+//    }
     //画面描画
-    private func displaySet(accountDeleteArray:[String],postData:PostData){
+    private func displaySet(postData:PostData){
         //投稿者の名前
         self.postUserLabel.text = ""
         if let documentUserName = postData.documentUserName {
@@ -551,9 +549,9 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
         //いいねの配列に値を代入
-        var likeArray = postData.likes
+        let likeArray = postData.likes
         //削除ステータスが立っているものは除外する
-        likeArray = self.deleteArray(array: likeArray, accountDeleteArray: accountDeleteArray)
+//        likeArray = self.deleteArray(array: likeArray, accountDeleteArray: accountDeleteArray)
         
         // いいね数の表示
         let likeNumber = likeArray.count
