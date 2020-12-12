@@ -64,39 +64,4 @@ extension LikeUserListTableViewController:UITableViewDataSource,UITableViewDeleg
     @objc func tabBackButton(_ sender:UIButton){
         self.dismiss(animated: true, completion: nil)
     }
-    //削除フラグのあるアカウントを取得
-//    private func accountDeleteStateGet(myUid:String){
-//        //削除ステータスが0よりも大きいもの
-//        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
-//        userRef.getDocuments(){
-//            (querySnapshot,error) in
-//            if let error = error {
-//                print("DEBUG: snapshotの取得が失敗しました。\(error)")
-//                return
-//            } else {
-//                var accountDeleteArray  :[String] = []
-//                accountDeleteArray = querySnapshot!.documents.map {
-//                    document -> String in
-//                    let userUid = UserPostData(document:document).uid ?? ""
-//                    return userUid
-//                }
-//
-//                //描画
-//                self.reload(accountDeleteArray: accountDeleteArray)
-//            }
-//        }
-//
-//    }
-//    //描画
-//    private func reload(){
-//        //削除ステータスが0より大きいユーザは除外する
-////        for (index,userPost) in self.userPostArray.enumerated(){
-////            if accountDeleteArray.firstIndex(of: userPost.uid ?? "") != nil{
-////                self.userPostArray.remove(at:index)
-////            }
-////        }
-//        self.userPostArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.userPostArray)
-//        self.tableView.reloadData()
-//    }
-    
 }

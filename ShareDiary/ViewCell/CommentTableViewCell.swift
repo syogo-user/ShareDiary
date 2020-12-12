@@ -131,7 +131,6 @@ class CommentTableViewCell: UITableViewCell {
 
             //プロフィール画像表示用のcommentDataを設定する
             self.commentData = commentData
-//            setImageShow(userUid:commentData.uid)
             
             //影
             self.partnerCommentShadowView.bounds = self.partnerComment.bounds

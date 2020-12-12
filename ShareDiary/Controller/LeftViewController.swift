@@ -91,11 +91,6 @@ class LeftViewController: UIViewController {
     private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
         var arrayUid = array
 //        //削除ステータスが0より大きいユーザは除外する
-//        for (index,uid) in arrayUid.enumerated(){
-//            if accountDeleteArray.firstIndex(of: uid ) != nil{
-//                arrayUid.remove(at:index)
-//            }
-//        }
         arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
         return arrayUid
     }
@@ -162,13 +157,6 @@ class LeftViewController: UIViewController {
         //OKボタン
         dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
             self.logout()
-//            self.closeLeft()
-//            //タブバーを取得する
-//            let slideViewController = self.parent as! SlideViewController
-//            let nvController = slideViewController.mainViewController as! UINavigationController
-//            let vC = nvController.topViewController as! TimeLineViewController
-//            let tabBarController = navigationController.topViewController!
-//            CommonUser.logout(viewController: vC)
         }))
         //キャンセルボタン
         dialog.addAction(UIAlertAction(title: Const.Cancel, style: .default, handler: { action in
@@ -202,9 +190,6 @@ class LeftViewController: UIViewController {
         let slideViewController = parent as! SlideViewController
         let navigationController = slideViewController.mainViewController as! UINavigationController
         let tabBarController = navigationController.topViewController as! TabBarController
-        //listener削除用にタイムライン画面を一度選択する
-        tabBarController.selectedIndex = 2//自分が今タイムラインタブ（1）にいた場合用
-        tabBarController.selectedIndex = 1
         // ログイン画面から戻ってきた時のためにカレンダー画面（index = 0）を選択している状態にしておく
         tabBarController.selectedIndex = 0
     }

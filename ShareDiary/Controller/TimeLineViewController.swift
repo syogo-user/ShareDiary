@@ -27,9 +27,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         // カスタムセルを登録する
-
-
-
         let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         //tableViewの境界線を消す
@@ -126,13 +123,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                     self.followAndMyUidArray = docFollow as! [String]
                     //自分のuidも追加
                     self.followAndMyUidArray.append(myUid)
-                    
-                    //削除ステータスが0より大きいユーザは除外する
-//                    for (index,uid) in self.followAndMyUidArray.enumerated(){
-//                        if accountDeleteArray.firstIndex(of:uid) != nil{
-//                            self.followAndMyUidArray.remove(at:index)
-//                        }
-//                    }
+                    //削除済みユーザを除外
                     self.followAndMyUidArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.followAndMyUidArray)
                     //初期化
                     self.postArray = []
@@ -173,14 +164,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                                         return false
                                     }
                                 }
-                                
-                                //削除ステータスが0より大きいユーザは除外する
-//                                for (index,post) in self.postArray.enumerated(){
-//                                    if accountDeleteArray.firstIndex(of: post.uid) != nil{
-//                                        self.postArray.remove(at:index)
-//                                    }
-//                                }
-                                self.postArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.postArray)
+//                                self.postArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.postArray)
                                 // TableViewの表示を更新する
                                 self.tableView.reloadData()
                             }

@@ -127,7 +127,7 @@ class FriendSearchViewController: UIViewController,UITableViewDelegate,UITableVi
                 }
                 searchBar.endEditing(true)
                 
-                ////削除ステータスが0より大きいユーザは除外する
+                //削除ステータスが0より大きいユーザは除外する
                 self.userPostArray = CommonUser.uidExclusion(accountDeleteArray:accountDeleteArray,dataArray:self.userPostArray)
                 //HUDを消す
                 SVProgressHUD.dismiss()

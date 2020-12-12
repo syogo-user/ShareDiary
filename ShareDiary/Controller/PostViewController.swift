@@ -442,8 +442,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
                             //写真のアップロード成功
                             // FireStoreに投稿データを保存する
                             postRef.setData(postDic)
-                            
-                            
+                                                        
                             //配列の最後になったら
                             if imagePicture.offset == self.imagePictureArray.count - 1 {
                                 SVProgressHUD.dismiss()

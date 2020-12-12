@@ -115,8 +115,6 @@ class SettingViewController: UIViewController {
             tabBarController.selectedIndex = 0
             //前の画面に戻ります
             self.navigationController?.popViewController(animated:true)
-            //ログアウト
-//            CommonUser.logout(viewController: self)
             
         }))
         self.present(alert, animated: true, completion: nil)

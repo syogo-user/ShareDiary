@@ -95,14 +95,7 @@ class PostTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .black
-//        //スクリーンの縦横サイズを取得
-//        let screenWidth :CGFloat = self.frame.size.width//削除予定
-//        let screenHeight :CGFloat = self.frame.size.height / 2//削除予定
-        
-//        //画像の縦横サイズを取得
-//        let imageWidth :CGFloat = pictureWidth//削除予定
-//        let imageHeight :CGFloat = pictureHeight//削除予定
-//
+
         //画像の枚数によってサイズと配置場所を設定する
         switch maxCount {
         case 1:
@@ -132,10 +125,6 @@ class PostTableViewCell: UITableViewCell {
                 //UIStackViewが存在していたら削除する
                 subview.removeFromSuperview()
             }
-//            if let subview = subview as? UIImageView{
-//                //UIImageViewが存在していたら削除する
-//                subview.removeFromSuperview()
-//            }
         }
     }
     //フルサイズの写真をモーダルで表示
@@ -160,22 +149,6 @@ class PostTableViewCell: UITableViewCell {
         imageView.sd_setImage(with: imageRef)
         //スタックビューに写真を追加
         stackViewHorizon1.addArrangedSubview(imageView)
-//        //画像サイズをスクリーンサイズ幅に合わせる
-//        let scale:CGFloat = screenWidth/imageWidth
-//        let rect :CGRect = CGRect(x:xPosition,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//        // ImageView frame をCGRectで作った矩形に合わせる
-//        imageView.frame = rect
-//        imageView.sd_setImage(with: imageRef)
-//
-//        // UIImageViewのインスタンスをビューに追加
-//        self.addSubview(imageView)
-//        //AutoLayout
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//        imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1).isActive = true
-//        imageView.leadingAnchor.constraint(equalTo: contentLabel.leadingAnchor).isActive = true
-//        imageView.trailingAnchor.constraint(equalTo: contentLabel.trailingAnchor).isActive = true
-//        imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale  ).isActive = true
     }
     
     private func imageCount2(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView){
@@ -196,58 +169,11 @@ class PostTableViewCell: UITableViewCell {
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon1.addArrangedSubview(imageView)
-            
-            
-
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue2).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: contentLabel.leadingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         case 2:
-            //x軸方向並び
-//            stackViewHorizon1.axis = .horizontal
-//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//            stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon1.distribution = .fillEqually
-//            stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-//            stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-//            stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,constant: -self.constantValue2).isActive = true
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon1.addArrangedSubview(imageView)
-
-            //スタックビューに写真を追加
-//            stackView.addArrangedSubview(imageView)
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition + (imageWidth * scale) ,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue2).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: contentLabel.trailingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         default:
             break
         }
@@ -257,38 +183,6 @@ class PostTableViewCell: UITableViewCell {
         switch index {
         case 1,2:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: contentLabel.leadingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2).isActive = true
-//        case 2:
-
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition + (imageWidth * scale) ,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: contentLabel.trailingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         case 3:
             //x軸方向に横並び
             stackViewHorizon2.axis = .horizontal
@@ -306,22 +200,6 @@ class PostTableViewCell: UITableViewCell {
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
 
-
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition + (imageHeight * scale / 2) ,width: imageWidth * scale  ,height : imageHeight * scale / 2)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo:contentLabel.bottomAnchor, constant:constantValue1 + (imageHeight * scale / 2) ).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: contentLabel.leadingAnchor).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: contentLabel.trailingAnchor).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 3 * 2  ).isActive = true
         default:
             break
         }
@@ -330,37 +208,6 @@ class PostTableViewCell: UITableViewCell {
         switch index {
         case 1,2:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: contentLabel.leadingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
-//        case 2:
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition + (imageWidth * scale) ,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: contentLabel.trailingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         case 3:
             //x軸方向並び
             stackViewHorizon2.axis = .horizontal
@@ -379,51 +226,11 @@ class PostTableViewCell: UITableViewCell {
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition + (imageHeight * scale) ,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1 + (imageHeight * scale / 2)).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: contentLabel.leadingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         case 4:
-//            //x軸方向並び
-//            stackViewHorizon2.axis = .horizontal
-//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon2.distribution = .fillEqually
-//            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
-//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition + (imageWidth * scale) ,y:yPosition + (imageHeight * scale) ,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            imageView.sd_setImage(with: imageRef)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant:constantValue1 + (imageHeight * scale / 2)).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: contentLabel.trailingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         default:
             break
         }
@@ -466,17 +273,15 @@ class PostTableViewCell: UITableViewCell {
             let stackViewHorizon1 = UIStackView()
             //内側のスタックビューを外枠のスタックビューに設定
             stackView.addArrangedSubview(stackViewHorizon1)
-//            self.contentsView.addSubview(stackViewHorizon1)
+
             //内側のスタックビュー2を生成
             let stackViewHorizon2 = UIStackView()
             //内側のスタックビューを外枠のスタックビューに設定
             stackView.addArrangedSubview(stackViewHorizon2)
-//            self.contentsView.addSubview(stackViewHorizon2)
             
             for i in 1...imageMaxNumber{
                 let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i)\(Const.Jpg)")
                 imageSet(imageRef:imageRef ,index: i, maxCount: imageMaxNumber,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
-//                imageSet(imageRef:imageRef ,index: i, maxCount: imageMaxNumber,stackViewHorizon1:stackViewHorizon1)
             }
         }
         //プロフィール写真の設定
@@ -505,34 +310,9 @@ class PostTableViewCell: UITableViewCell {
         default: break
         }
         
-        
-
-        //削除ステータスのユーザを除外して画面表示
-//        self.accountDeleteStateGet(myUid:myUid,postData:postData)
+        //画面表示
         self.displaySet(postData: postData)
     }
-//    //削除フラグのあるアカウントを取得
-//    private func accountDeleteStateGet(myUid:String,postData:PostData){
-//        //削除ステータスが0よりも大きいもの
-//        let userRef = Firestore.firestore().collection(Const.Users).whereField("accountDeleteState",isGreaterThan:0)
-//        userRef.getDocuments(){
-//            (querySnapshot,error) in
-//            if let error = error {
-//                print("DEBUG: snapshotの取得が失敗しました。\(error)")
-//                return
-//            } else {
-//                var accountDeleteArray  :[String] = []
-//                accountDeleteArray = querySnapshot!.documents.map {
-//                    document -> String in
-//                    let userUid = UserPostData(document:document).uid ?? ""
-//                    return userUid
-//                }
-//
-//                //画面描画
-//                self.displaySet(accountDeleteArray:accountDeleteArray,postData:postData)
-//            }
-//        }
-//    }
     //画面描画
     private func displaySet(postData:PostData){
         //投稿者の名前
@@ -550,8 +330,6 @@ class PostTableViewCell: UITableViewCell {
         }
         //いいねの配列に値を代入
         let likeArray = postData.likes
-        //削除ステータスが立っているものは除外する
-//        likeArray = self.deleteArray(array: likeArray, accountDeleteArray: accountDeleteArray)
         
         // いいね数の表示
         let likeNumber = likeArray.count
@@ -593,17 +371,6 @@ class PostTableViewCell: UITableViewCell {
 //                self.setPostImage(uid:self.postDataUid)//この処理をlayoutSubviewsに変更
         //背景色を設定
         contentsView.setBackgroundColor(colorIndex:postData.backgroundColorIndex)
-    }
-    private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
-        var arrayUid = array
-        //削除ステータスが0より大きいユーザは除外する
-//        for (index,uid) in arrayUid.enumerated(){
-//            if accountDeleteArray.firstIndex(of: uid ) != nil{
-//                arrayUid.remove(at:index)
-//            }
-//        }
-        arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
-        return arrayUid
     }
     
     private func setPostImage(uid:String){
