@@ -29,13 +29,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var commentNumberLabel: UILabel!
     @IBOutlet weak var variousButton: UIButton!
-    
-    //投稿写真の選択された枚数
-    var imageMaxNumber = 0
-    //ドキュメントID
-    var postDocumentId = ""
-    //uid（プロフィール写真取得用）
-    var postDataUid = ""
+
     //デリゲート
     var postTableViewCellDelegate :PostTableViewCellDelegate?
     //写真の配置に使用する変数を定義
@@ -57,7 +51,6 @@ class PostTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("DEBUG:awakeFromNib")
         self.postUserImageView.layer.cornerRadius = 20
         self.contentsView.layer.cornerRadius = 25
         self.contentsView.layer.masksToBounds = true
@@ -76,7 +69,7 @@ class PostTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         //描画されるときに呼び出される
         super.layoutSubviews()
-        print("DEBUG:layoutSubviews")
+
         contentsView.frame = self.bounds
 
     }
@@ -100,16 +93,16 @@ class PostTableViewCell: UITableViewCell {
         switch maxCount {
         case 1:
             //画像１枚の場合
-            imageCount1(imageRef:imageRef,imageView: imageView,stackViewHorizon1:stackViewHorizon1)
+            self.imageCount1(imageRef:imageRef,imageView: imageView,stackViewHorizon1:stackViewHorizon1)
         case 2:
             //画像２枚の場合
-            imageCount2(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1)
+            self.imageCount2(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1)
         case 3:
             //画像３枚の場合
-            imageCount3(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1: stackViewHorizon1,stackViewHorizon2: stackViewHorizon2)
+            self.imageCount3(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1: stackViewHorizon1,stackViewHorizon2: stackViewHorizon2)
         case 4:
             //画像４枚の場合
-            imageCount4(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
+            self.imageCount4(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
 
         default: break
             
@@ -240,11 +233,8 @@ class PostTableViewCell: UITableViewCell {
     func setPostData(_ postData: PostData) {
         print("DEBUG:setPostData")
         //UIDを変数に設定（プロフィール写真を取得するため）
-        self.postDataUid = postData.uid
-        
-        self.imageMaxNumber  = postData.contentImageMaxNumber
-        self.postDocumentId = postData.id
-                                                                     
+        let postDataUid = postData.uid
+        let imageMaxNumber  = postData.contentImageMaxNumber
         //StackViewを削除
         self.removeUIImageSubviews(parentView: self.contentsView)
         //投稿写真の枚数分ループする (1,2,3,4)
@@ -280,13 +270,13 @@ class PostTableViewCell: UITableViewCell {
             stackView.addArrangedSubview(stackViewHorizon2)
             
             for i in 1...imageMaxNumber{
-                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i)\(Const.Jpg)")
+                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + "\(i)\(Const.Jpg)")
                 imageSet(imageRef:imageRef ,index: i, maxCount: imageMaxNumber,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
             }
         }
         //プロフィール写真の設定
-        if self.postDataUid != ""{
-            self.setPostImage(uid:self.postDataUid)
+        if postDataUid != ""{
+            self.setPostImage(uid:postDataUid)
         }
         
         
