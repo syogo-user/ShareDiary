@@ -427,14 +427,9 @@ class DitailViewController: UIViewController {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
-        
-        
+            
         //いいね数の表示
-        var likeArray = post.likes
-        //削除ステータスが立っているものは除外する
-        likeArray = self.deleteArray(array: likeArray, accountDeleteArray: accountDeleteArray)
-        
-        let likeNumber = likeArray.count
+        let likeNumber = post.likes.count
         self.likeUserButton.setTitle(likeNumber.description, for: .normal)  //文字列変換
         likeUserButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)//フォントサイズ
         likeUserButton.setTitleColor(.black, for: .normal)
@@ -506,7 +501,7 @@ class DitailViewController: UIViewController {
                 return
             } else {
                 guard let document = querySnapshot!.data() else {return}
-                guard var likes = document["likes"] as? [String] else {return}
+                guard let likes = document["likes"] as? [String] else {return}
                 
                 guard let myid = Auth.auth().currentUser?.uid else {return}
                 // likesの配列の中にmyidが含まれているかチェックすることで、自分がいいねを押しているかを判断
@@ -524,8 +519,6 @@ class DitailViewController: UIViewController {
                     self.postData?.isLiked = false
                 }
                 
-                //削除ステータスがたっているものは除外する
-                likes  = self.deleteArray(array: likes, accountDeleteArray: accountDeleteArray)
                 
                 //変数にもlikesを設定
                 self.postData?.likes = likes
@@ -537,18 +530,6 @@ class DitailViewController: UIViewController {
                 
             }
         }
-    }
-    
-    private func deleteArray(array :[String],accountDeleteArray:[String]) -> [String]{
-        var arrayUid = array
-        //削除ステータスが0より大きいユーザは除外する
-        //        for (index,uid) in arrayUid.enumerated(){
-        //            if accountDeleteArray.firstIndex(of: uid ) != nil{
-        //                arrayUid.remove(at:index)
-        //            }
-        //        }
-        arrayUid = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: arrayUid)
-        return arrayUid
     }
     private func setPostImage(uid:String){
         let userRef = Firestore.firestore().collection(Const.Users).document(uid)

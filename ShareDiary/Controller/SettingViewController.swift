@@ -146,9 +146,8 @@ class SettingViewController: UIViewController {
         let db = Firestore.firestore()
         let batch = db.batch()
         
-        for uid in deletePostId {
-            print("DEBUG:"+uid)
-            let postRef = db.collection(Const.PostPath).document(uid)
+        for id in deletePostId {
+            let postRef = db.collection(Const.PostPath).document(id)
             var myUidValue: FieldValue
             //自分のuidを削除する
             myUidValue = FieldValue.arrayRemove([myUid])
