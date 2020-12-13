@@ -110,7 +110,6 @@ class SettingViewController: UIViewController {
             self.closeLeft()
             // ログアウトする
             try! Auth.auth().signOut()
-            
             let tabBarController  = self.navigationController?.topViewController as! TabBarController
             tabBarController.selectedIndex = 0
             //前の画面に戻ります

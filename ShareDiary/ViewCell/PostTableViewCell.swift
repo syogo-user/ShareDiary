@@ -242,6 +242,8 @@ class PostTableViewCell: UITableViewCell {
         if imageMaxNumber > 0{
             //外枠のStackViewの生成
             let stackView = UIStackView()
+            stackView.layer.cornerRadius = 30
+
             //y軸方向並び
             stackView.axis = .vertical
 
@@ -261,6 +263,7 @@ class PostTableViewCell: UITableViewCell {
             }
             //内側のスタックビュー1を生成
             let stackViewHorizon1 = UIStackView()
+
             //内側のスタックビューを外枠のスタックビューに設定
             stackView.addArrangedSubview(stackViewHorizon1)
 

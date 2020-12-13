@@ -167,24 +167,12 @@ class LeftViewController: UIViewController {
     private func logout(){
         //スライドメニューのクローズ
         closeLeft()
-        
-        //最終ログアウト日時を記録
-        guard let myUid = Auth.auth().currentUser?.uid else{return}
-        let docData = [
-            "lastLogoutDate":FieldValue.serverTimestamp()
-            ] as [String : Any]
-        //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
-        userRef.updateData(docData)
-        
-        sleep(2)
         // ログアウトする
-        try! Auth.auth().signOut()
+        CommonUser.logout()
         // ログイン画面を表示する
         let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
         loginViewController?.modalPresentationStyle = .fullScreen
-        self.present(loginViewController!, animated: true, completion: nil)
-        
+        self.present(loginViewController!, animated: true, completion: nil)        
         
         //タブバーを取得する
         let slideViewController = parent as! SlideViewController

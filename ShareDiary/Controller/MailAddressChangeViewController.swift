@@ -376,7 +376,16 @@ class MailAddressChangeViewController: UIViewController {
                 dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
                     //ログアウト
 //                    self.logout()
-                    CommonUser.logout(viewController:self)
+                    CommonUser.logout()
+                    // ログイン画面を表示する
+                    let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+                    loginViewController?.modalPresentationStyle = .fullScreen
+                    self.present(loginViewController!, animated: true, completion: nil)
+                    
+                    //タブバーを取得する//TODO
+                    let tabBarController = self.tabBarController as! TabBarController
+                    // ログイン画面から戻ってきた時のためにカレンダー画面（index = 0）を選択している状態にしておく
+                    tabBarController.selectedIndex = 0
                 }))
                 self.present(dialog,animated: true,completion: nil)
             }
@@ -408,17 +417,8 @@ class MailAddressChangeViewController: UIViewController {
     private func logout(){
         //スライドメニューのクローズ
         closeLeft()
-        guard let myUid = Auth.auth().currentUser?.uid else{return}
-        let docData = [
-            "lastLogoutDate":FieldValue.serverTimestamp()
-            ] as [String : Any]
-        //メッセージの保存
-        let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
-        userRef.updateData(docData)
-        
-        sleep(2)
-        // ログアウトする
-        try! Auth.auth().signOut()
+        //ログアウト
+        CommonUser.logout()
         // ログイン画面を表示する
         let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
         loginViewController?.modalPresentationStyle = .fullScreen
@@ -428,9 +428,7 @@ class MailAddressChangeViewController: UIViewController {
         let slideViewController = parent as! SlideViewController
         let navigationController = slideViewController.mainViewController as! UINavigationController
         let tabBarController = navigationController.topViewController as! TabBarController
-        //listener削除用にタイムライン画面を一度選択する
-        tabBarController.selectedIndex = 2//自分が今タイムラインタブ（1）にいた場合用
-        tabBarController.selectedIndex = 1
+
         // ログイン画面から戻ってきた時のためにカレンダー画面（index = 0）を選択している状態にしておく
         tabBarController.selectedIndex = 0
     }

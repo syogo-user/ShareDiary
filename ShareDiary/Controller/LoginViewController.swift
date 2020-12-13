@@ -67,8 +67,6 @@ class LoginViewController: UIViewController {
                 guard let myUid = Auth.auth().currentUser?.uid else{return}
                 //アカウントが削除済みでないかを判定
                 self.JudgDeleteUid(myUid: myUid)
-                
-
             }
         }
     }
@@ -116,7 +114,7 @@ class LoginViewController: UIViewController {
                 if accountDeleteArray.firstIndex(of: myUid) != nil{
                     SVProgressHUD.dismiss()
                     // ログアウトする
-                    try! Auth.auth().signOut()
+                    CommonUser.logout()
                     //アカウントは使用できませんのメセージを表示
                     let alert = UIAlertController.init(title: "", message: Const.Message1, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: Const.Ok, style: UIAlertAction.Style.cancel, handler:{ action in

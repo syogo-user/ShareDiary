@@ -10,34 +10,23 @@ import Foundation
 import Firebase
 import SVProgressHUD
 struct CommonUser {
-    
+
     //ログアウト
-    static func logout(viewController :UIViewController){
+    static func logout(){
         //最終ログアウト日時を記録
         guard let myUid = Auth.auth().currentUser?.uid else{return}
         let docData = [
             "lastLogoutDate":FieldValue.serverTimestamp()
             ] as [String : Any]
-        //メッセージの保存
         let userRef = Firestore.firestore().collection(Const.Users).document(myUid)
         userRef.updateData(docData)
         
-        sleep(1)
+        sleep(2)
         // ログアウトする
         try! Auth.auth().signOut()
-        
-        // ログイン画面を表示する
-        let loginViewController = viewController.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-        loginViewController?.modalPresentationStyle = .fullScreen
-        viewController.present(loginViewController!, animated: true, completion: nil)
 
-        //タブバーを取得する
-        let tabBarController = viewController.tabBarController as! TabBarController
-        tabBarController.selectedIndex = 2
-        tabBarController.selectedIndex = 1
-        // ログイン画面から戻ってきた時のためにカレンダー画面（index = 0）を選択している状態にしておく
-        tabBarController.selectedIndex = 0
     }
+    
     //削除スタータスが0より大きいものを削除する([String]型)
     static func uidExclusion(accountDeleteArray:[String],dataArray:[String]) -> [String]{
         var uidArray = dataArray
