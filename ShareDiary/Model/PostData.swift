@@ -23,6 +23,7 @@ class PostData: NSObject {
     var isCommented:Bool = false //自分のコメントがあるかどうか
     var comments:[String] = []//コメントした人
     var commentsId:[String] = []
+    var profileImageName :String = ""
     
     init(document: QueryDocumentSnapshot) {
         self.id = document.documentID

@@ -139,6 +139,9 @@ class PostTableViewCell: UITableViewCell {
         stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 20
+        //角丸 左上 右上 左下 右下
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMinYCorner,.layerMaxXMaxYCorner]
         imageView.sd_setImage(with: imageRef)
         //スタックビューに写真を追加
         stackViewHorizon1.addArrangedSubview(imageView)
@@ -159,11 +162,17 @@ class PostTableViewCell: UITableViewCell {
             stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = 20
+            //角丸 左上 左下
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon1.addArrangedSubview(imageView)
         case 2:
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = 20
+            //角丸 右上 右下
+            imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon1.addArrangedSubview(imageView)
@@ -174,8 +183,16 @@ class PostTableViewCell: UITableViewCell {
     }
     private func imageCount3(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
         switch index {
-        case 1,2:
+        case 1:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = 20
+            //角丸 左上
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+        case 2:
+            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = 20
+            //角丸 右上
+            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
         case 3:
             //x軸方向に横並び
             stackViewHorizon2.axis = .horizontal
@@ -189,6 +206,9 @@ class PostTableViewCell: UITableViewCell {
             stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = 20
+            //角丸 左下 右下
+            imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
@@ -199,8 +219,16 @@ class PostTableViewCell: UITableViewCell {
     }
     private func imageCount4(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
         switch index {
-        case 1,2:
+        case 1:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = 20
+            //角丸 左上
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+        case 2:
+            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = 20
+            //角丸 右上
+            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
         case 3:
             //x軸方向並び
             stackViewHorizon2.axis = .horizontal
@@ -216,11 +244,18 @@ class PostTableViewCell: UITableViewCell {
             
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
+
             imageView.sd_setImage(with: imageRef)
+            imageView.layer.cornerRadius = 20
+            //角丸 左下
+            imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
         case 4:
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = 20
+            //角丸 右下
+            imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
@@ -231,9 +266,7 @@ class PostTableViewCell: UITableViewCell {
     
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
-        print("DEBUG:setPostData")
         //UIDを変数に設定（プロフィール写真を取得するため）
-        let postDataUid = postData.uid
         let imageMaxNumber  = postData.contentImageMaxNumber
         //StackViewを削除
         self.removeUIImageSubviews(parentView: self.contentsView)
@@ -242,8 +275,7 @@ class PostTableViewCell: UITableViewCell {
         if imageMaxNumber > 0{
             //外枠のStackViewの生成
             let stackView = UIStackView()
-            stackView.layer.cornerRadius = 30
-
+            
             //y軸方向並び
             stackView.axis = .vertical
 
@@ -263,12 +295,13 @@ class PostTableViewCell: UITableViewCell {
             }
             //内側のスタックビュー1を生成
             let stackViewHorizon1 = UIStackView()
-
+            stackViewHorizon1.layer.masksToBounds = true
             //内側のスタックビューを外枠のスタックビューに設定
             stackView.addArrangedSubview(stackViewHorizon1)
 
             //内側のスタックビュー2を生成
             let stackViewHorizon2 = UIStackView()
+            stackViewHorizon2.layer.masksToBounds = true
             //内側のスタックビューを外枠のスタックビューに設定
             stackView.addArrangedSubview(stackViewHorizon2)
             
@@ -278,10 +311,7 @@ class PostTableViewCell: UITableViewCell {
             }
         }
         //プロフィール写真の設定
-        if postDataUid != ""{
-            self.setPostImage(uid:postDataUid)
-        }
-        
+        self.setMyImage(imageName: postData.profileImageName)
         
         switch imageMaxNumber {
         case 0:
@@ -377,6 +407,8 @@ class PostTableViewCell: UITableViewCell {
             } else {
                 if let document = querySnapshot!.data(){
                     let imageName = document["myImageName"] as? String ?? ""
+                    print("DEBUG:myImageNameUid:\(uid)")
+                    print("DEBUG:myImageName:\(imageName)")
                     self.setMyImage(imageName:imageName)
                 }
             }

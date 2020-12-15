@@ -180,7 +180,8 @@ class DitailViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .black
-
+        
+        imageView.layer.masksToBounds = true
         //画像の枚数によってサイズと配置場所を設定する
         switch maxCount {
         case 1:

@@ -108,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dfk-Va-gB3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-577" y="813"/>
+            <point key="canvasLocation" x="-578.26086956521749" y="812.94642857142856"/>
         </scene>
         <!--Fullsize Image View Controller-->
         <scene sceneID="3ml-Gb-Ogk">
@@ -1611,7 +1611,7 @@
         <image name="exclamation" width="35" height="75"/>
         <image name="ico_check_off" width="17" height="17"/>
         <image name="like_none" width="40" height="40"/>
-        <image name="lock" width="29" height="30"/>
+        <image name="lock" width="29" height="36"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="paperplane" catalog="system" width="64" height="60"/>
         <image name="person" catalog="system" width="64" height="58"/>

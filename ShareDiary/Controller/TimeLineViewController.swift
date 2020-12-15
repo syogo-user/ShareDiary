@@ -14,6 +14,9 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     // 投稿データを格納する配列
     var postArray: [PostData] = []
+    //全ユーザの一覧を格納する配列（プロフィール写真取得用）
+    var userPostArray:[UserPostData] = []
+    //リフレッシュコントロール
     let refreshCtl = UIRefreshControl()
     // Firestoreのリスナー
     var userListener: ListenerRegistration!
@@ -74,7 +77,10 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         //セルを選択した時に選択状態の表示にしない（セルを選択した時に選択状態の表示にしない）
         //(つまりセルが選択された時にUITableViewCellSelectedBackgroundを使用しない)
         cell.selectionStyle = .none
-
+        
+        //プロフィール写真名を設定
+        self.profileImageNameSet()
+        
         cell.setPostData(postArray[indexPath.row])
 
         //いいねボタンのアクションをソースコードで設定する
@@ -164,7 +170,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                                         return false
                                     }
                                 }
-//                                self.postArray = CommonUser.uidExclusion(accountDeleteArray: accountDeleteArray, dataArray: self.postArray)
+                                
                                 // TableViewの表示を更新する
                                 self.tableView.reloadData()
                             }
@@ -371,13 +377,49 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                     let userUid = UserPostData(document:document).uid ?? ""
                     return userUid
                 }
-                
-                //ドキュメント表示
-                self.documentShow(myUid: myUid,accountDeleteArray:accountDeleteArray)
+
+                //ユーザデータを取得後ドキュメント表示
+                self.userPostGet(myUid: myUid, accountDeleteArray: accountDeleteArray)
             }
         }
         
     }
+    //プロフィール写真のためのユーザデータ取得
+    private func userPostGet(myUid:String,accountDeleteArray:[String]){
+        //全ユーザの情報を取得
+        let userRef = Firestore.firestore().collection(Const.Users)
+        userRef.getDocuments(){
+            (querySnapshot,error) in
+            if let error = error {
+                print("DEBUG: snapshotの取得が失敗しました。\(error)")
+                return
+            } else {
+                var userPostArray  :[UserPostData] = []
+                userPostArray = querySnapshot!.documents.map {
+                    document -> UserPostData in
+                    let userPost = UserPostData(document:document)
+                    return userPost
+                }
+                self.userPostArray = userPostArray
+                //ドキュメント表示
+                self.documentShow(myUid: myUid, accountDeleteArray:accountDeleteArray)
+                
+            }
+        }
+    }
+    //postArrayにプロフィール写真名を設定
+    private func profileImageNameSet(){        
+        self.postArray.forEach(){ post in
+            for userPost in self.userPostArray {
+                if post.uid == userPost.uid ?? ""{
+                    //uidが同じ場合 プロフィール写真名を設定
+                    post.profileImageName = userPost.myImageName ?? ""
+                }
+            }
+        }
+    }
+    
+    
 }
 
 extension TimeLineViewController:PostTableViewCellDelegate{
