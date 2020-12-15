@@ -55,6 +55,8 @@ class DitailViewController: UIViewController {
     let headerViewHeight3:CGFloat = 550 //写真3枚のとき
     let headerViewHeight4:CGFloat = 500 //写真4枚のとき
     
+    let cornerRadius1:CGFloat = 20
+    let cornerRadius2:CGFloat = 25
     //元々持っている；プロパティ
     override var inputAccessoryView: UIView?{
         //inputAccessoryViewにInputTextViewを設定する
@@ -145,10 +147,10 @@ class DitailViewController: UIViewController {
         self.tableView.keyboardDismissMode = .interactive
         setupNotification()
         
-        self.containerView1.layer.cornerRadius = 25
+        self.containerView1.layer.cornerRadius = cornerRadius2
         self.containerView1.clipsToBounds = true
         self.viewHeader.clipsToBounds = true
-        self.viewHeader.layer.cornerRadius   = 25
+        self.viewHeader.layer.cornerRadius   = cornerRadius2
         self.viewHeader.backgroundColor = .clear
         //文字サイズをボタンの大きさに合わせて調整
         self.likeUserButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -181,7 +183,6 @@ class DitailViewController: UIViewController {
         imageView.clipsToBounds = true
         imageView.backgroundColor = .black
         
-        imageView.layer.masksToBounds = true
         //画像の枚数によってサイズと配置場所を設定する
         switch maxCount {
         case 1:
@@ -239,6 +240,9 @@ class DitailViewController: UIViewController {
         stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = cornerRadius1
+        //角丸 左上 右上 左下 右下
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         imageView.sd_setImage(with: imageRef)
         //スタックビューに写真を追加
         stackViewHorizon1.addArrangedSubview(imageView)
@@ -259,15 +263,21 @@ class DitailViewController: UIViewController {
             stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 左上 左下
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon1.addArrangedSubview(imageView)
         case 2:
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 右上 右下
+            imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon1.addArrangedSubview(imageView)
-
+            
         default:
             break
         }
@@ -275,24 +285,35 @@ class DitailViewController: UIViewController {
     }
     private func imageCount3(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
         switch index {
-            case 1,2:
-                self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            case 3:
-                //x軸方向に横並び
-                stackViewHorizon2.axis = .horizontal
-                stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-                //すべて同じ幅
-                stackViewHorizon2.distribution = .fillEqually
-                
-                stackViewHorizon2.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: 180).isActive = true
-                stackViewHorizon2.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-                stackViewHorizon2.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-                stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
-                
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.sd_setImage(with: imageRef)
-                //スタックビューに写真を追加
-                stackViewHorizon2.addArrangedSubview(imageView)
+        case 1:
+            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 左上
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+        case 2:
+            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 右上
+            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
+        case 3:
+            //x軸方向に横並び
+            stackViewHorizon2.axis = .horizontal
+            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
+            //すべて同じ幅
+            stackViewHorizon2.distribution = .fillEqually
+            
+            stackViewHorizon2.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: 180).isActive = true
+            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
+            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
+            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
+            
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 左下 右下
+            imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            imageView.sd_setImage(with: imageRef)
+            //スタックビューに写真を追加
+            stackViewHorizon2.addArrangedSubview(imageView)
             
         default:
             break
@@ -300,31 +321,45 @@ class DitailViewController: UIViewController {
     }
     private func imageCount4(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
         switch index {
-            case 1,2:
-                self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            case 3:
-                //x軸方向並び
-                stackViewHorizon2.axis = .horizontal
-                //translatesAutoresizingMaskIntoConstraintsの文言が必要
-                stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-                //すべて同じ幅
-                stackViewHorizon2.distribution = .fillEqually
-                
-                stackViewHorizon2.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: 180).isActive = true
-                stackViewHorizon2.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-                stackViewHorizon2.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-                stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-                
-                
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.sd_setImage(with: imageRef)
-                //スタックビューに写真を追加
-                stackViewHorizon2.addArrangedSubview(imageView)
-            case 4:
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.sd_setImage(with: imageRef)
-                //スタックビューに写真を追加
-                stackViewHorizon2.addArrangedSubview(imageView)
+        case 1:
+            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 左上
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+        case 2:
+            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 右上
+            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
+        case 3:
+            //x軸方向並び
+            stackViewHorizon2.axis = .horizontal
+            //translatesAutoresizingMaskIntoConstraintsの文言が必要
+            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
+            //すべて同じ幅
+            stackViewHorizon2.distribution = .fillEqually
+            
+            stackViewHorizon2.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: 180).isActive = true
+            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
+            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
+            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
+            
+            
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 左下
+            imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
+            imageView.sd_setImage(with: imageRef)
+            //スタックビューに写真を追加
+            stackViewHorizon2.addArrangedSubview(imageView)
+        case 4:
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.cornerRadius = cornerRadius1
+            //角丸 右下
+            imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
+            imageView.sd_setImage(with: imageRef)
+            //スタックビューに写真を追加
+            stackViewHorizon2.addArrangedSubview(imageView)
             
         default:
             break
@@ -428,7 +463,7 @@ class DitailViewController: UIViewController {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
-            
+        
         //いいね数の表示
         let likeNumber = post.likes.count
         self.likeUserButton.setTitle(likeNumber.description, for: .normal)  //文字列変換

@@ -47,12 +47,12 @@ class PostTableViewCell: UITableViewCell {
     let contentLabelBottomConstraint3:CGFloat = 390 //contentLabelから下の長さ
     let contentLabelBottomConstraint4:CGFloat = 350 //contentLabelから下の長さ
 
-    
-    
+    let cornerRadius1:CGFloat = 20
+    let cornerRadius2:CGFloat = 25
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.postUserImageView.layer.cornerRadius = 20
-        self.contentsView.layer.cornerRadius = 25
+        self.postUserImageView.layer.cornerRadius = cornerRadius1
+        self.contentsView.layer.cornerRadius = cornerRadius2
         self.contentsView.layer.masksToBounds = true
         //影
         self.shadowView.backgroundColor = .clear
@@ -139,9 +139,9 @@ class PostTableViewCell: UITableViewCell {
         stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = cornerRadius1
         //角丸 左上 右上 左下 右下
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMinYCorner,.layerMaxXMaxYCorner]
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         imageView.sd_setImage(with: imageRef)
         //スタックビューに写真を追加
         stackViewHorizon1.addArrangedSubview(imageView)
@@ -162,7 +162,7 @@ class PostTableViewCell: UITableViewCell {
             stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 左上 左下
             imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
@@ -170,7 +170,7 @@ class PostTableViewCell: UITableViewCell {
             stackViewHorizon1.addArrangedSubview(imageView)
         case 2:
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 右上 右下
             imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
@@ -185,12 +185,12 @@ class PostTableViewCell: UITableViewCell {
         switch index {
         case 1:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 左上
             imageView.layer.maskedCorners = [.layerMinXMinYCorner]
         case 2:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 右上
             imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
         case 3:
@@ -206,7 +206,7 @@ class PostTableViewCell: UITableViewCell {
             stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 左下 右下
             imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
@@ -221,12 +221,12 @@ class PostTableViewCell: UITableViewCell {
         switch index {
         case 1:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 左上
             imageView.layer.maskedCorners = [.layerMinXMinYCorner]
         case 2:
             self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 右上
             imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
         case 3:
@@ -244,16 +244,15 @@ class PostTableViewCell: UITableViewCell {
             
             
             imageView.translatesAutoresizingMaskIntoConstraints = false
-
-            imageView.sd_setImage(with: imageRef)
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 左下
             imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
+            imageView.sd_setImage(with: imageRef)
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
         case 4:
             imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = 20
+            imageView.layer.cornerRadius = cornerRadius1
             //角丸 右下
             imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
             imageView.sd_setImage(with: imageRef)
@@ -382,16 +381,6 @@ class PostTableViewCell: UITableViewCell {
         if let content = postData.content{
             self.contentLabel.text! = content
         }
-        
-
-        
-        
-        
-
-            
-
-
-//                self.setPostImage(uid:self.postDataUid)//この処理をlayoutSubviewsに変更
         //背景色を設定
         contentsView.setBackgroundColor(colorIndex:postData.backgroundColorIndex)
     }
