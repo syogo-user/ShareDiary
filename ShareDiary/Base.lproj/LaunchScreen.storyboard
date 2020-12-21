@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSC-m8-ooa">
-                                <rect key="frame" x="30" y="294" width="354" height="100"/>
+                                <rect key="frame" x="97" y="294" width="220.5" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="jlH-UR-G98"/>
                                 </constraints>
@@ -27,26 +27,35 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wing" translatesAutoresizingMaskIntoConstraints="NO" id="oMT-su-4Im">
+                                <rect key="frame" x="317.5" y="319" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="lcH-hC-wd0"/>
+                                    <constraint firstAttribute="height" constant="50" id="oVf-kb-ufQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="oMT-su-4Im" firstAttribute="centerY" secondItem="nSC-m8-ooa" secondAttribute="centerY" id="8vp-Hy-8Pa"/>
+                            <constraint firstItem="oMT-su-4Im" firstAttribute="leading" secondItem="nSC-m8-ooa" secondAttribute="trailing" id="9J3-Bz-3wy"/>
                             <constraint firstAttribute="bottom" secondItem="7bp-yl-f0S" secondAttribute="bottom" id="GCg-79-iAy"/>
-                            <constraint firstItem="nSC-m8-ooa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="IDX-ar-ZSq"/>
                             <constraint firstItem="7bp-yl-f0S" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="R3c-ny-XjN"/>
                             <constraint firstItem="nSC-m8-ooa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="250" id="bqz-UN-Zas"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7bp-yl-f0S" secondAttribute="trailing" id="jVw-bI-an1"/>
                             <constraint firstItem="7bp-yl-f0S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n7f-yJ-G80"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nSC-m8-ooa" secondAttribute="trailing" constant="30" id="q2w-DP-Gaa"/>
+                            <constraint firstItem="nSC-m8-ooa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="s8W-p2-x33"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
     <resources>
+        <image name="wing" width="212" height="262"/>
         <image name="yozora" width="2133" height="2133"/>
     </resources>
 </document>

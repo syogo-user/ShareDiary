@@ -69,6 +69,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate  {
                     let leftBarButton:UIBarButtonItem = UIBarButtonItem(title: "button1", style: .done, target: self, action: #selector(self.addTapped))
                     leftBarButton.image = UIImage(named: "leftButton")
                     self.navigationItem.setLeftBarButtonItems([leftBarButton], animated: true)
+                    
                 }
             }
         }

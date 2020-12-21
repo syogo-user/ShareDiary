@@ -81,6 +81,7 @@ class CalendarViewController: UIViewController,FSCalendarDelegate,FSCalendarData
         diaryAddButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         diaryAddButton.layer.shadowOpacity = 0.4//追加ボタンのみ影多めに設定
         diaryAddButton.layer.shadowRadius = 10
+        
         // グラデーション
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = diaryAddButton.bounds

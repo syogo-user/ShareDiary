@@ -375,7 +375,6 @@ class MailAddressChangeViewController: UIViewController {
                 let dialog = UIAlertController(title: Const.Message39, message: nil, preferredStyle: .alert)
                 dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: { action in
                     //ログアウト
-//                    self.logout()
                     CommonUser.logout()
                     // ログイン画面を表示する
                     let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
@@ -404,8 +403,6 @@ class MailAddressChangeViewController: UIViewController {
                 //OKボタン
                 dialog.addAction(UIAlertAction(title: Const.Ok, style: .default, handler: nil))
                 self.present(dialog,animated: true,completion: nil)
-                //HUDを消す
-                //                SVProgressHUD.dismiss()
                 return
             } else {
                 // User re-authenticated.

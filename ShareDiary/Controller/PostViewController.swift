@@ -160,8 +160,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
             stackViewHorizon2.layer.masksToBounds = true
             //内側のスタックビューを外枠のスタックビューに設定
             stackView.addArrangedSubview(stackViewHorizon2)
-            
-            
+                        
             var index = 1
             //選択した画像を取得
             for asset in assets{
@@ -185,12 +184,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .black
-//        //スクリーンの縦横サイズを取得
-//        let screenWidth :CGFloat = view.frame.size.width
-//        let screenHeight :CGFloat = view.frame.size.height / 2
-//        //画像の縦横サイズを取得
-//        let imageWidth :CGFloat = pictureWidth
-//        let imageHeight :CGFloat = pictureHeight
+
         //画像の枚数によってサイズと配置場所を設定する
         switch maxCount {
         case 1:
@@ -205,7 +199,6 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
         case 4:
             //画像４枚の場合
             imageCount4(imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
-//            imageCount4(imageView: imageView,screenWidth: screenWidth,screenHeight: screenHeight,imageWidth: imageWidth,imageHeight: imageHeight,index:index)
         default: break
             
         }
@@ -353,74 +346,6 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
             //スタックビューに写真を追加
             stackViewHorizon2.addArrangedSubview(imageView)
 
-//        case 1:
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            //画像の中心を設定
-//            imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/3 * 2)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.view.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant:constantValue1).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: inputTextView.leadingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
-//        case 2:
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition + (imageWidth * scale) ,y:yPosition,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            //画像の中心を設定
-//            imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/3 * 2)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.view.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant:constantValue1).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: inputTextView.trailingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
-//        case 3:
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition,y:yPosition + (imageHeight * scale) ,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            //画像の中心を設定
-//            imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/3 * 2)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.view.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant:constantValue1 + (imageHeight * scale / 2)).isActive = true
-//            imageView.leadingAnchor.constraint(equalTo: inputTextView.leadingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
-//        case 4:
-//            //画像サイズをスクリーンサイズ幅に合わせる
-//            let scale:CGFloat = screenWidth/imageWidth
-//            let rect :CGRect = CGRect(x:xPosition + (imageWidth * scale) ,y:yPosition + (imageHeight * scale) ,width: imageWidth * scale ,height : imageHeight * scale)
-//            // ImageView frame をCGRectで作った矩形に合わせる
-//            imageView.frame = rect
-//            //画像の中心を設定
-//            imageView.center = CGPoint(x:screenWidth/2, y:screenHeight/3 * 2)
-//            // UIImageViewのインスタンスをビューに追加
-//            self.view.addSubview(imageView)
-//            //AutoLayout
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            //imageViewの最上部の位置はinputTextViewの最下部の位置から「constant」pt下
-//            imageView.topAnchor.constraint(equalTo: inputTextView.bottomAnchor, constant:constantValue1 + (imageHeight * scale / 2)).isActive = true
-//            imageView.trailingAnchor.constraint(equalTo: inputTextView.trailingAnchor).isActive = true
-//            imageView.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - adjustmentValue ).isActive = true
-//            imageView.heightAnchor.constraint(equalToConstant: imageHeight * scale / 2 ).isActive = true
         default:
             break
         }

@@ -24,8 +24,9 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     //フォローと自分のuid配列
     var followAndMyUidArray : [String] = []
 
-
+    
     override func viewDidLoad() {
+        print("DEBUGview:viewDidLoad")
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,12 +43,15 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)                                
-        
+        print("DEBUGview:viewWillAppear")
         guard let myUid = Auth.auth().currentUser?.uid else {return}
 
+        
         //削除フラグが設定されている人を取得し、その後タイムラインを表示する
-        self.accountDeleteStateGet(myUid: myUid)    
+        self.accountDeleteStateGet(myUid: myUid)
+
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         for postListener in postListenerArray{
@@ -72,6 +76,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        print("DEBUGview:tableView　cellForRowAt 開始")
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         //セルを選択した時に選択状態の表示にしない（セルを選択した時に選択状態の表示にしない）
@@ -80,7 +85,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         
         //プロフィール写真名を設定
         self.profileImageNameSet()
-        
+        //セルの設定
         cell.setPostData(postArray[indexPath.row])
 
         //いいねボタンのアクションをソースコードで設定する
@@ -93,7 +98,6 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         
         //自作のデリゲート
         cell.postTableViewCellDelegate = self
-        
         return cell
     }
     //高さ調整
@@ -173,6 +177,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                                 
                                 // TableViewの表示を更新する
                                 self.tableView.reloadData()
+                                
                             }
                             
                         })
@@ -401,14 +406,19 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
                     return userPost
                 }
                 self.userPostArray = userPostArray
+                
+
                 //ドキュメント表示
                 self.documentShow(myUid: myUid, accountDeleteArray:accountDeleteArray)
+
+
+
                 
             }
         }
     }
     //postArrayにプロフィール写真名を設定
-    private func profileImageNameSet(){        
+    private func profileImageNameSet(){
         self.postArray.forEach(){ post in
             for userPost in self.userPostArray {
                 if post.uid == userPost.uid ?? ""{
@@ -425,6 +435,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
 extension TimeLineViewController:PostTableViewCellDelegate{
     //PostTablViewCellの投稿写真をタップしたときに呼ばれる
     func imageTransition(_ sender:UITapGestureRecognizer) {
+        
         //タップしたUIImageViewを取得
         let tappedUIImageView = sender.view! as? UIImageView
         //  UIImage を取得
@@ -433,7 +444,7 @@ extension TimeLineViewController:PostTableViewCellDelegate{
         let tappedImage = tappedImageviewImage
         
         let fullsizeImageViewController = self.storyboard?.instantiateViewController(withIdentifier: "FullsizeImageViewController") as! FullsizeImageViewController
-        fullsizeImageViewController.modalPresentationStyle = .fullScreen
+
         fullsizeImageViewController.image = tappedImage
         self.present(fullsizeImageViewController, animated: true, completion: nil)
     }

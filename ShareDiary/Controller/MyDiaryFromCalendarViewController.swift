@@ -145,7 +145,6 @@ extension MyDiaryFromCalendarViewController:PostTableViewCellDelegate{
         let tappedImage = tappedImageView.image!
         
         let fullsizeImageViewController = self.storyboard?.instantiateViewController(withIdentifier: "FullsizeImageViewController") as! FullsizeImageViewController
-        fullsizeImageViewController.modalPresentationStyle = .fullScreen
         fullsizeImageViewController.image = tappedImage
         self.present(fullsizeImageViewController, animated: true, completion: nil)
     }
