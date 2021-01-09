@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yozora" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-yl-f0S">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="halfYozora" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-yl-f0S">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSC-m8-ooa">
@@ -35,7 +35,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oMT-su-4Im" firstAttribute="centerY" secondItem="nSC-m8-ooa" secondAttribute="centerY" id="8vp-Hy-8Pa"/>
                             <constraint firstItem="oMT-su-4Im" firstAttribute="leading" secondItem="nSC-m8-ooa" secondAttribute="trailing" id="9J3-Bz-3wy"/>
@@ -55,7 +55,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="halfYozora" width="730" height="1600"/>
         <image name="wing" width="212" height="262"/>
-        <image name="yozora" width="2133" height="2133"/>
     </resources>
 </document>
