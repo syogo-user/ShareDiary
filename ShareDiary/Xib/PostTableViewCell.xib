@@ -87,7 +87,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvo-XL-Yh4">
-                        <rect key="frame" x="15" y="110" width="290" height="35"/>
+                        <rect key="frame" x="15" y="110" width="290" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="Ux7-XF-s7t"/>
                         </constraints>
@@ -95,6 +95,13 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaW-X1-bvV" customClass="ImageLayoutWorkerView" customModule="ShareDiary" customModuleProvider="target">
+                        <rect key="frame" x="26" y="140.5" width="268" height="333.5"/>
+                        <color key="backgroundColor" red="0.90900577910958902" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="pB8-Pu-4ia"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpQ-fR-zFJ">
                         <rect key="frame" x="166" y="15" width="35" height="40"/>
                         <constraints>
@@ -108,9 +115,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="DaW-X1-bvV" firstAttribute="top" secondItem="Uvo-XL-Yh4" secondAttribute="bottom" constant="10" id="473-e1-fMD"/>
                     <constraint firstItem="KbI-9e-LAJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5UP-m3-FT4"/>
                     <constraint firstItem="fg7-AJ-kTE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="6RB-bW-5sd"/>
-                    <constraint firstAttribute="bottom" secondItem="Uvo-XL-Yh4" secondAttribute="bottom" constant="350" id="6cV-RO-SwJ"/>
                     <constraint firstAttribute="bottom" secondItem="KbI-9e-LAJ" secondAttribute="bottom" constant="5" id="6i3-hd-qri"/>
                     <constraint firstAttribute="bottom" secondItem="fg7-AJ-kTE" secondAttribute="bottom" constant="5" id="A5A-WD-KbQ"/>
                     <constraint firstItem="fg7-AJ-kTE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="AlF-S8-9dQ"/>
@@ -126,9 +133,12 @@
                     <constraint firstItem="Ooc-bI-76m" firstAttribute="leading" secondItem="hpQ-fR-zFJ" secondAttribute="trailing" id="NpA-Qg-9ro"/>
                     <constraint firstItem="KbI-9e-LAJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="PyR-la-aDz"/>
                     <constraint firstAttribute="trailing" secondItem="Uvo-XL-Yh4" secondAttribute="trailing" constant="15" id="Qp2-vg-l4W"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="DaW-X1-bvV" secondAttribute="bottom" constant="10" id="UQc-I8-F3J"/>
                     <constraint firstItem="hpQ-fR-zFJ" firstAttribute="leading" secondItem="ga0-2s-bLv" secondAttribute="trailing" id="URq-4S-DIq"/>
                     <constraint firstAttribute="trailing" secondItem="ekt-Pc-oyp" secondAttribute="trailing" constant="5" id="Ua8-Ke-UuB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DaW-X1-bvV" secondAttribute="trailing" constant="10" id="Ufc-rq-VzK"/>
                     <constraint firstItem="lNF-2p-zdQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="cRZ-dD-e1T"/>
+                    <constraint firstItem="DaW-X1-bvV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="d9D-sn-Xkp"/>
                     <constraint firstItem="hpQ-fR-zFJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="g9R-aW-Aav"/>
                     <constraint firstItem="5g6-z9-oAc" firstAttribute="top" secondItem="lNF-2p-zdQ" secondAttribute="bottom" constant="10" id="jbD-Ny-FCu"/>
                     <constraint firstItem="Uvo-XL-Yh4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jxh-YN-mbu"/>
@@ -145,9 +155,9 @@
                 <outlet property="commentButton" destination="ga0-2s-bLv" id="x6T-68-OyI"/>
                 <outlet property="commentNumberLabel" destination="hpQ-fR-zFJ" id="nX0-eb-WxZ"/>
                 <outlet property="contentLabel" destination="Uvo-XL-Yh4" id="YmZ-Oj-Qff"/>
-                <outlet property="contentLabelBottomConstraint" destination="6cV-RO-SwJ" id="Jlf-gg-Qh8"/>
                 <outlet property="contentsView" destination="KbI-9e-LAJ" id="Pb6-0A-R1r"/>
                 <outlet property="dateLabel" destination="5g6-z9-oAc" id="Tc9-hS-xOo"/>
+                <outlet property="imageLayoutWorkerView" destination="DaW-X1-bvV" id="qEX-yV-HH0"/>
                 <outlet property="likeButton" destination="Ooc-bI-76m" id="UzO-nt-6nU"/>
                 <outlet property="likeNumberLabel" destination="JN6-Fi-Azo" id="1ax-iY-LyA"/>
                 <outlet property="postUserImageView" destination="lNF-2p-zdQ" id="x40-QE-lE6"/>
