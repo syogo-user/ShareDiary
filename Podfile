@@ -4,7 +4,7 @@
 target 'ShareDiary' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  inhibit_all_warnings!
   # Pods for ShareDiary
   pod 'Firebase','6.11.0'
   pod 'Firebase/Analytics'
@@ -24,6 +24,8 @@ end
 
 target 'TShareDiary' do
   use_frameworks!
+  inhibit_all_warnings!
+  # Pods for TShareDiary
   pod 'Firebase','6.11.0'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
