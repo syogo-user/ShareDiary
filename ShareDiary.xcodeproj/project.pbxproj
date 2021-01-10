@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B6D161049F1E172593308F9 /* Pods_ShareDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26F795D8D5D0D0C07C87642 /* Pods_ShareDiary.framework */; };
 		3D031C352461198A00A845C1 /* UsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D031C332461198A00A845C1 /* UsersTableViewCell.swift */; };
 		3D031C362461198A00A845C1 /* UsersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D031C342461198A00A845C1 /* UsersTableViewCell.xib */; };
 		3D031C3824616B0100A845C1 /* UserPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D031C3724616B0100A845C1 /* UserPostData.swift */; };
@@ -99,8 +100,6 @@
 		9154E34B257352140061E4F4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D871999240A500700D4064E /* Const.swift */; };
 		9154E34C257352140061E4F4 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0F925288B2900CC8638 /* PasswordChangeViewController.swift */; };
 		9154E34D257352140061E4F4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D42D71C240A8F9900133261 /* PostTableViewCell.swift */; };
-		9154E34F257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDF3F7F5767B8238D0E6CBF6 /* Pods_ShareDiary.framework */; };
-		9154E350257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E26F795D8D5D0D0C07C87642 /* Pods_ShareDiary.framework */; };
 		9154E352257352140061E4F4 /* InputTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE8129324B9906C00E85957 /* InputTextView.xib */; };
 		9154E353257352140061E4F4 /* FollowFollowerListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D49C2882467F0A7008ACC25 /* FollowFollowerListTableViewCell.xib */; };
 		9154E354257352140061E4F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F46CFB24E2E38000155CF5 /* Assets.xcassets */; };
@@ -118,15 +117,20 @@
 		919A071924DBF2C8004D07AE /* FullsizeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */; };
 		919ED0D625298511002344DF /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919ED0D525298511002344DF /* Validation.swift */; };
 		91C912A72560D56000074A46 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C912A62560D56000074A46 /* CheckBox.swift */; };
+		91DA683E25A8659E0027F8D6 /* ImageLayoutWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DA683D25A8659E0027F8D6 /* ImageLayoutWorkerView.swift */; };
+		91DA683F25A8659E0027F8D6 /* ImageLayoutWorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DA683D25A8659E0027F8D6 /* ImageLayoutWorkerView.swift */; };
+		91DA684125A865EA0027F8D6 /* ImageLayoutWorkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DA684025A865EA0027F8D6 /* ImageLayoutWorkerView.xib */; };
+		91DA684225A865EA0027F8D6 /* ImageLayoutWorkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DA684025A865EA0027F8D6 /* ImageLayoutWorkerView.xib */; };
 		91EAE0F825287F8B00CC8638 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0F725287F8B00CC8638 /* SettingViewController.swift */; };
 		91EAE0FA25288B2900CC8638 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0F925288B2900CC8638 /* PasswordChangeViewController.swift */; };
 		91EAE0FC25288FB100CC8638 /* MailAddressChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EAE0FB25288FB100CC8638 /* MailAddressChangeViewController.swift */; };
 		91F2974425032C1A00C59DBA /* GradationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F2974325032C1A00C59DBA /* GradationView.swift */; };
 		91F46CFC24E2E38100155CF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F46CFB24E2E38000155CF5 /* Assets.xcassets */; };
+		C6A1FD47B6E1208FC6FF3F68 /* Pods_TShareDiary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E490BB8CA9075D45CBF94C /* Pods_TShareDiary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		283C5F3601AA315FC5B9B827 /* Pods-ShareDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareDiary.release.xcconfig"; path = "Target Support Files/Pods-ShareDiary/Pods-ShareDiary.release.xcconfig"; sourceTree = "<group>"; };
+		05E490BB8CA9075D45CBF94C /* Pods_TShareDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TShareDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D031C332461198A00A845C1 /* UsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewCell.swift; sourceTree = "<group>"; };
 		3D031C342461198A00A845C1 /* UsersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersTableViewCell.xib; sourceTree = "<group>"; };
 		3D031C3724616B0100A845C1 /* UserPostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostData.swift; sourceTree = "<group>"; };
@@ -183,14 +187,19 @@
 		919A071824DBF2C8004D07AE /* FullsizeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullsizeImageViewController.swift; sourceTree = "<group>"; };
 		919ED0D525298511002344DF /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		91C912A62560D56000074A46 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		91DA683D25A8659E0027F8D6 /* ImageLayoutWorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLayoutWorkerView.swift; sourceTree = "<group>"; };
+		91DA684025A865EA0027F8D6 /* ImageLayoutWorkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLayoutWorkerView.xib; sourceTree = "<group>"; };
 		91EAE0F725287F8B00CC8638 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		91EAE0F925288B2900CC8638 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		91EAE0FB25288FB100CC8638 /* MailAddressChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailAddressChangeViewController.swift; sourceTree = "<group>"; };
 		91F2974325032C1A00C59DBA /* GradationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradationView.swift; sourceTree = "<group>"; };
 		91F46CFB24E2E38000155CF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9E356A6826D884051068C3D9 /* Pods-ShareDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareDiary.release.xcconfig"; path = "Target Support Files/Pods-ShareDiary/Pods-ShareDiary.release.xcconfig"; sourceTree = "<group>"; };
+		B86A3F7184F1AC68098F11E9 /* Pods-ShareDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareDiary.debug.xcconfig"; path = "Target Support Files/Pods-ShareDiary/Pods-ShareDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		C3CC7BE3B44E43570E732E60 /* Pods-TShareDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TShareDiary.debug.xcconfig"; path = "Target Support Files/Pods-TShareDiary/Pods-TShareDiary.debug.xcconfig"; sourceTree = "<group>"; };
+		D45871997D60C80B0B5CAD45 /* Pods-TShareDiary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TShareDiary.release.xcconfig"; path = "Target Support Files/Pods-TShareDiary/Pods-TShareDiary.release.xcconfig"; sourceTree = "<group>"; };
 		DDF3F7F5767B8238D0E6CBF6 /* Pods_ShareDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E26F795D8D5D0D0C07C87642 /* Pods_ShareDiary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareDiary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F60724E31802F5BBE9FF9228 /* Pods-ShareDiary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShareDiary.debug.xcconfig"; path = "Target Support Files/Pods-ShareDiary/Pods-ShareDiary.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +209,7 @@
 			files = (
 				64479EA1EEDDF1F2C9380C1E /* Pods_ShareDiary.framework in Frameworks */,
 				77BE8041803A71A746E1929D /* Pods_ShareDiary.framework in Frameworks */,
+				0B6D161049F1E172593308F9 /* Pods_ShareDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,8 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9154E34F257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */,
-				9154E350257352140061E4F4 /* Pods_ShareDiary.framework in Frameworks */,
+				C6A1FD47B6E1208FC6FF3F68 /* Pods_TShareDiary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +227,10 @@
 		1F37A0A2487ACF5D8F3D0236 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F60724E31802F5BBE9FF9228 /* Pods-ShareDiary.debug.xcconfig */,
-				283C5F3601AA315FC5B9B827 /* Pods-ShareDiary.release.xcconfig */,
+				B86A3F7184F1AC68098F11E9 /* Pods-ShareDiary.debug.xcconfig */,
+				9E356A6826D884051068C3D9 /* Pods-ShareDiary.release.xcconfig */,
+				C3CC7BE3B44E43570E732E60 /* Pods-TShareDiary.debug.xcconfig */,
+				D45871997D60C80B0B5CAD45 /* Pods-TShareDiary.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -292,6 +303,7 @@
 				3DC3185E24ACBED4000D38F3 /* LikeUserListTableViewCell.xib */,
 				3DA5083724B1D0FA00FE1148 /* CommentTableViewCell.xib */,
 				3DE8129324B9906C00E85957 /* InputTextView.xib */,
+				91DA684025A865EA0027F8D6 /* ImageLayoutWorkerView.xib */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -338,6 +350,7 @@
 				3DC3185D24ACBED4000D38F3 /* LikeUserListTableViewCell.swift */,
 				3DA5083624B1D0FA00FE1148 /* CommentTableViewCell.swift */,
 				3DE8129524B991B700E85957 /* InputTextView.swift */,
+				91DA683D25A8659E0027F8D6 /* ImageLayoutWorkerView.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -355,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				E26F795D8D5D0D0C07C87642 /* Pods_ShareDiary.framework */,
+				05E490BB8CA9075D45CBF94C /* Pods_TShareDiary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -401,11 +415,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9154E35E257352140061E4F4 /* Build configuration list for PBXNativeTarget "TShareDiary" */;
 			buildPhases = (
-				9154E320257352140061E4F4 /* [CP] Check Pods Manifest.lock */,
+				EED8D3D7B4D909BC601E0EAC /* [CP] Check Pods Manifest.lock */,
 				9154E321257352140061E4F4 /* Sources */,
 				9154E34E257352140061E4F4 /* Frameworks */,
 				9154E351257352140061E4F4 /* Resources */,
-				9154E35D257352140061E4F4 /* [CP] Embed Pods Frameworks */,
+				20436E098AB758F97C93E7DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -459,6 +473,7 @@
 				3D49C28A2467F0A7008ACC25 /* FollowFollowerListTableViewCell.xib in Resources */,
 				91F46CFC24E2E38100155CF5 /* Assets.xcassets in Resources */,
 				3D9BFE8F23FEE760009893B1 /* LaunchScreen.storyboard in Resources */,
+				91DA684125A865EA0027F8D6 /* ImageLayoutWorkerView.xib in Resources */,
 				3DD44DA624664DC10001E7A8 /* FollowRequestListTableViewCell.xib in Resources */,
 				3DC3186024ACBED4000D38F3 /* LikeUserListTableViewCell.xib in Resources */,
 				3D42D71F240A8F9900133261 /* PostTableViewCell.xib in Resources */,
@@ -477,6 +492,7 @@
 				9154E353257352140061E4F4 /* FollowFollowerListTableViewCell.xib in Resources */,
 				9154E354257352140061E4F4 /* Assets.xcassets in Resources */,
 				9154E355257352140061E4F4 /* LaunchScreen.storyboard in Resources */,
+				91DA684225A865EA0027F8D6 /* ImageLayoutWorkerView.xib in Resources */,
 				9154E356257352140061E4F4 /* FollowRequestListTableViewCell.xib in Resources */,
 				9154E357257352140061E4F4 /* LikeUserListTableViewCell.xib in Resources */,
 				9154E358257352140061E4F4 /* PostTableViewCell.xib in Resources */,
@@ -507,7 +523,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9154E320257352140061E4F4 /* [CP] Check Pods Manifest.lock */ = {
+		20436E098AB758F97C93E7DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TShareDiary/Pods-TShareDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TShareDiary/Pods-TShareDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TShareDiary/Pods-TShareDiary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EED8D3D7B4D909BC601E0EAC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -522,28 +555,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ShareDiary-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TShareDiary-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9154E35D257352140061E4F4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ShareDiary/Pods-ShareDiary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB60127C8D932C24D026CC6C /* [CP] Check Pods Manifest.lock */ = {
@@ -591,6 +607,7 @@
 				3D9BFE9723FEE8DB009893B1 /* CalendarViewController.swift in Sources */,
 				919ED0D625298511002344DF /* Validation.swift in Sources */,
 				9110558624E9248600D1B796 /* AccountCreateViewController.swift in Sources */,
+				91DA683E25A8659E0027F8D6 /* ImageLayoutWorkerView.swift in Sources */,
 				3DA5083524B1C61500FE1148 /* CommentData.swift in Sources */,
 				3D9BFE9B23FEE95C009893B1 /* FriendSearchViewController.swift in Sources */,
 				3D9BFE8323FEE75F009893B1 /* AppDelegate.swift in Sources */,
@@ -643,6 +660,7 @@
 				9154E32E257352140061E4F4 /* CalendarViewController.swift in Sources */,
 				9154E32F257352140061E4F4 /* Validation.swift in Sources */,
 				9154E330257352140061E4F4 /* AccountCreateViewController.swift in Sources */,
+				91DA683F25A8659E0027F8D6 /* ImageLayoutWorkerView.swift in Sources */,
 				9154E331257352140061E4F4 /* CommentData.swift in Sources */,
 				9154E332257352140061E4F4 /* FriendSearchViewController.swift in Sources */,
 				9154E333257352140061E4F4 /* AppDelegate.swift in Sources */,
@@ -813,13 +831,13 @@
 		};
 		3D9BFE9423FEE760009893B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F60724E31802F5BBE9FF9228 /* Pods-ShareDiary.debug.xcconfig */;
+			baseConfigurationReference = B86A3F7184F1AC68098F11E9 /* Pods-ShareDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
 				DISPLAY_NAME = ShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
@@ -828,6 +846,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.ShareDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -838,13 +857,13 @@
 		};
 		3D9BFE9523FEE760009893B1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 283C5F3601AA315FC5B9B827 /* Pods-ShareDiary.release.xcconfig */;
+			baseConfigurationReference = 9E356A6826D884051068C3D9 /* Pods-ShareDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
 				DISPLAY_NAME = ShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
@@ -853,6 +872,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.ShareDiary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -863,13 +883,13 @@
 		};
 		9154E35F257352140061E4F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F60724E31802F5BBE9FF9228 /* Pods-ShareDiary.debug.xcconfig */;
+			baseConfigurationReference = C3CC7BE3B44E43570E732E60 /* Pods-TShareDiary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
 				DISPLAY_NAME = TShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
@@ -878,6 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.TShareDiary";
 				PRODUCT_NAME = TShareDiary;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -888,13 +909,13 @@
 		};
 		9154E360257352140061E4F4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 283C5F3601AA315FC5B9B827 /* Pods-ShareDiary.release.xcconfig */;
+			baseConfigurationReference = D45871997D60C80B0B5CAD45 /* Pods-TShareDiary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.4;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
 				DISPLAY_NAME = TShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
@@ -903,6 +924,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.techacademy.syogo-user.TShareDiary";
 				PRODUCT_NAME = TShareDiary;
 				PROVISIONING_PROFILE_SPECIFIER = "";

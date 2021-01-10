@@ -19,7 +19,28 @@ target 'ShareDiary' do
   pod 'CropViewController','2.5.3'
   pod 'DKImagePickerController'
   pod 'CalculateCalendarLogic'
+  pod 'Firebase/Messaging'
 end
+
+target 'TShareDiary' do
+  use_frameworks!
+  pod 'Firebase','6.11.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
+  pod 'FSCalendar'
+  pod 'SVProgressHUD','2.2.5'
+  pod 'SlideMenuControllerSwift'
+  pod 'CLImageEditor/AllTools','0.2.4'
+  pod 'CropViewController','2.5.3'
+  pod 'DKImagePickerController'
+  pod 'CalculateCalendarLogic'
+  pod 'Firebase/Messaging'
+
+end
+
 swift4 = ['SlideMenuControllerSwift']
 post_install do |installer|
     installer.pods_project.targets.each do |target|
