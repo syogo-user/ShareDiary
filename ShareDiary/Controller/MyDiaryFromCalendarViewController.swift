@@ -15,6 +15,8 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
     var postArray :[PostData] = []
     var diaryDate :String = ""
     let cellHeight :CGFloat = 800
+    //プロフィール写真名
+    var myImageName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +33,8 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //投稿の取得し描画
-        reload()
+        //自分のプロフィール写真名を取得後に描画
+        self.getMyImageAfterReload()
     }
     private func reload(){
         guard let myUid = Auth.auth().currentUser?.uid else {return}
@@ -71,6 +73,10 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! PostTableViewCell
+        
+        //プロフィール写真名を設定
+        self.profileImageNameSet()
+        
         cell.setPostData(postArray[indexPath.row])
         cell.imageLayoutWorkerView.imageLayoutWorkerViewCellDelegate = self
         //いいねボタンのアクションをソースコードで設定する
@@ -132,9 +138,39 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
             postRef.updateData(["likes": updateValue])
         }
-        //再描画
-        reload()
+        //自分のプロフィール写真名を取得後に再描画
+        self.getMyImageAfterReload()
+        
     }
+    private func getMyImageAfterReload(){
+        guard let myUid = Auth.auth().currentUser?.uid else{return}
+        let myUserRef = Firestore.firestore().collection(Const.Users).document(myUid)
+        myUserRef.getDocument{
+            (document ,error) in
+            if error != nil {
+                print("DEBUG: snapshotの取得が失敗しました。")
+                return
+            }
+            //myImageName
+            guard let document = document else {return}
+            if let userData = document.data() {
+                //myImageNameに自分のプロフィール写真名を設定
+                self.myImageName = userData["myImageName"] as? String ?? ""
+                
+                //描画
+                self.reload()
+            }
+        }
+    }
+    
+    //自分のプロフィール写真名を設定
+    private func profileImageNameSet(){
+        self.postArray.forEach(){ post in
+            //自分のプロフィール写真名を設定
+            post.profileImageName = self.myImageName
+        }
+    }
+
 }
 extension MyDiaryFromCalendarViewController:ImageLayoutWorkerViewCellDelegate{
     //PostTablViewCellの投稿写真をタップしたときに呼ばれる
