@@ -72,7 +72,7 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
-        cell.postTableViewCellDelegate = self
+        cell.imageLayoutWorkerView.imageLayoutWorkerViewCellDelegate = self
         //いいねボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(tapLikeButton(_:forEvent:)), for: .touchUpInside)
 
@@ -136,7 +136,7 @@ class MyDiaryFromCalendarViewController: UIViewController ,UITableViewDataSource
         reload()
     }
 }
-extension MyDiaryFromCalendarViewController:PostTableViewCellDelegate{
+extension MyDiaryFromCalendarViewController:ImageLayoutWorkerViewCellDelegate{
     //PostTablViewCellの投稿写真をタップしたときに呼ばれる
     func imageTransition(_ sender:UITapGestureRecognizer) {
         //タップしたUIImageViewを取得
@@ -148,5 +148,4 @@ extension MyDiaryFromCalendarViewController:PostTableViewCellDelegate{
         fullsizeImageViewController.image = tappedImage
         self.present(fullsizeImageViewController, animated: true, completion: nil)
     }
-    
 }

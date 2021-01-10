@@ -76,7 +76,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvo-XL-Yh4">
-                                <rect key="frame" x="15" y="120" width="285" height="25"/>
+                                <rect key="frame" x="15" y="120" width="285" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="Ux7-XF-s7t"/>
                                 </constraints>
@@ -95,7 +95,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaW-X1-bvV" customClass="ImageLayoutWorkerView" customModule="ShareDiary" customModuleProvider="target">
-                                <rect key="frame" x="15" y="165" width="280" height="300"/>
+                                <rect key="frame" x="15" y="160.5" width="280" height="299.5"/>
                                 <color key="backgroundColor" red="0.90900577910958902" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="pB8-Pu-4ia"/>
@@ -131,7 +131,7 @@
                             <constraint firstItem="31F-Mi-oZ9" firstAttribute="bottom" secondItem="lNF-2p-zdQ" secondAttribute="bottom" id="dmx-RV-pWu"/>
                             <constraint firstItem="Uvo-XL-Yh4" firstAttribute="leading" secondItem="lNF-2p-zdQ" secondAttribute="leading" id="g5B-Pe-7cC"/>
                             <constraint firstItem="Ooc-bI-76m" firstAttribute="top" secondItem="lNF-2p-zdQ" secondAttribute="top" id="gvC-ut-30h"/>
-                            <constraint firstAttribute="bottom" secondItem="DaW-X1-bvV" secondAttribute="bottom" constant="20" id="mz2-Vs-h4i"/>
+                            <constraint firstAttribute="bottom" secondItem="DaW-X1-bvV" secondAttribute="bottom" constant="25" id="mz2-Vs-h4i"/>
                             <constraint firstItem="lNF-2p-zdQ" firstAttribute="leading" secondItem="KbI-9e-LAJ" secondAttribute="leading" constant="15" id="oIv-WN-Os7"/>
                             <constraint firstItem="DaW-X1-bvV" firstAttribute="leading" secondItem="KbI-9e-LAJ" secondAttribute="leading" constant="15" id="qsI-A6-djq"/>
                             <constraint firstItem="lNF-2p-zdQ" firstAttribute="top" secondItem="KbI-9e-LAJ" secondAttribute="top" constant="15" id="tmQ-ll-bor"/>

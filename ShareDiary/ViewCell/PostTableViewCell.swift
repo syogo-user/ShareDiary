@@ -10,9 +10,9 @@ import UIKit
 import FirebaseUI
 import Firebase
 
-protocol PostTableViewCellDelegate {
-    func imageTransition(_ sender:UITapGestureRecognizer)
-}
+//protocol PostTableViewCellDelegate {
+//    func imageTransition(_ sender:UITapGestureRecognizer)
+//}
 
 
 class PostTableViewCell: UITableViewCell {
@@ -33,7 +33,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var imageLayoutWorkerView: ImageLayoutWorkerView!
     
     //デリゲート
-    var postTableViewCellDelegate :PostTableViewCellDelegate?
+//    var postTableViewCellDelegate :PostTableViewCellDelegate?
     //写真の配置に使用する変数を定義
     let xPosition :CGFloat  = 30.0 //x
     let yPosition :CGFloat  = 500.0 //y
@@ -80,7 +80,7 @@ class PostTableViewCell: UITableViewCell {
     }
         
     //image:選択した写真,index：選択した何枚目,maxCount：選択した全枚数
-    private func imageSet(imageRef:StorageReference,index:Int,maxCount:Int){
+//    private func imageSet(imageRef:StorageReference,index:Int,maxCount:Int){
         
 //        //生成
 //        let imageLayoutWorkerView = ImageLayoutWorkerView()
@@ -120,7 +120,7 @@ class PostTableViewCell: UITableViewCell {
 //
 //        }
         
-    }
+//    }
     
     //写真を削除
     private func removeUIImageSubviews(parentView: UIView){
@@ -132,10 +132,10 @@ class PostTableViewCell: UITableViewCell {
             }
         }
     }
-    //フルサイズの写真をモーダルで表示
-    @objc func imageTransition(_ sender:UITapGestureRecognizer){
-        postTableViewCellDelegate?.imageTransition(sender)
-    }
+//    //フルサイズの写真をモーダルで表示
+//    @objc func imageTransition(_ sender:UITapGestureRecognizer){
+//        postTableViewCellDelegate?.imageTransition(sender)
+//    }
     
 //    private func imageCount1(imageRef:StorageReference,imageView:UIImageView,stackViewHorizon1:UIStackView){
 //        //x軸方向並び

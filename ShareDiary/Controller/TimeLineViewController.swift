@@ -97,7 +97,7 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
         cell.variousButton.addTarget(self, action:#selector(tapVariousButtion(_:forEvent:)), for: .touchUpInside)
         
         //自作のデリゲート
-        cell.postTableViewCellDelegate = self
+        cell.imageLayoutWorkerView.imageLayoutWorkerViewCellDelegate = self
         return cell
     }
     //高さ調整
@@ -432,10 +432,9 @@ class TimeLineViewController: UIViewController ,UITableViewDataSource, UITableVi
     
 }
 
-extension TimeLineViewController:PostTableViewCellDelegate{
+extension TimeLineViewController:ImageLayoutWorkerViewCellDelegate{
     //PostTablViewCellの投稿写真をタップしたときに呼ばれる
     func imageTransition(_ sender:UITapGestureRecognizer) {
-        
         //タップしたUIImageViewを取得
         let tappedUIImageView = sender.view! as? UIImageView
         //  UIImage を取得

@@ -10,6 +10,9 @@
 import UIKit
 import FirebaseUI
 import Firebase
+protocol ImageLayoutWorkerViewCellDelegate {
+    func imageTransition(_ sender:UITapGestureRecognizer)
+}
 class ImageLayoutWorkerView: UIView {
 
 
@@ -42,7 +45,8 @@ class ImageLayoutWorkerView: UIView {
         // Drawing code
     }
     */
-
+    //デリゲート
+    var imageLayoutWorkerViewCellDelegate :ImageLayoutWorkerViewCellDelegate?
     
     
     override init(frame: CGRect) {
@@ -72,8 +76,10 @@ class ImageLayoutWorkerView: UIView {
             }
         }else{
             //写真が0枚の場合
-            self.stackViewTop.isHidden = true //非表示
-            self.stackViewBottom.isHidden = true //非表示
+            self.stackViewTopHeight.constant = 0.0
+            self.stackViewBottomHeight.constant = 0.0
+//            self.stackViewTop.isHidden = true //非表示
+//            self.stackViewBottom.isHidden = true //非表示
         }
         
         
@@ -224,6 +230,24 @@ class ImageLayoutWorkerView: UIView {
 //            self.stackViewBottom.isHidden = true //非表示
             print("")
         }
+        
+        //タップイベント追加
+        //image1
+        image1.isUserInteractionEnabled = true
+        image1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
+        //image2
+        image2.isUserInteractionEnabled = true
+        image2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
+        //image3
+        image3.isUserInteractionEnabled = true
+        image3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
+        //image4
+        image4.isUserInteractionEnabled = true
+        image4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
+    }
+    //フルサイズの写真をモーダルで表示
+    @objc func imageTransition(_ sender:UITapGestureRecognizer){
+        imageLayoutWorkerViewCellDelegate?.imageTransition(sender)
     }
 //
 //    func reloadConstraint(){
