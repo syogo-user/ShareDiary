@@ -10,10 +10,6 @@ import UIKit
 import FirebaseUI
 import Firebase
 
-//protocol PostTableViewCellDelegate {
-//    func imageTransition(_ sender:UITapGestureRecognizer)
-//}
-
 
 class PostTableViewCell: UITableViewCell {
         
@@ -24,16 +20,12 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeNumberLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var contentLabel: UILabel!
-//    @IBOutlet weak var contentLabelBottomConstraint: NSLayoutConstraint!  //削除予定
     @IBOutlet weak var contentsView: GradationView!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var commentNumberLabel: UILabel!
     @IBOutlet weak var variousButton: UIButton!
-    
     @IBOutlet weak var imageLayoutWorkerView: ImageLayoutWorkerView!
-    
-    //デリゲート
-//    var postTableViewCellDelegate :PostTableViewCellDelegate?
+
     //写真の配置に使用する変数を定義
     let xPosition :CGFloat  = 30.0 //x
     let yPosition :CGFloat  = 500.0 //y
@@ -43,12 +35,6 @@ class PostTableViewCell: UITableViewCell {
     let constantValue2 :CGFloat = 50.0 //制約
     let adjustmentValue :CGFloat = 15 //調整
     
-//    let contentLabelBottomConstraint0:CGFloat = 50  //contentLabelから下の長さ
-//    let contentLabelBottomConstraint1:CGFloat = 350 //contentLabelから下の長さ
-//    let contentLabelBottomConstraint2:CGFloat = 240 //contentLabelから下の長さ
-//    let contentLabelBottomConstraint3:CGFloat = 390 //contentLabelから下の長さ
-//    let contentLabelBottomConstraint4:CGFloat = 350 //contentLabelから下の長さ
-
     let cornerRadius1:CGFloat = 20
     let cornerRadius2:CGFloat = 25
     override func awakeFromNib() {
@@ -78,49 +64,6 @@ class PostTableViewCell: UITableViewCell {
     override func updateConstraints() {
         super.updateConstraints()
     }
-        
-    //image:選択した写真,index：選択した何枚目,maxCount：選択した全枚数
-//    private func imageSet(imageRef:StorageReference,index:Int,maxCount:Int){
-        
-//        //生成
-//        let imageLayoutWorkerView = ImageLayoutWorkerView()
-//        imageLayoutWorkerView.imageSet(index:index,imageMaxCount: maxCount,imageRef:imageRef)
-//        self.contentsView.addSubview(imageLayoutWorkerView)
-        
-        
-        
-        
-        
-//        //imageViewの初期化
-//        let imageView = UIImageView()
-//        //タップイベント追加
-//        imageView.isUserInteractionEnabled = true
-//        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
-//        //画像のアスペクト比　sacaleAspectFil：写真の比率は変わらない。imageViewの枠を超える。cliptToBounds をtrueにしているため枠は超えずに、比率も変わらない。
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
-//        imageView.backgroundColor = .black
-//
-//        //画像の枚数によってサイズと配置場所を設定する
-//        switch maxCount {
-//        case 1:
-//            //画像１枚の場合
-//            self.imageCount1(imageRef:imageRef,imageView: imageView,stackViewHorizon1:stackViewHorizon1)
-//        case 2:
-//            //画像２枚の場合
-//            self.imageCount2(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1)
-//        case 3:
-//            //画像３枚の場合
-//            self.imageCount3(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1: stackViewHorizon1,stackViewHorizon2: stackViewHorizon2)
-//        case 4:
-//            //画像４枚の場合
-//            self.imageCount4(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
-//
-//        default: break
-//
-//        }
-        
-//    }
     
     //写真を削除
     private func removeUIImageSubviews(parentView: UIView){
@@ -132,148 +75,6 @@ class PostTableViewCell: UITableViewCell {
             }
         }
     }
-//    //フルサイズの写真をモーダルで表示
-//    @objc func imageTransition(_ sender:UITapGestureRecognizer){
-//        postTableViewCellDelegate?.imageTransition(sender)
-//    }
-    
-//    private func imageCount1(imageRef:StorageReference,imageView:UIImageView,stackViewHorizon1:UIStackView){
-//        //x軸方向並び
-//        stackViewHorizon1.axis = .horizontal
-//        //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//        stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-//        //すべて同じ幅
-//        stackViewHorizon1.distribution = .fillEqually
-//
-//        stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-//        stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//        stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//        stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
-//
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.layer.cornerRadius = cornerRadius1
-//        //角丸 左上 右上 左下 右下
-//        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-//        imageView.sd_setImage(with: imageRef)
-//        //スタックビューに写真を追加
-//        stackViewHorizon1.addArrangedSubview(imageView)
-//    }
-    
-//    private func imageCount2(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView){
-//        switch index {
-//        case 1:
-//            //x軸方向並び
-//            stackViewHorizon1.axis = .horizontal
-//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//            stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon1.distribution = .fillEqually
-//            stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-//            stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-//
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左上 左下
-//            imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon1.addArrangedSubview(imageView)
-//        case 2:
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右上 右下
-//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon1.addArrangedSubview(imageView)
-//        default:
-//            break
-//        }
-//
-//    }
-//    private func imageCount3(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-//        switch index {
-//        case 1:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左上
-//            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-//        case 2:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右上
-//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
-//        case 3:
-//            //x軸方向に横並び
-//            stackViewHorizon2.axis = .horizontal
-//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon2.distribution = .fillEqually
-//
-//            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
-//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
-//
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左下 右下
-//            imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon2.addArrangedSubview(imageView)
-//
-//        default:
-//            break
-//        }
-//    }
-//    private func imageCount4(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-//        switch index {
-//        case 1:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左上
-//            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-//        case 2:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右上
-//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
-//        case 3:
-//            //x軸方向並び
-//            stackViewHorizon2.axis = .horizontal
-//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon2.distribution = .fillEqually
-//
-//            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
-//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-//
-//
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左下
-//            imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon2.addArrangedSubview(imageView)
-//        case 4:
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右下
-//            imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon2.addArrangedSubview(imageView)
-//        default:
-//            break
-//        }
-//    }
     
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
@@ -281,77 +82,10 @@ class PostTableViewCell: UITableViewCell {
         let imageMaxNumber  = postData.contentImageMaxNumber
         //StackViewを削除
         self.removeUIImageSubviews(parentView: self.contentsView)
-        //投稿写真の枚数分ループする (1,2,3,4)
         //投稿された写真の表示
-        
-        
         imageLayoutWorkerView.imageSet(imageMaxCount: imageMaxNumber,imageName:postData.id)
-        
-//        if imageMaxNumber > 0{
-//            //外枠のStackViewの生成
-//            let stackView = UIStackView()
-//
-//            //y軸方向並び
-//            stackView.axis = .vertical
-//
-//            stackView.translatesAutoresizingMaskIntoConstraints = false
-//            //外枠のスタックビューをビューに設定
-//            self.contentsView.addSubview(stackView)
-//            //制約
-//            stackView.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-//            stackView.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-//            stackView.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-//            if imageMaxNumber <= 3{
-//                //1〜3枚の場合
-//                stackView.heightAnchor.constraint(equalToConstant: 300 ).isActive = true
-//            } else {
-//                //4枚の場合
-//                stackView.heightAnchor.constraint(equalToConstant: 260 ).isActive = true
-//            }
-//            //内側のスタックビュー1を生成
-//            let stackViewHorizon1 = UIStackView()
-//            stackViewHorizon1.layer.masksToBounds = true
-//            //内側のスタックビューを外枠のスタックビューに設定
-//            stackView.addArrangedSubview(stackViewHorizon1)
-//
-//            //内側のスタックビュー2を生成
-//            let stackViewHorizon2 = UIStackView()
-//            stackViewHorizon2.layer.masksToBounds = true
-//            //内側のスタックビューを外枠のスタックビューに設定
-//            stackView.addArrangedSubview(stackViewHorizon2)
-            
-
-            
-            
-//            for i in 1...imageMaxNumber{
-//                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postData.id + "\(i)\(Const.Jpg)")
-//                imageSet(imageRef:imageRef ,index: i, maxCount: imageMaxNumber)
-//            }
-//        }
         //プロフィール写真の設定
         self.setMyImage(imageName: postData.profileImageName)
-        
-//        以下コメント部分削除する
-//        switch imageMaxNumber {
-//        case 0:
-//            //写真の枚数が0枚の場合
-//            contentLabelBottomConstraint.constant = contentLabelBottomConstraint0
-//        case 1:
-//            //写真の枚数が1枚の場合
-//            contentLabelBottomConstraint.constant = contentLabelBottomConstraint1
-//        case 2:
-//            //写真の枚数が2枚の場合
-//            contentLabelBottomConstraint.constant = contentLabelBottomConstraint2
-//        case 3:
-//            //写真の枚数が3枚の場合
-//            contentLabelBottomConstraint.constant = contentLabelBottomConstraint3
-//        case 4:
-//            //写真の枚数が4枚の場合
-//            contentLabelBottomConstraint.constant = contentLabelBottomConstraint4
-//
-//        default: break
-//        }
-        
         //画面表示
         self.displaySet(postData: postData)
     }
@@ -402,9 +136,7 @@ class PostTableViewCell: UITableViewCell {
             self.contentLabel.text! = content
         }
         //背景色を設定
-        contentsView.setBackgroundColor(colorIndex:postData.backgroundColorIndex)
-        
-//        imageLayoutWorkerView.reloadConstraint()//削除して良い
+        contentsView.setBackgroundColor(colorIndex:postData.backgroundColorIndex)        
     }
     
     private func setPostImage(uid:String){

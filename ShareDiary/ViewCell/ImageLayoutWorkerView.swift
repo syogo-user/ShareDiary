@@ -15,16 +15,6 @@ protocol ImageLayoutWorkerViewCellDelegate {
 }
 class ImageLayoutWorkerView: UIView {
 
-
-    //    @IBOutlet weak var image1: UIImageView!
-    //    @IBOutlet weak var image2: UIImageView!
-    //    @IBOutlet weak var image3: UIImageView!
-    //    @IBOutlet weak var image4: UIImageView!
-    //    @IBOutlet weak var stackViewTop: UIStackView!
-    //    @IBOutlet weak var stackViewBottom: UIStackView!
-    //    @IBOutlet weak var stackViewTopHeight: NSLayoutConstraint!
-    //    @IBOutlet weak var stackViewBottomHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
@@ -38,13 +28,6 @@ class ImageLayoutWorkerView: UIView {
     var imageMaxCount : Int = 0 //写真の枚数
     let cornerRadius1:CGFloat = 20
     let cornerRadius2:CGFloat = 0
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     //デリゲート
     var imageLayoutWorkerViewCellDelegate :ImageLayoutWorkerViewCellDelegate?
     
@@ -78,8 +61,6 @@ class ImageLayoutWorkerView: UIView {
             //写真が0枚の場合
             self.stackViewTopHeight.constant = 0.0
             self.stackViewBottomHeight.constant = 0.0
-//            self.stackViewTop.isHidden = true //非表示
-//            self.stackViewBottom.isHidden = true //非表示
         }
         
         
@@ -109,9 +90,6 @@ class ImageLayoutWorkerView: UIView {
             self.image2.isHidden  = true //非表示
             self.image3.isHidden  = true //非表示
             self.image4.isHidden  = true //非表示
-            
-//            self.stackViewTop.isHidden = false //表示
-//            self.stackViewBottom.isHidden = true //非表示
                     
             self.stackViewTopHeight.constant = 250.0
             self.stackViewBottomHeight.constant = 0.0
@@ -133,9 +111,6 @@ class ImageLayoutWorkerView: UIView {
             self.image2.isHidden = false //表示
             self.image3.isHidden  = true //非表示
             self.image4.isHidden  = true //非表示
-            
-//            self.stackViewTop.isHidden = false //表示
-//            self.stackViewBottom.isHidden = true //非表示
             
             self.stackViewTopHeight.constant = 150.0
             self.stackViewBottomHeight.constant = 0.0
@@ -163,8 +138,6 @@ class ImageLayoutWorkerView: UIView {
             self.image2.isHidden = false //表示
             self.image3.isHidden = false //表示
             self.image4.isHidden  = true //非表示
-//            self.stackViewTop.isHidden = false //表示
-//            self.stackViewBottom.isHidden = false //表示
             
             self.stackViewTopHeight.constant = 130
             self.stackViewBottomHeight.constant = 170
@@ -195,10 +168,6 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden = false //表示
             self.image4.isHidden  = false //表示
             
-
-//            self.stackViewTop.isHidden = false //表示
-//            self.stackViewBottom.isHidden = false //表示
-            
             self.stackViewTopHeight.constant = 130
             self.stackViewBottomHeight.constant = 130
             
@@ -226,9 +195,7 @@ class ImageLayoutWorkerView: UIView {
             self.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
 
         default:
-//            self.stackViewTop.isHidden = true //非表示
-//            self.stackViewBottom.isHidden = true //非表示
-            print("")
+            print("DEBUG:default")
         }
         
         //タップイベント追加
@@ -249,26 +216,5 @@ class ImageLayoutWorkerView: UIView {
     @objc func imageTransition(_ sender:UITapGestureRecognizer){
         imageLayoutWorkerViewCellDelegate?.imageTransition(sender)
     }
-//
-//    func reloadConstraint(){
-//        switch imageMaxCount{
-//        case 1:
-//            self.stackViewTopHeight.constant = 250.0
-//            self.stackViewBottomHeight.constant = 0.0
-//        case 2:
-//            self.stackViewTopHeight.constant = 130.0
-//            self.stackViewBottomHeight.constant = 0.0
-//        case 3:
-//            self.stackViewTopHeight.constant = 130.0
-//            self.stackViewBottomHeight.constant = 170.0
-//        case 4:
-//            self.stackViewTopHeight.constant = 130.0
-//            self.stackViewBottomHeight.constant = 130.0
-//        default:
-//            //            self.stackViewTop.isHidden = true //非表示
-//            //            self.stackViewBottom.isHidden = true //非表示
-//            print("")
-//        }
-//    }
 
 }

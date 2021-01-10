@@ -26,8 +26,7 @@ class LikeUserListTableViewController: UIViewController {
         //画面下部の境界線を消す
         self.tableView.tableFooterView = UIView()
         self.backButton.addTarget(self, action: #selector(tabBackButton(_:)), for: .touchUpInside)
-        //削除ステートのユーザを除外し表示する
-//        self.accountDeleteStateGet(myUid:myUid)
+        //描画する
         self.tableView.reloadData()
         
     }

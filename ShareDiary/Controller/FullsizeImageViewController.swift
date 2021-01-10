@@ -12,8 +12,6 @@ class FullsizeImageViewController: UIViewController {
 
     @IBOutlet weak var cancelButton: UIButton!
     var image  = UIImage()
-//    var tableViewCGPoint : CGPoint = CGPoint()
-//    var transitionFromTimeLineFlg  = false //タイムラインからの画面遷移化どうか
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black

@@ -19,14 +19,11 @@ class DitailViewController: UIViewController {
     @IBOutlet weak var diaryDate: UILabel!
     @IBOutlet weak var postDeleteButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var containerView1: UIView!
-    
     @IBOutlet weak var containerView1: GradationView!
     @IBOutlet weak var diaryText: UILabel!
     @IBOutlet weak var shadowView: UIView!
-    
     @IBOutlet weak var imageLayoutWorkerView: ImageLayoutWorkerView!
-//    let gradientLayer = CAGradientLayer()
+
     
     var scrollFlg :Bool = false //下部（コメントエリア）にスクロールさせるかの判定
     var postData :PostData?
@@ -72,9 +69,7 @@ class DitailViewController: UIViewController {
         return true
     }
     override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()        
-        //グラーデションのフレームの大きさを設定
-//        gradientLayer.frame = self.containerView1.layer.bounds
+        super.viewWillLayoutSubviews()
     }
     
     
@@ -172,207 +167,6 @@ class DitailViewController: UIViewController {
         //初期表示後はスクロールをtrueとする
         self.scrollFlg = true
     }
-    
-//    //image:選択した写真,index：選択した何枚目,maxCount：選択した全枚数
-//    private func imageSet(imageRef:StorageReference,index:Int,maxCount:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-//        //imageViewの初期化
-//        let imageView = UIImageView()
-//        //タップイベント追加
-//        imageView.isUserInteractionEnabled = true //画像のタップを有効化。
-//        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
-//
-//        let swipeUp = UISwipeGestureRecognizer(target:self,action:nil)
-//        swipeUp.direction = .up
-//        imageView.addGestureRecognizer(swipeUp)
-//
-//        //画像のアスペクト比　sacaleAspectFil：写真の比率は変わらない。imageViewの枠を超える。cliptToBounds をtrueにしているため枠は超えずに、比率も変わらない。
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
-//        imageView.backgroundColor = .black
-//
-//        //画像の枚数によってサイズと配置場所を設定する
-//        switch maxCount {
-//        case 1:
-//            //画像１枚の場合
-//            self.imageCount1(imageRef:imageRef,imageView: imageView,stackViewHorizon1:stackViewHorizon1)
-//        case 2:
-//            //画像２枚の場合
-//            self.imageCount2(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1)
-//        case 3:
-//            //画像３枚の場合
-//            self.imageCount3(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1: stackViewHorizon1,stackViewHorizon2: stackViewHorizon2)
-//        case 4:
-//            //画像４枚の場合
-//            self.imageCount4(imageRef:imageRef,imageView: imageView,index:index,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
-//        default: break
-//
-//        }
-//
-//    }
-    //写真を削除
-    private func removeUIImageSubviews(parentView: UIView){
-        let subviews = parentView.subviews
-        for subview in subviews {
-            if let subview = subview as? UIImageView{
-                //UIImageViewが存在していたら削除する
-                subview.removeFromSuperview()
-            }
-        }
-    }
-//    //フルサイズの写真をモーダルで表示
-//    @objc func imageTransition(_ sender:UITapGestureRecognizer){
-//        //画面遷移
-//        //タップしたUIImageViewを取得
-//        let tappedImageView = sender.view! as! UIImageView
-//        //  UIImage を取得
-//        let tappedImage = tappedImageView.image!
-//
-//        let fullsizeImageViewController = self.storyboard?.instantiateViewController(withIdentifier: "FullsizeImageViewController") as! FullsizeImageViewController
-//        fullsizeImageViewController.modalPresentationStyle = .fullScreen
-//        fullsizeImageViewController.image = tappedImage
-//        self.present(fullsizeImageViewController, animated: true, completion: nil)
-//    }
-    
-//    private func imageCount1(imageRef:StorageReference,imageView:UIImageView,stackViewHorizon1:UIStackView){
-//        //x軸方向並び
-//        stackViewHorizon1.axis = .horizontal
-//        //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//        stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-//        //すべて同じ幅
-//        stackViewHorizon1.distribution = .fillEqually
-//
-//        stackViewHorizon1.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: self.constantValue2).isActive = true
-//        stackViewHorizon1.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-//        stackViewHorizon1.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-//        stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
-//
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.layer.cornerRadius = cornerRadius1
-//        //角丸 左上 右上 左下 右下
-//        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-//        imageView.sd_setImage(with: imageRef)
-//        //スタックビューに写真を追加
-//        stackViewHorizon1.addArrangedSubview(imageView)
-//    }
-//
-//    private func imageCount2(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView){
-//        switch index {
-//        case 1:
-//            //x軸方向並び
-//            stackViewHorizon1.axis = .horizontal
-//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//            stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon1.distribution = .fillEqually
-//            stackViewHorizon1.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: self.constantValue2).isActive = true
-//            stackViewHorizon1.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-//            stackViewHorizon1.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-//            stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-//
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左上 左下
-//            imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon1.addArrangedSubview(imageView)
-//        case 2:
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右上 右下
-//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon1.addArrangedSubview(imageView)
-//
-//        default:
-//            break
-//        }
-//
-//    }
-//    private func imageCount3(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-//        switch index {
-//        case 1:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左上
-//            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-//        case 2:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右上
-//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
-//        case 3:
-//            //x軸方向に横並び
-//            stackViewHorizon2.axis = .horizontal
-//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon2.distribution = .fillEqually
-//
-//            stackViewHorizon2.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: 180).isActive = true
-//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
-//
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左下 右下
-//            imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon2.addArrangedSubview(imageView)
-//
-//        default:
-//            break
-//        }
-//    }
-//    private func imageCount4(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-//        switch index {
-//        case 1:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左上
-//            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-//        case 2:
-//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右上
-//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
-//        case 3:
-//            //x軸方向並び
-//            stackViewHorizon2.axis = .horizontal
-//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-//            //すべて同じ幅
-//            stackViewHorizon2.distribution = .fillEqually
-//
-//            stackViewHorizon2.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: 180).isActive = true
-//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-//
-//
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 左下
-//            imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon2.addArrangedSubview(imageView)
-//        case 4:
-//            imageView.translatesAutoresizingMaskIntoConstraints = false
-//            imageView.layer.cornerRadius = cornerRadius1
-//            //角丸 右下
-//            imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
-//            imageView.sd_setImage(with: imageRef)
-//            //スタックビューに写真を追加
-//            stackViewHorizon2.addArrangedSubview(imageView)
-//
-//        default:
-//            break
-//        }
-//    }
-    
     
     private func setupNotification() {
         //キーボードが出てくる時の通知
@@ -490,46 +284,8 @@ class DitailViewController: UIViewController {
         //選択された写真の枚数
         let imageMaxNumber  = post.contentImageMaxNumber
         let postDocumentId = post.id
-        
-
+        //投稿された写真を表示
         imageLayoutWorkerView.imageSet(imageMaxCount: imageMaxNumber, imageName: postDocumentId)
-        //投稿写真の枚数分ループする (1,2,3,4)
-        //投稿された写真の表示
-//        if imageMaxNumber > 0{
-//            //外枠のStackViewの生成
-//            let stackView = UIStackView()
-//            //y軸方向並び
-//            stackView.axis = .vertical
-//
-//            stackView.translatesAutoresizingMaskIntoConstraints = false
-//            //外枠のスタックビューをビューに設定
-//            self.containerView1.addSubview(stackView)
-//            //制約
-//            stackView.topAnchor.constraint(equalTo: self.diaryText.bottomAnchor,constant: self.constantValue2).isActive = true
-//            stackView.trailingAnchor.constraint(equalTo: self.diaryText.trailingAnchor).isActive = true
-//            stackView.leadingAnchor.constraint(equalTo: self.diaryText.leadingAnchor).isActive = true
-//            if imageMaxNumber <= 3{
-//                //1〜3枚の場合
-//                stackView.heightAnchor.constraint(equalToConstant: 300 ).isActive = true
-//            } else {
-//                //4枚の場合
-//                stackView.heightAnchor.constraint(equalToConstant: 260 ).isActive = true
-//            }
-//            //内側のスタックビュー1を生成
-//            let stackViewHorizon1 = UIStackView()
-//            //内側のスタックビューを外枠のスタックビューに設定
-//            stackView.addArrangedSubview(stackViewHorizon1)
-//
-//            //内側のスタックビュー2を生成
-//            let stackViewHorizon2 = UIStackView()
-//            //内側のスタックビューを外枠のスタックビューに設定
-//            stackView.addArrangedSubview(stackViewHorizon2)
-//
-//            for i in 1...imageMaxNumber{
-//                let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postDocumentId + "\(i)\(Const.Jpg)")
-//                imageSet(imageRef:imageRef ,index: i, maxCount: imageMaxNumber,stackViewHorizon1:stackViewHorizon1,stackViewHorizon2:stackViewHorizon2)
-//            }
-//        }
         
         //プロフィール写真を設定
         setPostImage(uid:post.uid)
@@ -602,24 +358,6 @@ class DitailViewController: UIViewController {
             }
         }
     }
-    //背景色設定
-//    private func setBackgroundColor(colorIndex:Int){
-//        //背景色を変更する
-//        let color = Const.BackGroundColor[colorIndex]
-//        let color1 = color["startColor"] ?? UIColor.white.cgColor
-//        let color2 = color["endColor"] ?? UIColor.white.cgColor
-//        //CAGradientLayerにグラデーションさせるカラーをセット
-//        gradientLayer.colors = [color1,color2]
-//        gradientLayer.startPoint = CGPoint.init(x:0.1,y:0.1)
-//        gradientLayer.endPoint = CGPoint.init(x:0.9,y:0.9)
-//
-//        if self.containerView1.layer.sublayers![0] is CAGradientLayer {
-//            self.containerView1.layer.sublayers![0].removeFromSuperlayer()
-//            self.containerView1.layer.insertSublayer(gradientLayer, at: 0)
-//        } else {
-//            self.containerView1.layer.insertSublayer(gradientLayer, at: 0)
-//        }
-//    }
     @objc func postDelete(_ sender:UIButton){
         guard let post = postData else {return}
         //確認メッセージ出力
