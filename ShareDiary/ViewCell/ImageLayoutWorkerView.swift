@@ -34,6 +34,7 @@ class ImageLayoutWorkerView: UIView {
     @IBOutlet weak var stackViewBottomHeight: NSLayoutConstraint!
     var imageMaxCount : Int = 0 //写真の枚数
     let cornerRadius1:CGFloat = 20
+    let cornerRadius2:CGFloat = 0
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -41,9 +42,7 @@ class ImageLayoutWorkerView: UIView {
         // Drawing code
     }
     */
-//    override func draw(_ rect: CGRect) {
-//        // 描画コード
-//    }
+
     
     
     override init(frame: CGRect) {
@@ -61,27 +60,6 @@ class ImageLayoutWorkerView: UIView {
             self.addSubview(view)
         }
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        print("DEBUG:layoutSubviews　★\(imageMaxCount)枚")
-        switch imageMaxCount{
-        case 1:
-            self.stackViewTopHeight.constant = 250
-        case 2:
-            self.stackViewTopHeight.constant = 130
-        case 3:
-            self.stackViewTopHeight.constant = 130
-            self.stackViewBottomHeight.constant = 170
-        case 4:
-            self.stackViewTopHeight.constant = 130
-            self.stackViewBottomHeight.constant = 130
-        default:
-            //            self.stackViewTop.isHidden = true //非表示
-            //            self.stackViewBottom.isHidden = true //非表示
-            print("")
-        }
-    }
-        
     //画像の配置
     func imageSet(imageMaxCount:Int,imageName:String){
         //プロパティのimageMaxCountに設定
@@ -126,19 +104,23 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden  = true //非表示
             self.image4.isHidden  = true //非表示
             
-            self.stackViewTop.isHidden = false //表示
-            self.stackViewBottom.isHidden = true //非表示
+//            self.stackViewTop.isHidden = false //表示
+//            self.stackViewBottom.isHidden = true //非表示
+                    
+            self.stackViewTopHeight.constant = 250.0
+            self.stackViewBottomHeight.constant = 0.0
             
-            
+            //角丸
             self.image1.layer.cornerRadius = cornerRadius1
-            //角丸 右上
-            self.image1.layer.maskedCorners = [.layerMaxXMinYCorner]
             self.stackViewTop.layer.cornerRadius = cornerRadius1
-            self.stackViewTop.layer.maskedCorners = [.layerMaxXMinYCorner]
+            self.stackViewBottom.layer.cornerRadius = cornerRadius2
             self.layer.cornerRadius = cornerRadius1
-            self.layer.maskedCorners = [.layerMaxXMinYCorner]
-            self.layer.cornerRadius = cornerRadius1
-//            self.stackViewTopHeight.constant = 130
+            //image1 左上 右上 左下 右下
+            self.image1.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            //stackView 左上 右上 左下 右下
+            self.stackViewTop.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            //layer 左上 右上 左下 右下
+            self.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
             
         case 2:
             self.image1.isHidden = false //表示
@@ -146,21 +128,61 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden  = true //非表示
             self.image4.isHidden  = true //非表示
             
-            self.stackViewTop.isHidden = false //表示
-            self.stackViewBottom.isHidden = true //非表示
+//            self.stackViewTop.isHidden = false //表示
+//            self.stackViewBottom.isHidden = true //非表示
             
-//            self.stackViewTopHeight.constant = 130
+            self.stackViewTopHeight.constant = 150.0
+            self.stackViewBottomHeight.constant = 0.0
+            
+            //角丸
+            self.image1.layer.cornerRadius = cornerRadius1
+            self.image2.layer.cornerRadius = cornerRadius1
+            self.stackViewTop.layer.cornerRadius = cornerRadius1
+            self.stackViewBottom.layer.cornerRadius = cornerRadius2
+            self.layer.cornerRadius = cornerRadius1
+            //image1 左上 左下
+            self.image1.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
+            //image2 右上 右下
+            self.image2.layer.maskedCorners =  [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
+            //stackView 左上 右上
+            self.stackViewTop.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+            //layer 左上 右上 左下 右下
+            self.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            
+            
+            
 
         case 3:
             self.image1.isHidden = false //表示
             self.image2.isHidden = false //表示
             self.image3.isHidden = false //表示
             self.image4.isHidden  = true //非表示
-            self.stackViewTop.isHidden = false //表示
-            self.stackViewBottom.isHidden = false //表示
+//            self.stackViewTop.isHidden = false //表示
+//            self.stackViewBottom.isHidden = false //表示
             
-//            self.stackViewTopHeight.constant = 130
-//            self.stackViewBottomHeight.constant = 170
+            self.stackViewTopHeight.constant = 130
+            self.stackViewBottomHeight.constant = 170
+            
+            //角丸
+            self.image1.layer.cornerRadius = cornerRadius1
+            self.image2.layer.cornerRadius = cornerRadius1
+            self.image3.layer.cornerRadius = cornerRadius1
+            self.stackViewTop.layer.cornerRadius = cornerRadius1
+            self.stackViewBottom.layer.cornerRadius = cornerRadius1
+            self.layer.cornerRadius = cornerRadius1
+            //image1 左上
+            self.image1.layer.maskedCorners = [.layerMinXMinYCorner]
+            //image2 右上
+            self.image2.layer.maskedCorners =  [.layerMaxXMinYCorner]
+            //image3 左下 右下
+            self.image3.layer.maskedCorners =  [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            //stackView 左上 右上
+            self.stackViewTop.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+            //stackView 左下 右下
+            self.stackViewBottom.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            //layer 左上 右上 左下 右下
+            self.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            
         case 4:
             self.image1.isHidden = false //表示
             self.image2.isHidden = false //表示
@@ -168,11 +190,34 @@ class ImageLayoutWorkerView: UIView {
             self.image4.isHidden  = false //表示
             
 
-            self.stackViewTop.isHidden = false //表示
-            self.stackViewBottom.isHidden = false //表示
+//            self.stackViewTop.isHidden = false //表示
+//            self.stackViewBottom.isHidden = false //表示
             
-//            self.stackViewTopHeight.constant = 130
-//            self.stackViewBottomHeight.constant = 130
+            self.stackViewTopHeight.constant = 130
+            self.stackViewBottomHeight.constant = 130
+            
+            //角丸
+            self.image1.layer.cornerRadius = cornerRadius1
+            self.image2.layer.cornerRadius = cornerRadius1
+            self.image3.layer.cornerRadius = cornerRadius1
+            self.image4.layer.cornerRadius = cornerRadius1
+            self.stackViewTop.layer.cornerRadius = cornerRadius1
+            self.stackViewBottom.layer.cornerRadius = cornerRadius1
+            self.layer.cornerRadius = cornerRadius1
+            //image1 左上
+            self.image1.layer.maskedCorners = [.layerMinXMinYCorner]
+            //image2 右上
+            self.image2.layer.maskedCorners =  [.layerMaxXMinYCorner]
+            //image3 左下
+            self.image3.layer.maskedCorners =  [.layerMinXMaxYCorner]
+            //image4 右下
+            self.image4.layer.maskedCorners =  [.layerMaxXMaxYCorner]
+            //stackView 左上 右上
+            self.stackViewTop.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+            //stackView 左下 右下
+            self.stackViewBottom.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+            //layer 左上 右上 左下 右下
+            self.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
 
         default:
 //            self.stackViewTop.isHidden = true //非表示
@@ -180,5 +225,26 @@ class ImageLayoutWorkerView: UIView {
             print("")
         }
     }
+//
+//    func reloadConstraint(){
+//        switch imageMaxCount{
+//        case 1:
+//            self.stackViewTopHeight.constant = 250.0
+//            self.stackViewBottomHeight.constant = 0.0
+//        case 2:
+//            self.stackViewTopHeight.constant = 130.0
+//            self.stackViewBottomHeight.constant = 0.0
+//        case 3:
+//            self.stackViewTopHeight.constant = 130.0
+//            self.stackViewBottomHeight.constant = 170.0
+//        case 4:
+//            self.stackViewTopHeight.constant = 130.0
+//            self.stackViewBottomHeight.constant = 130.0
+//        default:
+//            //            self.stackViewTop.isHidden = true //非表示
+//            //            self.stackViewBottom.isHidden = true //非表示
+//            print("")
+//        }
+//    }
 
 }

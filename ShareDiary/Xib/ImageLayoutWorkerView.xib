@@ -21,7 +21,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="378"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NQN-id-8fT">
@@ -39,17 +39,17 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zdu-VU-ekh">
-                    <rect key="frame" x="0.0" y="200" width="480" height="178"/>
+                    <rect key="frame" x="0.0" y="200" width="480" height="200"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-n2-5KP">
-                            <rect key="frame" x="0.0" y="0.0" width="240" height="178"/>
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="200"/>
                         </imageView>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Kh-Bd-6UH">
-                            <rect key="frame" x="240" y="0.0" width="240" height="178"/>
+                            <rect key="frame" x="240" y="0.0" width="240" height="200"/>
                         </imageView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="h9G-y2-o2r"/>
+                        <constraint firstAttribute="height" constant="200" id="h9G-y2-o2r"/>
                     </constraints>
                 </stackView>
             </subviews>

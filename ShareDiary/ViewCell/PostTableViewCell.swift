@@ -137,143 +137,143 @@ class PostTableViewCell: UITableViewCell {
         postTableViewCellDelegate?.imageTransition(sender)
     }
     
-    private func imageCount1(imageRef:StorageReference,imageView:UIImageView,stackViewHorizon1:UIStackView){
-        //x軸方向並び
-        stackViewHorizon1.axis = .horizontal
-        //translatesAutoresizingMaskIntoConstraintsの文言が必要
-        stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-        //すべて同じ幅
-        stackViewHorizon1.distribution = .fillEqually
-        
-        stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-        stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-        stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-        stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = cornerRadius1
-        //角丸 左上 右上 左下 右下
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-        imageView.sd_setImage(with: imageRef)
-        //スタックビューに写真を追加
-        stackViewHorizon1.addArrangedSubview(imageView)
-    }
+//    private func imageCount1(imageRef:StorageReference,imageView:UIImageView,stackViewHorizon1:UIStackView){
+//        //x軸方向並び
+//        stackViewHorizon1.axis = .horizontal
+//        //translatesAutoresizingMaskIntoConstraintsの文言が必要
+//        stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
+//        //すべて同じ幅
+//        stackViewHorizon1.distribution = .fillEqually
+//
+//        stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
+//        stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
+//        stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
+//        stackViewHorizon1.heightAnchor.constraint(equalToConstant: 250 ).isActive = true
+//
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.layer.cornerRadius = cornerRadius1
+//        //角丸 左上 右上 左下 右下
+//        imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+//        imageView.sd_setImage(with: imageRef)
+//        //スタックビューに写真を追加
+//        stackViewHorizon1.addArrangedSubview(imageView)
+//    }
     
-    private func imageCount2(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView){
-        switch index {
-        case 1:
-            //x軸方向並び
-            stackViewHorizon1.axis = .horizontal
-            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-            stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
-            //すべて同じ幅
-            stackViewHorizon1.distribution = .fillEqually
-            stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
-            stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-            stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-            stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-            
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 左上 左下
-            imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
-            imageView.sd_setImage(with: imageRef)
-            //スタックビューに写真を追加
-            stackViewHorizon1.addArrangedSubview(imageView)
-        case 2:
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 右上 右下
-            imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
-            imageView.sd_setImage(with: imageRef)
-            //スタックビューに写真を追加
-            stackViewHorizon1.addArrangedSubview(imageView)
-        default:
-            break
-        }
-        
-    }
-    private func imageCount3(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-        switch index {
-        case 1:
-            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 左上
-            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        case 2:
-            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 右上
-            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
-        case 3:
-            //x軸方向に横並び
-            stackViewHorizon2.axis = .horizontal
-            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-            //すべて同じ幅
-            stackViewHorizon2.distribution = .fillEqually
-            
-            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
-            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
-            
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 左下 右下
-            imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-            imageView.sd_setImage(with: imageRef)
-            //スタックビューに写真を追加
-            stackViewHorizon2.addArrangedSubview(imageView)
-
-        default:
-            break
-        }
-    }
-    private func imageCount4(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
-        switch index {
-        case 1:
-            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 左上
-            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
-        case 2:
-            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 右上
-            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
-        case 3:
-            //x軸方向並び
-            stackViewHorizon2.axis = .horizontal
-            //translatesAutoresizingMaskIntoConstraintsの文言が必要
-            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
-            //すべて同じ幅
-            stackViewHorizon2.distribution = .fillEqually
-            
-            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
-            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
-            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
-            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
-            
-            
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 左下
-            imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
-            imageView.sd_setImage(with: imageRef)
-            //スタックビューに写真を追加
-            stackViewHorizon2.addArrangedSubview(imageView)
-        case 4:
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.layer.cornerRadius = cornerRadius1
-            //角丸 右下
-            imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
-            imageView.sd_setImage(with: imageRef)
-            //スタックビューに写真を追加
-            stackViewHorizon2.addArrangedSubview(imageView)
-        default:
-            break
-        }
-    }
+//    private func imageCount2(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView){
+//        switch index {
+//        case 1:
+//            //x軸方向並び
+//            stackViewHorizon1.axis = .horizontal
+//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
+//            stackViewHorizon1.translatesAutoresizingMaskIntoConstraints = false
+//            //すべて同じ幅
+//            stackViewHorizon1.distribution = .fillEqually
+//            stackViewHorizon1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: self.constantValue2).isActive = true
+//            stackViewHorizon1.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
+//            stackViewHorizon1.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
+//            stackViewHorizon1.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
+//
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 左上 左下
+//            imageView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
+//            imageView.sd_setImage(with: imageRef)
+//            //スタックビューに写真を追加
+//            stackViewHorizon1.addArrangedSubview(imageView)
+//        case 2:
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 右上 右下
+//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMaxXMaxYCorner]
+//            imageView.sd_setImage(with: imageRef)
+//            //スタックビューに写真を追加
+//            stackViewHorizon1.addArrangedSubview(imageView)
+//        default:
+//            break
+//        }
+//
+//    }
+//    private func imageCount3(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
+//        switch index {
+//        case 1:
+//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 左上
+//            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+//        case 2:
+//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 右上
+//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
+//        case 3:
+//            //x軸方向に横並び
+//            stackViewHorizon2.axis = .horizontal
+//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
+//            //すべて同じ幅
+//            stackViewHorizon2.distribution = .fillEqually
+//
+//            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
+//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
+//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
+//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 170 ).isActive = true
+//
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 左下 右下
+//            imageView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
+//            imageView.sd_setImage(with: imageRef)
+//            //スタックビューに写真を追加
+//            stackViewHorizon2.addArrangedSubview(imageView)
+//
+//        default:
+//            break
+//        }
+//    }
+//    private func imageCount4(imageRef:StorageReference,imageView:UIImageView,index:Int,stackViewHorizon1:UIStackView,stackViewHorizon2:UIStackView){
+//        switch index {
+//        case 1:
+//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 左上
+//            imageView.layer.maskedCorners = [.layerMinXMinYCorner]
+//        case 2:
+//            self.imageCount2(imageRef: imageRef, imageView: imageView, index: index, stackViewHorizon1: stackViewHorizon1)
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 右上
+//            imageView.layer.maskedCorners = [.layerMaxXMinYCorner]
+//        case 3:
+//            //x軸方向並び
+//            stackViewHorizon2.axis = .horizontal
+//            //translatesAutoresizingMaskIntoConstraintsの文言が必要
+//            stackViewHorizon2.translatesAutoresizingMaskIntoConstraints = false
+//            //すべて同じ幅
+//            stackViewHorizon2.distribution = .fillEqually
+//
+//            stackViewHorizon2.topAnchor.constraint(equalTo: contentLabel.bottomAnchor,constant: 180).isActive = true
+//            stackViewHorizon2.trailingAnchor.constraint(equalTo: self.contentLabel.trailingAnchor).isActive = true
+//            stackViewHorizon2.leadingAnchor.constraint(equalTo: self.contentLabel.leadingAnchor).isActive = true
+//            stackViewHorizon2.heightAnchor.constraint(equalToConstant: 130 ).isActive = true
+//
+//
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 左下
+//            imageView.layer.maskedCorners = [.layerMinXMaxYCorner]
+//            imageView.sd_setImage(with: imageRef)
+//            //スタックビューに写真を追加
+//            stackViewHorizon2.addArrangedSubview(imageView)
+//        case 4:
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            imageView.layer.cornerRadius = cornerRadius1
+//            //角丸 右下
+//            imageView.layer.maskedCorners = [.layerMaxXMaxYCorner]
+//            imageView.sd_setImage(with: imageRef)
+//            //スタックビューに写真を追加
+//            stackViewHorizon2.addArrangedSubview(imageView)
+//        default:
+//            break
+//        }
+//    }
     
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
@@ -403,6 +403,8 @@ class PostTableViewCell: UITableViewCell {
         }
         //背景色を設定
         contentsView.setBackgroundColor(colorIndex:postData.backgroundColorIndex)
+        
+//        imageLayoutWorkerView.reloadConstraint()//削除して良い
     }
     
     private func setPostImage(uid:String){
