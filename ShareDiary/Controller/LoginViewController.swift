@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
                                       selector:#selector(update(timer:)),userInfo:nil,
                                       repeats:true)
          timer?.fire()
-        titleLabel.text = "Welcom"
+        titleLabel.text = "Welcome"
 
     }
     override func viewWillAppear(_ animated: Bool) {
