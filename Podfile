@@ -51,6 +51,8 @@ post_install do |installer|
             if swift4.include?(target.name)
                 config.build_settings['SWIFT_VERSION'] = '4.0'
             end
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
         end
     end
 end
+
