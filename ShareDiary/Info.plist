@@ -27,7 +27,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>位置情報の許可を求めます。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>画像を&quot;ShareDiary&quot;に簡単に追加できるようにします。</string>
+	<string>画像を"ShareDiary"に簡単に追加できるようにします。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

@@ -837,7 +837,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 1.6;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
 				DISPLAY_NAME = ShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
@@ -863,7 +863,7 @@
 				CODE_SIGN_ENTITLEMENTS = ShareDiary/ShareDiary.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 1.6;
 				DEVELOPMENT_TEAM = 6522YLS3GH;
 				DISPLAY_NAME = ShareDiary;
 				INFOPLIST_FILE = ShareDiary/Info.plist;
