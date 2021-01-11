@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import SafariServices
-
+import LTMorphingLabel
 class AccountCreateViewController: UIViewController,SFSafariViewControllerDelegate{
 
     @IBOutlet weak var mailAddressTextField: UITextField!
@@ -22,6 +22,14 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var checkBox: CheckBox!
     @IBOutlet weak var termsOfServiceButton: UIButton!//利用規約
+    @IBOutlet weak var titleLabel: LTMorphingLabel!
+    
+    //表示制御用タイマー
+    private var timer:Timer?
+    //String配列のindex用
+    private var index:Int=0
+    //表示するString配列
+    private let textList=["Please create","an account","and post your","wonderful diary!"]
     
     var mailAddress = ""
     var password = ""
@@ -76,6 +84,26 @@ class AccountCreateViewController: UIViewController,SFSafariViewControllerDelega
         //ボタンの押下時の文字色
         self.newAccountCreateButton.setTitleColor(UIColor.lightGray ,for: .highlighted)
         self.cancelButton.setTitleColor(UIColor.lightGray ,for: .highlighted)
+        
+        
+        //タイマーの追加
+        titleLabel.morphingEffect = .sparkle
+         timer=Timer.scheduledTimer(timeInterval:2.0,
+                                      target:self,
+                                      selector:#selector(update(timer:)),userInfo:nil,
+                                      repeats:true)
+         timer?.fire()
+
+    }
+    @objc func update(timer:Timer){
+        //ここでtextの更新
+        titleLabel.text = textList[index]
+        index += 1
+        if index >= textList.count{
+            //タイマー停止
+            timer.invalidate()
+        }
+        
     }
     //新規作成ボタン押下時
     @objc private func tapNewAccountCreateButton(_ sender:UIButton){

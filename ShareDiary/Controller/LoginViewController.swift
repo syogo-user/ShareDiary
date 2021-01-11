@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SVProgressHUD
+import LTMorphingLabel
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var mailAddressTextField: UITextField!
@@ -16,6 +17,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var backImage: UIImageView!
+    @IBOutlet weak var titleLabel: LTMorphingLabel!
+    
+    //表示制御用タイマー
+    private var timer:Timer?
+
+    
     var message = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +49,28 @@ class LoginViewController: UIViewController {
         self.createAccountButton.setTitleColor(UIColor.lightGray ,for: .highlighted)
         self.loginButton.addTarget(self, action: #selector(tapLoginButton(_:)), for: .touchUpInside)
         self.createAccountButton.addTarget(self, action: #selector(tapcreateAccountButton(_:)), for: .touchUpInside)
+        
+        //タイマーの追加
+        titleLabel.morphingEffect = .sparkle
+         timer=Timer.scheduledTimer(timeInterval:2.0,
+                                      target:self,
+                                      selector:#selector(update(timer:)),userInfo:nil,
+                                      repeats:true)
+         timer?.fire()
+        titleLabel.text = "Welcom"
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
 
     }
-
+    @objc func update(timer:Timer){
+        //ここでtextの更新
+        
+        titleLabel.text = "Share Diary"
+        
+    }
  
     @objc private func tapLoginButton(_ sender :UIButton){
         if let address = mailAddressTextField.text, let password = passwordTextField.text {

@@ -207,6 +207,7 @@ PODS:
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.5.0)
   - leveldb-library (1.22)
+  - LTMorphingLabel (0.9.2)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
     - nanopb/encode (= 0.3.9011)
@@ -234,6 +235,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseUI/Storage
   - FSCalendar
+  - LTMorphingLabel
   - SlideMenuControllerSwift
   - SVProgressHUD (= 2.2.5)
 
@@ -268,6 +270,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
+    - LTMorphingLabel
     - nanopb
     - PromisesObjC
     - Protobuf
@@ -306,6 +309,7 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  LTMorphingLabel: cdd338db82477d9ee80893b813cbbd7989f97b06
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Protobuf: 0cde852566359049847168e51bd1c690e0f70056
@@ -314,6 +318,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyGif: e466e86c660d343357ab944a819a101c4127cb40
 
-PODFILE CHECKSUM: 0d216a23bc2a3eb552d603a89bcea1457d58287a
+PODFILE CHECKSUM: 0c6ddf571826fece1a09cf63657aa9bc92e633a5
 
 COCOAPODS: 1.9.3

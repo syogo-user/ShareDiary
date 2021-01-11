@@ -20,6 +20,7 @@ target 'ShareDiary' do
   pod 'DKImagePickerController'
   pod 'CalculateCalendarLogic'
   pod 'Firebase/Messaging'
+  pod 'LTMorphingLabel'
 end
 
 target 'TShareDiary' do
@@ -40,7 +41,7 @@ target 'TShareDiary' do
   pod 'DKImagePickerController'
   pod 'CalculateCalendarLogic'
   pod 'Firebase/Messaging'
-
+  pod 'LTMorphingLabel'
 end
 
 swift4 = ['SlideMenuControllerSwift']
