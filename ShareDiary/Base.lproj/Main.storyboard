@@ -273,7 +273,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9et-8P-KgR">
-                                                <rect key="frame" x="87" y="0.0" width="200" height="50"/>
+                                                <rect key="frame" x="87" y="0.0" width="200" height="138"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="7Ge-yr-4Xf"/>
                                                 </constraints>
@@ -281,12 +281,22 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfu-Or-wee" customClass="ImageLayoutWorkerView" customModule="ShareDiary" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="355" width="354" height="300"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="750" constant="300" id="jUw-bf-LuZ"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="UEt-fn-5K8" firstAttribute="top" secondItem="fSu-57-MuV" secondAttribute="top" constant="50" id="4qC-xA-mP7"/>
+                                            <constraint firstAttribute="trailing" secondItem="jfu-Or-wee" secondAttribute="trailing" constant="10" id="UpP-bl-WNc"/>
                                             <constraint firstItem="9et-8P-KgR" firstAttribute="top" secondItem="fSu-57-MuV" secondAttribute="top" id="WSl-xs-Cns"/>
                                             <constraint firstItem="9et-8P-KgR" firstAttribute="centerX" secondItem="fSu-57-MuV" secondAttribute="centerX" id="Wyf-VT-olb"/>
+                                            <constraint firstItem="jfu-Or-wee" firstAttribute="top" secondItem="UEt-fn-5K8" secondAttribute="bottom" constant="5" id="aiQ-eM-s78"/>
+                                            <constraint firstItem="jfu-Or-wee" firstAttribute="leading" secondItem="fSu-57-MuV" secondAttribute="leading" constant="10" id="kdR-9z-xEY"/>
                                             <constraint firstAttribute="height" constant="1100" id="ntE-Zq-Zt3"/>
                                             <constraint firstItem="UEt-fn-5K8" firstAttribute="leading" secondItem="fSu-57-MuV" secondAttribute="leading" constant="5" id="s9N-c9-jIJ"/>
                                             <constraint firstAttribute="trailing" secondItem="UEt-fn-5K8" secondAttribute="trailing" constant="5" id="uPq-Ic-q9P"/>
@@ -341,6 +351,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="uVh-zz-xSd" id="yKV-HA-VyZ"/>
                         <outlet property="dateLabel" destination="9et-8P-KgR" id="ilE-QE-pm9"/>
+                        <outlet property="imageLayoutWorkerView" destination="jfu-Or-wee" id="5ha-QS-jsy"/>
                         <outlet property="inputTextView" destination="UEt-fn-5K8" id="3Ue-48-bO2"/>
                         <outlet property="postButton" destination="HV0-EK-eKd" id="1Sm-GS-Cmo"/>
                     </connections>

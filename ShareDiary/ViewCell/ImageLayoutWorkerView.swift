@@ -44,10 +44,11 @@ class ImageLayoutWorkerView: UIView {
         if let view = Bundle.main.loadNibNamed(String(describing: type(of: self)), owner: self)?.first as? UIView {
             view.frame = self.bounds
             view.layer.cornerRadius = cornerRadius1
+            view.backgroundColor = UIColor.clear
             self.addSubview(view)
         }
     }
-    //画像の配置
+    //画像の配置（タイムラインと詳細画面の処理）
     func imageSet(imageMaxCount:Int,imageName:String){
         //プロパティのimageMaxCountに設定
         self.imageMaxCount = imageMaxCount
@@ -62,9 +63,22 @@ class ImageLayoutWorkerView: UIView {
             self.stackViewTopHeight.constant = 0.0
             self.stackViewBottomHeight.constant = 0.0
         }
-        
-        
-
+    }
+    //画像の配置（投稿画面からの処理）
+    func imageSet(imageView:UIImage,imageMaxCount:Int,index:Int){
+        switch index{
+        case 1 :
+            self.image1.image = imageView
+        case 2 :
+            self.image2.image = imageView
+        case 3 :
+            self.image3.image = imageView
+        case 4 :
+            self.image4.image = imageView
+        default:
+            break
+        }
+        self.imageLayout(imageMaxCount: imageMaxCount)
     }
     
     func imageSetLayout(imageRef:StorageReference ,index: Int, imageMaxCount: Int){
@@ -83,6 +97,14 @@ class ImageLayoutWorkerView: UIView {
             print("default")
         }
         
+        //写真のレイアウト
+        self.imageLayout(imageMaxCount: imageMaxCount)
+        //タップイベント追加
+        self.addTapEvent()
+        
+
+    }
+    private func imageLayout(imageMaxCount:Int){
         switch imageMaxCount{
         case 1:
             //非表示　存在しないこととしてstackViewに自動レイアウトしてもらう。
@@ -129,10 +151,7 @@ class ImageLayoutWorkerView: UIView {
             self.stackViewTop.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             //layer 左上 右上 左下 右下
             self.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner,.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
-            
-            
-            
-
+                                
         case 3:
             self.image1.isHidden = false //表示
             self.image2.isHidden = false //表示
@@ -197,8 +216,9 @@ class ImageLayoutWorkerView: UIView {
         default:
             print("DEBUG:default")
         }
-        
-        //タップイベント追加
+    }
+    
+    private func addTapEvent(){
         //image1
         image1.isUserInteractionEnabled = true
         image1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
@@ -212,6 +232,8 @@ class ImageLayoutWorkerView: UIView {
         image4.isUserInteractionEnabled = true
         image4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.imageTransition(_:))))
     }
+    
+    
     //フルサイズの写真をモーダルで表示
     @objc func imageTransition(_ sender:UITapGestureRecognizer){
         imageLayoutWorkerViewCellDelegate?.imageTransition(sender)
