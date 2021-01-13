@@ -126,8 +126,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
         let pickerController = ImageSelectViewController()
         //imagePictureArray配列を初期化
         self.imagePictureArray = []
-        //写真がviewにある場合は削除
-        removeUIImageSubviews(parentView:self.view)
+
         pickerController.didSelectAssets = {
             [unowned self] (assets:[DKAsset])in
                         
@@ -147,19 +146,7 @@ class PostViewController: UIViewController,UITextViewDelegate,UIImagePickerContr
         self.present(pickerController, animated: true) {}
     }
 
-    //写真を削除
-    private func removeUIImageSubviews(parentView: UIView){
-        let subviews = parentView.subviews
-        for subview in subviews {
-            if let subview = subview as? UIStackView{
-                //UIStackViewが存在していたら削除する
-                subview.removeFromSuperview()
-            }
 
-        }
-    }
-    
-    
     @objc func tapColorButton(_ sender:UIButton){
         let colorChoiceViewController = self.storyboard?.instantiateViewController(withIdentifier: "ColorChoiceViewController")
         colorChoiceViewController?.modalPresentationStyle = .fullScreen

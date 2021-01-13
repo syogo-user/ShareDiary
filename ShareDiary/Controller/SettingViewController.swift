@@ -34,41 +34,11 @@ class SettingViewController: UIViewController {
         self.passwordButton.setTitleColor(UIColor.white, for: .normal)
         self.accountDeleteButton.setTitleColor(UIColor.white, for: .normal)
         
-//        self.accountDeleteButtonSetting()
-
     }
-//    //アカウント削除ボタン表示の切り替え
-//    private func accountDeleteButtonSetting(){
-//        //アカウント削除ボタンは非表示で初期化する
-//        self.accountDeleteButton.isHidden = true
-//
-//        guard let myUid = Auth.auth().currentUser?.uid else {return}
-//        let userRef = Firestore.firestore().collection(Const.users).document(myUid)
-//        userRef.getDocument() {
-//            (querySnapshot,error) in
-//            if let error = error {
-//                return
-//            } else {
-//                if let document = querySnapshot!.data(){
-//                    let administratorFlg  = document["administratorFlg"] as? Bool ?? false
-//                    //管理者権限かどうかでボタンの表示を設定
-//                    if administratorFlg == true {
-//                        //管理者の場合、表示
-//                        self.accountDeleteButton.isHidden = false
-//                    }else {
-//                        //管理者出ない場合、非表示
-//                        self.accountDeleteButton.isHidden = true
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
-    
+
     //メールアドレスボタン押下時
     @objc private func tapMailAddressButton(_ sender : UIButton){        
         let mailAddressChangeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MailAddressChangeViewController") as! MailAddressChangeViewController
-        mailAddressChangeViewController.accountDeleteFlg = false //メールアドレスからの場合はfalse
         self.navigationController?.pushViewController(mailAddressChangeViewController, animated: true)
     }
     //パスワードボタン押下時
@@ -162,12 +132,5 @@ class SettingViewController: UIViewController {
             }
         }
     }
-    
-    
-//    @objc func tapAccountDeleteAdministrator(_ sender:UIButton){
-//        let mailAddressChangeViewController = self.storyboard?.instantiateViewController(withIdentifier: "MailAddressChangeViewController") as! MailAddressChangeViewController
-//        mailAddressChangeViewController.accountDeleteFlg = true //アカウント削除からの場合はtrue
-//        self.navigationController?.pushViewController(mailAddressChangeViewController, animated: true)
-//    }
-    
+            
 }

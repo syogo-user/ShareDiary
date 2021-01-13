@@ -65,23 +65,11 @@ class PostTableViewCell: UITableViewCell {
         super.updateConstraints()
     }
     
-    //写真を削除
-    private func removeUIImageSubviews(parentView: UIView){
-        let subviews = parentView.subviews
-        for subview in subviews {
-            if let subview = subview as? UIStackView{
-                //UIStackViewが存在していたら削除する
-                subview.removeFromSuperview()
-            }
-        }
-    }
     
     // PostDataの内容をセルに表示
     func setPostData(_ postData: PostData) {
         //UIDを変数に設定（プロフィール写真を取得するため）
         let imageMaxNumber  = postData.contentImageMaxNumber
-        //StackViewを削除
-        self.removeUIImageSubviews(parentView: self.contentsView)
         //投稿された写真の表示
         imageLayoutWorkerView.imageSet(imageMaxCount: imageMaxNumber,imageName:postData.id)
         //プロフィール写真の設定

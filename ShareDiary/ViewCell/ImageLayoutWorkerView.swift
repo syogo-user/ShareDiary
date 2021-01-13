@@ -28,6 +28,13 @@ class ImageLayoutWorkerView: UIView {
     var imageMaxCount : Int = 0 //写真の枚数
     let cornerRadius1:CGFloat = 20
     let cornerRadius2:CGFloat = 0
+    
+    let noneHeight:CGFloat = 0.0
+    let height1:CGFloat = 250.0
+    let height2:CGFloat = 150.0
+    let height3:CGFloat = 130.0
+    let height3_2:CGFloat = 170.0
+    let height4:CGFloat = 130.0
     //デリゲート
     var imageLayoutWorkerViewCellDelegate :ImageLayoutWorkerViewCellDelegate?
     
@@ -113,8 +120,8 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden  = true //非表示
             self.image4.isHidden  = true //非表示
                     
-            self.stackViewTopHeight.constant = 250.0
-            self.stackViewBottomHeight.constant = 0.0
+            self.stackViewTopHeight.constant = height1
+            self.stackViewBottomHeight.constant = noneHeight
             
             //角丸
             self.image1.layer.cornerRadius = cornerRadius1
@@ -134,8 +141,8 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden  = true //非表示
             self.image4.isHidden  = true //非表示
             
-            self.stackViewTopHeight.constant = 150.0
-            self.stackViewBottomHeight.constant = 0.0
+            self.stackViewTopHeight.constant = height2
+            self.stackViewBottomHeight.constant = noneHeight
             
             //角丸
             self.image1.layer.cornerRadius = cornerRadius1
@@ -158,8 +165,8 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden = false //表示
             self.image4.isHidden  = true //非表示
             
-            self.stackViewTopHeight.constant = 130
-            self.stackViewBottomHeight.constant = 170
+            self.stackViewTopHeight.constant = height3
+            self.stackViewBottomHeight.constant = height3_2
             
             //角丸
             self.image1.layer.cornerRadius = cornerRadius1
@@ -187,8 +194,8 @@ class ImageLayoutWorkerView: UIView {
             self.image3.isHidden = false //表示
             self.image4.isHidden  = false //表示
             
-            self.stackViewTopHeight.constant = 130
-            self.stackViewBottomHeight.constant = 130
+            self.stackViewTopHeight.constant = height4
+            self.stackViewBottomHeight.constant = height4
             
             //角丸
             self.image1.layer.cornerRadius = cornerRadius1
